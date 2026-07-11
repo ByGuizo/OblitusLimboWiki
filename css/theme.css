@@ -1,0 +1,138 @@
+:root {
+  /* Backgrounds */
+  --bg-void: #050308;
+  --bg-base: #0b0810;
+  --bg-elevated: #171020;
+  --bg-card: #1a1322;
+  --bg-card-hover: #221a2c;
+
+  /* Purple + vibrant Persona-red accent */
+  --purple-neon: #a855f7;
+  --purple-bright: #c084fc;
+  --purple-mid: #7c3aed;
+  --purple-deep: #4c1d95;
+  --purple-void: #2e1065;
+  --purple-line: rgba(168, 85, 247, 0.25);
+  --purple-glow: rgba(168, 85, 247, 0.5);
+  --purple-glow-soft: rgba(124, 58, 237, 0.22);
+
+  --accent-red: #ff2d47;
+  --accent-red-deep: #b3001f;
+  --accent-red-glow: rgba(255, 45, 71, 0.55);
+
+  --ink-black: #050308;
+
+  /* Text */
+  --text-primary: #f7f3ff;
+  --text-secondary: #cdc2e0;
+  --text-muted: #8d84a3;
+  --text-faint: #5c5470;
+
+  /* Status badges */
+  --status-alive: #34d399;
+  --status-alive-bg: rgba(52, 211, 153, 0.12);
+  --status-dead: #94a3b8;
+  --status-dead-bg: rgba(148, 163, 184, 0.14);
+  --status-unknown: #c084fc;
+  --status-unknown-bg: rgba(192, 132, 252, 0.12);
+  --status-destroyed: #ff2d47;
+  --status-destroyed-bg: rgba(255, 45, 71, 0.12);
+
+  /* Typography — Persona-inspired: condensed display + clean body */
+  --font-display: "Bebas Neue", "Oswald", "Arial Narrow", sans-serif;
+  --font-heading: "Oswald", "Arial Narrow", sans-serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-ui: "Oswald", "Segoe UI", sans-serif;
+
+  /* Layout */
+  --max-width: 1220px;
+  --radius-sm: 3px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+  --border-hairline: 1px solid rgba(168, 85, 247, 0.16);
+  --ink-border: 3px solid var(--ink-black);
+
+  /* Glassmorphism */
+  --glass-bg: rgba(23, 16, 32, 0.6);
+  --glass-bg-strong: rgba(23, 16, 32, 0.86);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.08);
+  --glass-border-hover: 1px solid rgba(192, 132, 252, 0.45);
+  --glass-blur: blur(16px) saturate(150%);
+  --glass-shadow: 0 8px 28px -8px rgba(0, 0, 0, 0.65);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-snap: cubic-bezier(0.22, 1.6, 0.36, 1);
+  --dur-fast: 150ms;
+  --dur-med: 380ms;
+  --dur-slow: 620ms;
+}
+
+body {
+  background: var(--bg-base);
+  background-image:
+    var(--star-field),
+    radial-gradient(ellipse 55% 38% at 12% 0%, var(--purple-glow-soft), transparent 60%),
+    radial-gradient(ellipse 45% 32% at 88% 12%, rgba(255, 45, 71, 0.1), transparent 60%),
+    radial-gradient(ellipse 65% 45% at 50% 100%, rgba(46, 16, 101, 0.3), transparent 70%);
+  background-attachment: fixed;
+  background-size: 340px 340px, auto, auto, auto;
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+  font-size: 16px;
+  overflow-x: hidden;
+}
+
+:root {
+  --star-field: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='340' height='340' viewBox='0 0 340 340'%3E%3Cg fill='%23a855f7' fill-opacity='0.05'%3E%3Cpath d='M40 10l4 10 10 4-10 4-4 10-4-10-10-4 10-4z'/%3E%3Cpath d='M180 60l3 8 8 3-8 3-3 8-3-8-8-3 8-3z'/%3E%3Cpath d='M280 30l5 12 12 5-12 5-5 12-5-12-12-5 12-5z'/%3E%3Cpath d='M90 140l4 10 10 4-10 4-4 10-4-10-10-4 10-4z'/%3E%3Cpath d='M250 170l3 8 8 3-8 3-3 8-3-8-8-3 8-3z'/%3E%3Cpath d='M20 220l5 12 12 5-12 5-5 12-5-12-12-5 12-5z'/%3E%3Cpath d='M150 260l4 10 10 4-10 4-4 10-4-10-10-4 10-4z'/%3E%3Cpath d='M310 250l3 8 8 3-8 3-3 8-3-8-8-3 8-3z'/%3E%3Cpath d='M220 320l4 10 10 4-10 4-4 10-4-10-10-4 10-4z'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  color: var(--text-primary);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+::selection {
+  background: var(--accent-red);
+  color: #fff;
+}
+
+::-webkit-scrollbar {
+  width: 11px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-void);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--purple-deep);
+  border-radius: 10px;
+  border: 2px solid var(--bg-void);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-red);
+}
+
+i.fa-solid, i.fa-regular {
+  line-height: 1;
+}
+
+/* ---------- Reusable ink-splash graphic (Persona-style paint splatter) ---------- */
+.ink-splash {
+  position: absolute;
+  pointer-events: none;
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.9;
+}
+
+.ink-splash.purple {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Cpath fill='%237c3aed' d='M40 120c-20-30 10-70 50-65 5-25 40-45 70-30 15-20 55-25 75-5 30-10 65 15 60 45 25 5 40 40 20 60 10 25-15 55-45 50-10 20-45 25-65 10-20 15-55 10-65-10-30 5-55-20-50-50-25-5-40-35-25-55-15-5-25-20-25-20z'/%3E%3C/svg%3E");
+}
+
+.ink-splash.red {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Cpath fill='%23ff2d47' d='M60 110c-15-35 20-75 60-65 10-25 45-40 70-20 20-20 60-15 75 10 30-5 60 25 50 55 20 10 30 45 5 60 5 25-25 50-50 40-15 20-50 20-65 0-25 15-55 0-55-25-30 0-50-30-40-55-15-10-20-30-5-45-10 0-15-20-15-20z'/%3E%3C/svg%3E");
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oblitus Limbo — Wiki Oficial</title>
+  <meta name="description" content="Wiki Oficial do universo de Oblitus Limbo: personagens, lugares, sistemas de magia e artefatos.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <a href="#/" class="brand">
+      <img src="Imagens/LogoOLsemfundo.png" alt="Oblitus Limbo" class="brand-logo">
+    </a>
+    <button class="nav-toggle" aria-label="Abrir menu"><i class="fa-solid fa-bars"></i></button>
+    <nav class="main-nav">
+      <a href="#/" data-route="home"><i class="fa-solid fa-house"></i><span>Início</span></a>
+      <a href="#/categoria/personagens" data-route="personagens"><i class="fa-solid fa-user-ninja"></i><span>Personagens</span></a>
+      <a href="#/categoria/lugares" data-route="lugares"><i class="fa-solid fa-map-location-dot"></i><span>Lugares</span></a>
+      <a href="#/categoria/lore" data-route="lore"><i class="fa-solid fa-book-skull"></i><span>Lore &amp; Magia</span></a>
+      <a href="#/categoria/artefatos" data-route="artefatos"><i class="fa-solid fa-gem"></i><span>Artefatos</span></a>
+    </nav>
+  </header>
+
+  <main id="app"></main>
+
+  <footer class="site-footer">
+    <p><strong>Oblitus Limbo</strong> — Wiki Oficial, Volume 1</p>
+    <p>Compilada a partir do manuscrito original de ByGuizo (Guilherme O. Silva). Wiki de referência não-oficial — não substitui o texto original.</p>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/linkify.js"></script>
+  <script src="js/render.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/router.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
