@@ -1,4 +1,4 @@
-/* Hash router: #/  |  #/categoria/:tipo  |  #/item/:slug */
+/* Hash router: #/  |  #/categoria/:tipo  |  #/item/:slug  |  #/livro  |  #/livro/:slug */
 
 function parseHash() {
   let hash = window.location.hash || "#/";
@@ -8,6 +8,8 @@ function parseHash() {
   if (parts.length === 0) return { name: "home" };
   if (parts[0] === "categoria" && parts[1]) return { name: "categoria", param: parts[1] };
   if (parts[0] === "item" && parts[1]) return { name: "item", param: parts[1] };
+  if (parts[0] === "livro" && !parts[1]) return { name: "livro" };
+  if (parts[0] === "livro" && parts[1]) return { name: "capitulo", param: parts[1] };
   return { name: "notfound" };
 }
 
@@ -19,6 +21,10 @@ function resolveRenderFn(route) {
       return () => renderCategory(route.param);
     case "item":
       return () => renderDetail(route.param);
+    case "livro":
+      return () => renderLivroIndex();
+    case "capitulo":
+      return () => renderCapitulo(route.param);
     default:
       return () => renderNotFound();
   }
@@ -30,7 +36,8 @@ function updateActiveNavLink(route) {
     const target = link.getAttribute("data-route");
     const isActive =
       (route.name === "home" && target === "home") ||
-      (route.name === "categoria" && target === route.param);
+      (route.name === "categoria" && target === route.param) ||
+      ((route.name === "livro" || route.name === "capitulo") && target === "livro");
     link.classList.toggle("active", isActive);
   });
 }
@@ -41,6 +48,9 @@ async function router() {
   const renderFn = resolveRenderFn(route);
   updateActiveNavLink(route);
   await transitionRoute(appEl, renderFn);
+  if (route.name === "capitulo") {
+    initReaderCheckpoint(appEl, route.param);
+  }
 }
 
 window.addEventListener("hashchange", router);

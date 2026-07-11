@@ -49,7 +49,7 @@ let hasRoutedOnce = false;
 async function transitionRoute(appEl, renderFn) {
   if (!hasRoutedOnce) {
     hasRoutedOnce = true;
-    appEl.innerHTML = renderFn();
+    appEl.innerHTML = await renderFn();
     appEl.classList.add("route-entered");
     initRevealAnimations(appEl);
     return;
@@ -60,7 +60,7 @@ async function transitionRoute(appEl, renderFn) {
 
   await runWipe("wipe-in", 260);
 
-  appEl.innerHTML = renderFn();
+  appEl.innerHTML = await renderFn();
   window.scrollTo(0, 0);
   appEl.classList.remove("route-leaving");
   appEl.classList.add("route-entering");

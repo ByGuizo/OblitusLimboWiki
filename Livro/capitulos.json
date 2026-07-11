@@ -1,0 +1,95 @@
+[
+  {
+    "slug": "prologo",
+    "pasta": "Livro/Prologo",
+    "numero": "Prólogo",
+    "titulo": "Prólogo",
+    "resumo": "Um vislumbre sombrio do que está por vir, antes da jornada de Kiana começar."
+  },
+  {
+    "slug": "capitulo-1",
+    "pasta": "Livro/Capitulo1",
+    "numero": "Capítulo I",
+    "titulo": "O Aniversário de Viktor",
+    "resumo": "Em Vardun, uma noite de celebração se transforma em tragédia quando Kiana encontra uma criança brutalmente assassinada e Viktor desaparece em busca de vingança.",
+    "capa": "CapaCap10.jpg"
+  },
+  {
+    "slug": "capitulo-2",
+    "pasta": "Livro/Capitulo2",
+    "numero": "Capítulo II",
+    "titulo": "O Vale das Flores",
+    "resumo": "O grupo parte em uma jornada perigosa, enfrentando elementais e provações que testam seus sigilos e sua união.",
+    "capa": "CapaCap33.jpg"
+  },
+  {
+    "slug": "capitulo-3",
+    "pasta": "Livro/Capitulo3",
+    "numero": "Capítulo III",
+    "titulo": "Encontros e Sombras",
+    "resumo": "Novos rostos e velhos segredos se cruzam no caminho de Kiana, enquanto Yuto revela verdades que mudam o rumo da jornada.",
+    "capa": "CapaCap61.jpg"
+  },
+  {
+    "slug": "capitulo-4",
+    "pasta": "Livro/Capitulo4",
+    "numero": "Capítulo IV",
+    "titulo": "O Quinto Presságio",
+    "resumo": "Lorde Krauser revela facetas obscuras enquanto uma ameaça ancestral, os Presságios, começa a se desenhar sobre Hikari.",
+    "capa": "CapaCap88.jpg"
+  },
+  {
+    "slug": "capitulo-5",
+    "pasta": "Livro/Capitulo5",
+    "numero": "Capítulo V",
+    "titulo": "A Caverna e o Falso Presságio",
+    "resumo": "Uma expedição a uma caverna traiçoeira expõe um encapuzado misterioso e a verdadeira magnitude do que Krauser esconde.",
+    "capa": "capacap117.jpg"
+  },
+  {
+    "slug": "capitulo-6",
+    "pasta": "Livro/Capitulo6",
+    "numero": "Capítulo VI",
+    "titulo": "O Festival de Hikari",
+    "resumo": "Entre lições sobre o Sigilo da Alma e a alegria de um festival, Kiana canta pela primeira vez diante de todos — pouco antes da tempestade chegar.",
+    "capa": "capacap141.jpg"
+  },
+  {
+    "slug": "capitulo-7",
+    "pasta": "Livro/Capitulo7",
+    "numero": "Capítulo VII",
+    "titulo": "Manifestação do Desespero",
+    "resumo": "O festival é atacado por criaturas das sombras e a verdadeira identidade do Quinto Presságio é revelada em uma batalha que custa uma vida querida.",
+    "capa": "capacap163.jpg"
+  },
+  {
+    "slug": "capitulo-8",
+    "pasta": "Livro/Capitulo8",
+    "numero": "Capítulo VIII",
+    "titulo": "Memórias de um Limbo Esquecido",
+    "resumo": "Presa em um limbo de memórias, Kiana revive sua infância em um orfanato e o trauma que moldou quem ela se tornou.",
+    "capa": "capacap187.jpg"
+  },
+  {
+    "slug": "capitulo-9",
+    "pasta": "Livro/Capitulo9",
+    "numero": "Capítulo IX",
+    "titulo": "Oblitus Limbo",
+    "resumo": "O confronto final contra Krauser expõe as origens de seu ódio e o verdadeiro poder de Viktor Vanshee, culminando em um ritual que consome tudo.",
+    "capa": "Capacap206.jpg"
+  },
+  {
+    "slug": "epilogo",
+    "pasta": "Livro/Epilogo",
+    "numero": "Epílogo",
+    "titulo": "Epílogo",
+    "resumo": "Uma última palavra sombria ecoa, prometendo que esta história está longe de terminar."
+  },
+  {
+    "slug": "creditos",
+    "pasta": "Livro/Creditos",
+    "numero": "Créditos",
+    "titulo": "Créditos e Agradecimentos",
+    "resumo": "Nota do autor, ficha catalográfica e agradecimentos a todos que tornaram Oblitus Limbo possível."
+  }
+]

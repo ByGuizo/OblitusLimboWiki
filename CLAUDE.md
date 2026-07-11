@@ -4,7 +4,9 @@ Wiki estática de fã/referência para o livro de dark fantasy "Oblitus Limbo" (
 
 ## Como rodar
 
-Não há `npm start`. Abra `index.html` diretamente no navegador, ou sirva a pasta com qualquer servidor estático simples (ex: `npx serve .`, ou um servidor Node/Python mínimo). O roteamento é 100% hash-based (`#/`, `#/categoria/:tipo`, `#/item/:slug`), então funciona até em `file://`.
+Não há `npm start`. Abra `index.html` diretamente no navegador, ou sirva a pasta com qualquer servidor estático simples (ex: `npx serve .`, ou um servidor Node/Python mínimo). O roteamento é 100% hash-based (`#/`, `#/categoria/:tipo`, `#/item/:slug`, `#/livro`, `#/livro/:slug`).
+
+**Atenção**: as páginas do leitor de livro (`#/livro`, `#/livro/:slug`) fazem `fetch()` de `Livro/capitulos.json` e `texto.html` — isso **não funciona abrindo `index.html` via `file://`** (CORS bloqueia fetch de arquivo local). Para testar o leitor, é obrigatório servir a pasta com um servidor HTTP local.
 
 ## Arquitetura de arquivos
 
@@ -12,14 +14,16 @@ Não há `npm start`. Abra `index.html` diretamente no navegador, ou sirva a pas
 - `js/data.js` — **toda** a base de conteúdo da wiki, num objeto `ENTITIES` indexado por slug. Arquivo maior do projeto; é puro dado, sem lógica.
 - `js/linkify.js` — motor de interlink. Resolve marcações manuais `[[slug|Texto]]` em `<a>` reais, e faz um segundo passe de auto-linkify casando nomes conhecidos no texto solto.
 - `js/render.js` — funções puras que geram HTML (string) para cada tipo de página: Home, Categoria, Detalhe.
-- `js/router.js` — hash router simples, decide qual função de `render.js` chamar.
+- `js/router.js` — hash router simples, decide qual função de `render.js` chamar. `resolveRenderFn` pode retornar closures `async` (usado pelas rotas do leitor) — `transitionRoute` sempre dá `await` no resultado, então funções de render síncronas e assíncronas coexistem sem problema.
 - `js/animations.js` — `IntersectionObserver` para fade-in-on-scroll, e a transição de rota (wipe diagonal).
 - `js/main.js` — bootstrap mínimo (menu mobile).
 - `css/theme.css` — tokens: cores, tipografia, glassmorphism, motion.
 - `css/layout.css` — header/nav, grids, layout de página de detalhe (infobox + corpo).
-- `css/components.css` — cards, hero, badges, tabelas, citações, placeholders.
+- `css/components.css` — cards, hero, badges, tabelas, citações, placeholders, leitor de livro (`.reader-*`).
 - `css/animations.css` — keyframes e classes de animação.
 - `Imagens/` — assets reais do livro (retratos de personagens, lugares, capa, logo). Nomes mapeados manualmente em `ENTITIES[slug].imagem`.
+- `Ilustracoes/` — ilustrações de cena extraídas dos capítulos do livro (ver seção "Leitor de livro" abaixo). Separada de `Imagens/` de propósito.
+- `Livro/` — dados do leitor de livro: `capitulos.json` (manifesto) + uma pasta por capítulo com `texto.html`. Publicada normalmente (não é `.gitignore`d), servida via `fetch()` pelo leitor.
 
 ## Direção estética (não mudar sem pedir)
 
@@ -45,6 +49,39 @@ Cada entidade em `ENTITIES` tem `type` (`personagem` | `lugar` | `lore` | `artef
 Se uma animação (`@keyframes`) define a propriedade `filter` em qualquer estágio, ela **sobrescreve totalmente** qualquer `filter` estático definido na regra normal do elemento enquanto a animação está aplicada — não existe merge entre os dois. Isso já causou um bug silencioso (um `invert()/contrast()` no CSS "normal" simplesmente não aparecia, sem erro nenhum, porque um `@keyframes` de entrada noutro arquivo também mexia em `filter` no mesmo elemento).
 
 Se um elemento precisa de um filtro estático permanente (ex: logo com `invert(1) contrast(300%)`) **e** também tem uma animação de entrada que anima `filter` (ex: um `blur()` que vai a zero), inclua o filtro completo em **todos** os estágios do keyframe, não só a parte que muda.
+
+## Leitor de livro (`#/livro`, `#/livro/:slug`)
+
+O site tem um leitor de capítulos embutido, sem opção de download — é uma das funcionalidades principais (destacada na home logo abaixo do hero, seção `.reader-cta`), não um item secundário de menu.
+
+### Estrutura de dados
+
+`Livro/capitulos.json` é o manifesto público — um array de objetos `{ slug, pasta, numero, titulo, resumo }`, um por capítulo/seção, **na ordem em que devem aparecer no índice e no botão "Próximo"**. `pasta` aponta para `Livro/<Nome>/`, que contém um único `texto.html` com a transcrição completa daquela seção.
+
+`texto.html` é HTML puro: parágrafos em `<p>`, diálogos com travessão (`—`) e itálico (`<em>`) preservados como no original. Onde uma ilustração deve aparecer, um comentário HTML `<!-- IMG:NomeDoArquivo.jpg -->` marca a posição exata — `renderCapitulo()` (`js/render.js`) resolve esses marcadores via regex, trocando cada um por uma tag `<img>` real apontando para `Ilustracoes/NomeDoArquivo.jpg`, com os atributos de proteção leve (`oncontextmenu="return false" draggable="false"`, mais `pointer-events`/`-webkit-user-drag`/`user-select` no CSS de `.reader-illustration img`).
+
+### Fluxo de processamento de um capítulo (material fonte → site)
+
+O material fonte de cada capítulo é uma pasta temporária com fotos/scans reais das páginas do manuscrito, **nunca commitada nem servida pelo site**:
+- `Oblitus Limbo-Padrão_[N].jpg` (nota: nome real tem **espaço**, não underscore, apesar do padrão sugerir `Oblitus_Limbo-Padrão`) — página com texto a transcrever, em ordem de página física.
+- `[NomeIlustração][N].jpg` (sem separador entre nome e número, ex: `KianaEViktor16.jpg`) — arte de cena sem texto, na posição de página `N`.
+
+Passos ao processar um capítulo:
+1. Ler as imagens `Oblitus Limbo-Padrão_*.jpg` em ordem numérica e transcrever para `texto.html`: cada parágrafo do livro vira um `<p>`; se uma página termina no meio de uma frase/fala, a próxima página continua o **mesmo** `<p>` (não quebrar por causa da virada de página física); ignorar cabeçalho/rodapé/decoração da página escaneada — não fazem parte do texto do livro; não incluir `<h1>`/título no `texto.html` (o título vem de `capitulos.json`).
+2. Inserir `<!-- IMG:NomeIlustração[N].jpg -->` no ponto do texto correspondente à posição de página da ilustração.
+3. Copiar (não mover ainda) as imagens de ilustração — só elas, nunca as `Padrão_*` — para `Ilustracoes/` na raiz do projeto.
+4. **Deletar fisicamente** as imagens `Oblitus Limbo-Padrão_*.jpg` da pasta de origem — elas nunca são commitadas nem referenciadas pelo site. `Livro/` no repositório contém só `texto.html` por capítulo, nunca as páginas brutas.
+5. Adicionar/atualizar a entrada correspondente em `Livro/capitulos.json`.
+
+### Regras que já se aplicam aqui
+
+- Cards do índice de capítulos (`capituloCard()` em `render.js`) seguem a mesma regra de `plainText()` vs `linkify()` do resto do site — o card inteiro é um `<a>`, então nunca usar `linkify()` no resumo/número.
+- `renderLivroIndex()` e `renderCapitulo()` são `async` (fazem `fetch`) — isso só funciona porque `transitionRoute` em `js/animations.js` dá `await` no retorno de `renderFn()`. Qualquer nova função de render que precise de I/O assíncrono pode seguir o mesmo padrão sem alterar mais nada no router/animations.
+- Ilustração de abertura de capítulo (a primeira imagem, geralmente correspondente à posição de página logo após a capa): o marcador `<!-- IMG:... -->` vai **antes do primeiro `<p>`** do `texto.html`, não inserido no meio do primeiro bloco de texto — mesmo que, no material fonte, a página física da ilustração apareça só depois de algumas páginas de texto já lidas. Já houve um caso real (Capítulo 8, `kiana189.jpg`) em que a imagem de abertura foi posicionada no meio do capítulo por engano; a posição correta é sempre o início.
+
+### Status de transcrição
+
+Todo o Volume 1 (Prólogo, Capítulos 1–9, Epílogo, Créditos) já foi transcrito e verificado integralmente, página a página, contra o material fonte original. Não há mais material bruto pendente de processamento — as pastas de scans (`Oblitus Limbo-Padrão_*.jpg`) usadas na verificação foram descartadas do disco após a conferência, conforme o passo 4 do fluxo acima.
 
 ## Verificação antes de considerar uma mudança visual pronta
 

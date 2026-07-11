@@ -43,6 +43,18 @@ function renderHome() {
       </div>
     </section>
 
+    <section class="reader-cta">
+      <div class="container reader-cta-inner reveal">
+        <div class="reader-cta-text">
+          <span class="hero-kicker">${icon("fa-solid fa-fire")} Leitura completa</span>
+          <h2>Leia Oblitus Limbo Online</h2>
+          <p>Todo o Volume 1, capítulo por capítulo, direto no seu navegador — texto e ilustrações originais, sem downloads, sem PDF. É a história completa que deu origem a tudo que você encontra nesta wiki.</p>
+          <a href="#/livro" class="hero-cta reader-cta-btn">${icon("fa-solid fa-book-open")} Começar a ler</a>
+        </div>
+        <div class="reader-cta-icon">${icon("fa-solid fa-book-skull")}</div>
+      </div>
+    </section>
+
     <div class="container">
       <div class="section-heading reveal">
         <h1>Explore a Wiki</h1>
@@ -324,6 +336,120 @@ function renderTimelinePage(slug, ent) {
         </div>
       </div>
     </div>
+  `;
+}
+
+/* ---------------- LIVRO (leitor online) ---------------- */
+
+async function fetchCapitulos() {
+  const res = await fetch("Livro/capitulos.json");
+  if (!res.ok) throw new Error("capitulos.json não encontrado");
+  return res.json();
+}
+
+function capituloCard(cap) {
+  const media = cap.capa
+    ? `<div class="card-media"><img src="Ilustracoes/${cap.capa}" alt="${escapeHtml(cap.titulo)}" loading="lazy"></div>`
+    : `<div class="card-media"><div class="placeholder-art">${icon("fa-solid fa-book-open placeholder-glyph")}</div></div>`;
+  return `
+    <a href="#/livro/${cap.slug}" class="entity-card">
+      ${media}
+      <div class="card-body">
+        <div class="card-text">
+          <span class="card-epithet">${plainText(cap.numero)}</span>
+          <h3>${escapeHtml(cap.titulo)}</h3>
+          <p class="card-summary">${escapeHtml(cap.resumo || "")}</p>
+        </div>
+      </div>
+    </a>
+  `;
+}
+
+async function renderLivroIndex() {
+  let capitulos;
+  try {
+    capitulos = await fetchCapitulos();
+  } catch (e) {
+    return renderNotFound();
+  }
+
+  return `
+    <div class="container">
+      <div class="breadcrumb reveal">
+        <a href="#/">Início</a> <span class="crumb-sep">${icon("fa-solid fa-angle-right")}</span> Ler Online
+      </div>
+      <div class="section-heading reveal">
+        <span class="hero-kicker">${icon("fa-solid fa-book-open")} Leitura Completa</span>
+        <h1>Oblitus Limbo — Volume 1</h1>
+        <p>Escolha um capítulo para começar a leitura. Todo o texto e as ilustrações originais do livro, direto aqui na wiki.</p>
+      </div>
+      <div class="category-grid reveal-stagger">
+        ${capitulos.map(capituloCard).join("")}
+      </div>
+    </div>
+  `;
+}
+
+async function renderCapitulo(slug) {
+  let capitulos;
+  try {
+    capitulos = await fetchCapitulos();
+  } catch (e) {
+    return renderNotFound();
+  }
+
+  const index = capitulos.findIndex(c => c.slug === slug);
+  if (index === -1) return renderNotFound();
+  const cap = capitulos[index];
+  const proximo = capitulos[index + 1];
+
+  let textoHtml;
+  try {
+    const res = await fetch(`${cap.pasta}/texto.html`);
+    if (!res.ok) throw new Error("texto.html não encontrado");
+    textoHtml = await res.text();
+  } catch (e) {
+    return renderNotFound();
+  }
+
+  const corpoHtml = textoHtml.replace(/<!--\s*IMG:([^\s]+?)\s*-->/g, (match, filename) => {
+    return `
+      <div class="reader-illustration reveal">
+        <img src="Ilustracoes/${filename}" alt="${escapeHtml(cap.titulo)}" oncontextmenu="return false" draggable="false">
+      </div>
+    `;
+  });
+
+  const proximoHtml = proximo ? `
+    <a href="#/livro/${proximo.slug}" class="hero-cta reader-next-btn">
+      Próximo: ${escapeHtml(proximo.titulo)} ${icon("fa-solid fa-arrow-right-long")}
+    </a>
+  ` : `
+    <a href="#/livro" class="hero-cta reader-next-btn">
+      ${icon("fa-solid fa-list")} Voltar ao índice
+    </a>
+  `;
+
+  return `
+    <div class="reader-topbar reveal">
+      <a href="#/livro" class="reader-topbar-back">${icon("fa-solid fa-arrow-left")} Índice</a>
+      <span class="reader-topbar-title">${plainText(cap.numero)} — ${escapeHtml(cap.titulo)}</span>
+    </div>
+    <div class="container reader-container">
+      <div class="section-heading reveal">
+        <span class="hero-kicker">${icon("fa-solid fa-book-open")} ${plainText(cap.numero)}</span>
+        <h1>${escapeHtml(cap.titulo)}</h1>
+      </div>
+      <div class="reader-body">
+        ${corpoHtml}
+      </div>
+      <div class="reader-next reveal">
+        ${proximoHtml}
+      </div>
+    </div>
+    <button type="button" class="checkpoint-btn" aria-label="Salvar checkpoint de leitura">
+      ${icon("fa-solid fa-bookmark")}
+    </button>
   `;
 }
 
