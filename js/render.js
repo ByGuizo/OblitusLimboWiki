@@ -11,6 +11,17 @@ function statusBadge(ent, opts) {
   return `<span class="status-badge ${meta.cls}">${icon(meta.icon)}${content}</span>`;
 }
 
+function vinculosList(vinculos) {
+  if (!vinculos || !vinculos.length) return "";
+  const items = vinculos.map(v => {
+    const nome = v.slug
+      ? `<a href="#/item/${v.slug}" class="wiki-link" data-link="${v.slug}">${escapeHtml(v.nome)}</a>`
+      : escapeHtml(v.nome);
+    return `<li class="vinculo-item"><span class="vinculo-nome">${nome}</span><span class="vinculo-relacao">${escapeHtml(v.relacao)}</span></li>`;
+  }).join("");
+  return `<ul class="vinculos-list">${items}</ul>`;
+}
+
 function mediaBlock(ent, opts) {
   opts = opts || {};
   let sizeClass = opts.detail ? "detail-portrait" : "card-media";
@@ -31,7 +42,7 @@ function renderHome() {
       <div class="ink-splash purple"></div>
       <div class="ink-splash red"></div>
       <div class="hero-content">
-        <span class="hero-kicker">${icon("fa-solid fa-scroll")} Wiki Oficial · Volume 1</span>
+        <span class="hero-kicker">${icon("fa-solid fa-scroll")} Site Oficial · Volume 1</span>
         <img src="Imagens/LogoOLsemfundo.png" alt="Oblitus Limbo" class="hero-logo">
         <p class="hero-subtitle">Um mundo onde sigilos despertam através da dor, onde impostores governam cidades inteiras, e onde o próprio abismo sente fome da parte que lhe falta.</p>
         <blockquote class="hero-quote">
@@ -48,7 +59,7 @@ function renderHome() {
         <div class="reader-cta-text">
           <span class="hero-kicker">${icon("fa-solid fa-fire")} Leitura completa</span>
           <h2>Leia Oblitus Limbo Online</h2>
-          <p>Todo o Volume 1, capítulo por capítulo, direto no seu navegador — texto e ilustrações originais, sem downloads, sem PDF. É a história completa que deu origem a tudo que você encontra nesta wiki.</p>
+          <p>Todo o Volume 1, capítulo por capítulo, direto no seu navegador — texto e ilustrações originais, sem downloads, sem PDF. É a história completa que deu origem a tudo que você encontra neste site.</p>
           <a href="#/livro" class="hero-cta reader-cta-btn">${icon("fa-solid fa-book-open")} Começar a ler</a>
         </div>
         <div class="reader-cta-icon">${icon("fa-solid fa-book-skull")}</div>
@@ -57,7 +68,7 @@ function renderHome() {
 
     <div class="container">
       <div class="section-heading reveal">
-        <h1>Explore a Wiki</h1>
+        <h1>Explore o Universo</h1>
         <p>Navegue pelo universo de Oblitus Limbo — de seus personagens fraturados aos lugares que os moldaram, dos sistemas de magia aos artefatos que carregam sua história.</p>
       </div>
       <div class="hub-grid reveal-stagger">
@@ -187,7 +198,7 @@ function renderDetail(slug) {
   /* Infobox lateral estilo Fandom: retrato + status + campos curtos (Vínculos/Aparência) */
   const infoboxRows = [];
   if (ent.epiteto) infoboxRows.push(["Título", plainText(ent.epiteto)]);
-  if (campos["Vínculos"]) infoboxRows.push(["Vínculos", linkify(campos["Vínculos"], slug)]);
+  if (campos["Vínculos"]) infoboxRows.push(["Vínculos", vinculosList(campos["Vínculos"])]);
   if (campos["Aparência"]) infoboxRows.push(["Aparência", linkify(campos["Aparência"], slug)]);
   if (campos["Sigilo manifestado"]) infoboxRows.push(["Sigilo", linkify(campos["Sigilo manifestado"], slug)]);
 
@@ -381,7 +392,7 @@ async function renderLivroIndex() {
       <div class="section-heading reveal">
         <span class="hero-kicker">${icon("fa-solid fa-book-open")} Leitura Completa</span>
         <h1>Oblitus Limbo — Volume 1</h1>
-        <p>Escolha um capítulo para começar a leitura. Todo o texto e as ilustrações originais do livro, direto aqui na wiki.</p>
+        <p>Escolha um capítulo para começar a leitura. Todo o texto e as ilustrações originais do livro, direto aqui no site.</p>
       </div>
       <div class="category-grid reveal-stagger">
         ${capitulos.map(capituloCard).join("")}
