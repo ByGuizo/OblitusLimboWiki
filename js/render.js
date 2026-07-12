@@ -510,9 +510,9 @@ function readerToolbar() {
           ${icon("fa-solid fa-circle-half-stroke")}
           <span class="reader-tool-label">Modo foco</span>
         </button>
-        <button type="button" class="reader-tool-btn reader-invert-btn" data-tool="invert" aria-pressed="false" title="Inverter cores (fundo claro)" hidden>
-          ${icon("fa-solid fa-adjust")}
-          <span class="reader-tool-label">Inverter</span>
+        <button type="button" class="reader-tool-btn reader-invert-btn" data-tool="invert" aria-pressed="false" title="Alternar fundo claro/escuro" hidden>
+          ${icon("fa-solid fa-sun reader-invert-icon")}
+          <span class="reader-tool-label">Fundo claro</span>
         </button>
       </div>
     </div>

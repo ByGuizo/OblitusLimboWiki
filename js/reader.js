@@ -40,36 +40,62 @@ function writeReaderPrefs(prefs) {
 /* ---------------- Deslize automático ---------------- */
 
 /*
- * Converte o valor do slider (1..10) em pixels por segundo. Escala não-linear
- * para que o passo baixo seja bem lento (leitura confortável) e o alto, rápido.
+ * Converte o valor do slider (1..10) em pixels por segundo. Escala linear e
+ * previsível — cada passo é sempre mais rápido que o anterior, na mesma medida.
  */
 function speedToPixelsPerSecond(step) {
   const s = Math.max(1, Math.min(10, step));
-  return 14 + (s - 1) * 20; // 1 => 14px/s ... 10 => 194px/s
+  return 16 + (s - 1) * 20; // 1 => 16px/s ... 10 => 196px/s
 }
 
+/*
+ * Deslize automático baseado em POSIÇÃO ABSOLUTA (targetY), não em scrollBy
+ * relativo. Motivo: com `scroll-behavior: smooth` (definido no reset.css),
+ * cada scrollBy incremental dispararia uma animação suave que compete com o
+ * próximo frame — o que deixava a velocidade errática ("às vezes rápido, às
+ * vezes não"). Aqui forçamos scroll instantâneo (scroll-behavior: auto) durante
+ * o deslize e avançamos targetY por dt real, então a velocidade é exata.
+ *
+ * Rolagem manual convive com o deslize: se o usuário rolar (dedo/roda/teclas),
+ * window.scrollY diverge do nosso último scrollTo; detectamos essa diferença e
+ * re-sincronizamos targetY com a posição do usuário — ele pode subir/descer à
+ * vontade e o deslize continua de onde ele soltou, sem desativar.
+ */
 function createAutoScroller() {
   let rafId = null;
   let lastTs = 0;
   let pxPerSec = speedToPixelsPerSecond(4);
-  let remainder = 0; // acumula frações de pixel entre frames
+  let targetY = 0;       // posição-alvo em ponto flutuante
+  let lastAppliedY = 0;  // último valor que nós aplicamos via scrollTo
   let onStop = null;
+  const rootStyle = document.documentElement.style;
+
+  function maxScroll() {
+    return document.documentElement.scrollHeight - window.innerHeight;
+  }
 
   function atBottom() {
-    return window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+    return window.scrollY >= maxScroll() - 1;
   }
 
   function tick(ts) {
     if (!lastTs) lastTs = ts;
-    const dt = (ts - lastTs) / 1000;
+    let dt = (ts - lastTs) / 1000;
     lastTs = ts;
+    // clampa dt para evitar salto gigante após o navegador congelar o rAF
+    // (aba em segundo plano, etc.) — senão a página "pularia" ao voltar.
+    if (dt > 0.1) dt = 0.1;
 
-    remainder += pxPerSec * dt;
-    const whole = Math.floor(remainder);
-    if (whole > 0) {
-      remainder -= whole;
-      window.scrollBy(0, whole);
+    // Se o usuário rolou manualmente, window.scrollY difere do que aplicamos:
+    // adota a posição dele como novo ponto de partida.
+    if (Math.abs(window.scrollY - lastAppliedY) > 2) {
+      targetY = window.scrollY;
     }
+
+    targetY += pxPerSec * dt;
+    const clamped = Math.min(targetY, maxScroll());
+    window.scrollTo(0, clamped);
+    lastAppliedY = window.scrollY; // valor real após o scroll (inteiro)
 
     if (atBottom()) {
       stop();
@@ -81,7 +107,9 @@ function createAutoScroller() {
   function start() {
     if (rafId != null) return;
     lastTs = 0;
-    remainder = 0;
+    targetY = window.scrollY;
+    lastAppliedY = window.scrollY;
+    rootStyle.scrollBehavior = "auto"; // neutraliza o smooth do reset.css
     rafId = requestAnimationFrame(tick);
   }
 
@@ -90,6 +118,7 @@ function createAutoScroller() {
       cancelAnimationFrame(rafId);
       rafId = null;
     }
+    rootStyle.scrollBehavior = ""; // restaura o smooth padrão
     if (typeof onStop === "function") onStop();
   }
 
@@ -229,14 +258,10 @@ function initReaderTools(appEl, slug) {
     });
   });
 
-  // Interação manual do usuário para cima interrompe o deslize (não atrapalhar).
-  let ignoreNextScroll = false;
-  window.addEventListener("wheel", () => { if (scroller.isRunning()) stopAuto(); }, { passive: true });
-  window.addEventListener("touchmove", () => { if (scroller.isRunning()) stopAuto(); }, { passive: true });
-  window.addEventListener("keydown", (e) => {
-    if (!scroller.isRunning()) return;
-    if (["ArrowUp", "ArrowDown", "PageUp", "PageDown", "Home", "End", " "].includes(e.key)) stopAuto();
-  });
+  // Nota: NÃO paramos o deslize em wheel/touch/teclas. O usuário pode rolar
+  // manualmente (subir/descer) enquanto o deslize está ativo — o scroller
+  // detecta a rolagem manual e re-sincroniza a partir da nova posição. Para
+  // desligar, é só tocar o botão de deslize de novo.
 
   /* --- Tamanho da fonte (zoom estilo Kindle) --- */
   const fontBtn = tools.querySelector('[data-tool="fontsize"]');
@@ -290,12 +315,15 @@ function initReaderTools(appEl, slug) {
   /* --- Modo foco + inversão --- */
   const focusBtn = tools.querySelector('[data-tool="focus"]');
   const invertBtn = tools.querySelector('[data-tool="invert"]');
+  const invertIcon = invertBtn ? invertBtn.querySelector(".reader-invert-icon") : null;
+  const invertLabel = invertBtn ? invertBtn.querySelector(".reader-tool-label") : null;
   const body = document.body;
 
   function applyFocus(on) {
     body.classList.toggle("reader-focus-mode", on);
     focusBtn.classList.toggle("is-active", on);
     focusBtn.setAttribute("aria-pressed", String(on));
+    // Botão de inverter só existe/aparece com o modo foco ligado.
     if (invertBtn) invertBtn.hidden = !on;
     if (!on) applyInvert(false, /*persistOnly*/ true); // some inversão junto, mas mantém preferência salva
   }
@@ -305,6 +333,12 @@ function initReaderTools(appEl, slug) {
     if (invertBtn) {
       invertBtn.classList.toggle("is-active", on);
       invertBtn.setAttribute("aria-pressed", String(on));
+      // Ícone/rótulo indicam PARA ONDE o clique leva: sol = clarear, lua = escurecer.
+      if (invertIcon) {
+        invertIcon.classList.toggle("fa-sun", !on);
+        invertIcon.classList.toggle("fa-moon", on);
+      }
+      if (invertLabel) invertLabel.textContent = on ? "Fundo escuro" : "Fundo claro";
     }
     if (!persistOnly) {
       const p = readReaderPrefs();
@@ -339,6 +373,8 @@ function initReaderTools(appEl, slug) {
 /* Chamada ao SAIR da rota de capítulo — limpa estado global que não deve vazar. */
 function teardownReaderTools() {
   document.body.classList.remove("reader-focus-mode", "reader-focus-invert");
+  // se o deslize estava ativo, o scroll-behavior foi forçado para auto — restaura.
+  document.documentElement.style.scrollBehavior = "";
   if (readerOutsideClickHandler) {
     document.removeEventListener("click", readerOutsideClickHandler);
     readerOutsideClickHandler = null;

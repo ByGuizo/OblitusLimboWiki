@@ -1252,6 +1252,12 @@ a.wiki-link:hover {
   transition: background var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-snap);
 }
 
+/* O `display: inline-flex` acima venceria o `display:none` implícito do atributo
+   [hidden]; sem isto, o botão de inverter apareceria mesmo sem o modo foco. */
+.reader-tool-btn[hidden] {
+  display: none;
+}
+
 .reader-tool-btn:hover {
   color: var(--text-primary);
   transform: translateY(-2px);
@@ -1446,7 +1452,10 @@ a.wiki-link:hover {
   transform: rotate(135deg);
 }
 
-@media (max-width: 720px) {
+/* Recolhe a toolbar atrás do FAB no mobile retrato (largura pequena) E também
+   no mobile paisagem (altura pequena) — onde a nav completa + toolbar comem a
+   tela. A vírgula é um OR entre as duas condições. */
+@media (max-width: 720px), (orientation: landscape) and (max-height: 500px) {
   .reader-fab {
     display: inline-flex;
   }
@@ -1498,6 +1507,32 @@ a.wiki-link:hover {
   .reader-tools.is-expanded .reader-tool-group:nth-child(1) { transition-delay: 40ms; }
   .reader-tools.is-expanded .reader-tool-group:nth-child(2) { transition-delay: 90ms; }
   .reader-tools.is-expanded .reader-tool-group:nth-child(3) { transition-delay: 140ms; }
+}
+
+/* Paisagem com pouca altura: recupera espaço vertical para o texto compactando o
+   topbar e o topo do capítulo, e reduz o FAB/checkpoint. */
+@media (orientation: landscape) and (max-height: 500px) {
+  .reader-topbar {
+    padding: 0.5rem clamp(1rem, 4vw, 3rem);
+  }
+  .reader-topbar-title {
+    font-size: 0.72rem;
+  }
+  .reader-container {
+    padding-bottom: 3rem;
+  }
+  .reader-container .section-heading {
+    margin-bottom: 1rem;
+  }
+  .reader-container .section-heading h1 {
+    font-size: clamp(1.6rem, 5vw, 2.2rem);
+  }
+  .reader-fab,
+  .checkpoint-btn {
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.05rem;
+  }
 }
 
 /* ---------- Modo foco ---------- */

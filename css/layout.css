@@ -187,6 +187,46 @@
   }
 }
 
+/* Mobile em paisagem (pouca altura): o mesmo tratamento de header compacto +
+   menu recolhido, mesmo que a largura passe de 640px. Sem isso, a nav completa
+   come ~30% da altura da tela e polui a leitura. */
+@media (orientation: landscape) and (max-height: 500px) {
+  .site-header {
+    position: relative;
+    padding: 0.4rem clamp(1rem, 3vw, 2rem);
+  }
+  .brand-logo {
+    max-height: 2rem;
+  }
+  .nav-toggle {
+    display: block;
+  }
+  .main-nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.2rem;
+    padding: 0.5rem;
+    background: var(--ink-black);
+    border-bottom: 3px solid var(--accent-red);
+    max-height: 0;
+    overflow: hidden;
+    z-index: 101;
+    transition: max-height var(--dur-med) var(--ease-out);
+  }
+  .main-nav.nav-open {
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+  .main-nav a {
+    width: 100%;
+    clip-path: none;
+  }
+}
+
 /* ---------- Detail page layout ---------- */
 .detail-banner {
   position: relative;
