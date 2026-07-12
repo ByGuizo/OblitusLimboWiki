@@ -1,6 +1,8 @@
-# Oblitus Limbo — Wiki Oficial
+# Oblitus Limbo — Site Oficial
 
-Wiki estática de fã/referência para o livro de dark fantasy "Oblitus Limbo" (ByGuizo). SPA em HTML/CSS/JS puro, sem build step, sem dependências instaladas — Font Awesome e Google Fonts são carregados via CDN direto no `index.html`.
+**Site oficial** do livro de dark fantasy "Oblitus Limbo" (ByGuizo) — não é uma wiki de fã. Trata o site como a fonte oficial: leitura completa do livro online + enciclopédia do universo. SPA em HTML/CSS/JS puro, sem build step, sem dependências instaladas — Font Awesome e Google Fonts são carregados via CDN direto no `index.html`.
+
+Ao escrever textos de UI ou conteúdo, referir-se ao site como "site oficial" (não "wiki"), e ao material fonte como "o livro" (não "o texto"/"o manuscrito"). A classe CSS `wiki-link` é só um nome de seletor interno — não é texto visível e não precisa ser renomeada.
 
 ## Como rodar
 
@@ -11,10 +13,12 @@ Não há `npm start`. Abra `index.html` diretamente no navegador, ou sirva a pas
 ## Arquitetura de arquivos
 
 - `index.html` — shell único: header/nav, `<main id="app">` (mount point da SPA), footer, tags de `<script>` na ordem de dependência.
-- `js/data.js` — **toda** a base de conteúdo da wiki, num objeto `ENTITIES` indexado por slug. Arquivo maior do projeto; é puro dado, sem lógica.
+- `js/data.js` — **toda** a base de conteúdo do site, num objeto `ENTITIES` indexado por slug. Arquivo maior do projeto; é puro dado, sem lógica. O campo `Vínculos` de personagens é um **array** de `{ slug, nome, relacao }` (não string) — renderizado como lista objetiva pelo `vinculosList()` em `render.js`; use `slug: null` quando o vínculo não tem entidade própria (ex: "Layla", "o pai").
 - `js/linkify.js` — motor de interlink. Resolve marcações manuais `[[slug|Texto]]` em `<a>` reais, e faz um segundo passe de auto-linkify casando nomes conhecidos no texto solto.
-- `js/render.js` — funções puras que geram HTML (string) para cada tipo de página: Home, Categoria, Detalhe.
-- `js/router.js` — hash router simples, decide qual função de `render.js` chamar. `resolveRenderFn` pode retornar closures `async` (usado pelas rotas do leitor) — `transitionRoute` sempre dá `await` no resultado, então funções de render síncronas e assíncronas coexistem sem problema.
+- `js/render.js` — funções puras que geram HTML (string) para cada tipo de página: Home, Categoria, Detalhe, índice/capítulo do leitor, e os modais/toolbar do leitor.
+- `js/router.js` — hash router simples, decide qual função de `render.js` chamar. `resolveRenderFn` pode retornar closures `async` (usado pelas rotas do leitor) — `transitionRoute` sempre dá `await` no resultado, então funções de render síncronas e assíncronas coexistem sem problema. Após renderizar um capítulo, chama `initReaderCheckpoint` + `initReaderTools`; a cada troca de rota chama `teardownReaderTools` (limpa classes globais do modo foco).
+- `js/checkpoint.js` — salva/restaura o parágrafo onde o usuário parou, por capítulo (localStorage). Ao salvar, dispara o modal de apoio (`openReaderModal(appEl, "support")`).
+- `js/reader.js` — ferramentas de leitura do capítulo: deslize automático (com velocidade), zoom de fonte, modo foco (+ inversão), e os dois modais (boas-vindas/novidades e apoio). Ver seção "Ferramentas de leitura" abaixo.
 - `js/animations.js` — `IntersectionObserver` para fade-in-on-scroll, e a transição de rota (wipe diagonal).
 - `js/main.js` — bootstrap mínimo (menu mobile).
 - `css/theme.css` — tokens: cores, tipografia, glassmorphism, motion.
@@ -82,6 +86,18 @@ Passos ao processar um capítulo:
 ### Status de transcrição
 
 Todo o Volume 1 (Prólogo, Capítulos 1–9, Epílogo, Créditos) já foi transcrito e verificado integralmente, página a página, contra o material fonte original. Não há mais material bruto pendente de processamento — as pastas de scans (`Oblitus Limbo-Padrão_*.jpg`) usadas na verificação foram descartadas do disco após a conferência, conforme o passo 4 do fluxo acima.
+
+### Ferramentas de leitura (`js/reader.js`)
+
+A página de capítulo tem uma toolbar flutuante (`.reader-tools`, canto inferior esquerdo) montada por `readerToolbar()` em `render.js` e ligada por `initReaderTools(appEl, slug)` (chamada pelo router). Preferências persistem em `localStorage` sob `ol_reader_prefs` (`{ focus, invert, fontLevel }`); o modal de novidades usa a flag separada `ol_reader_welcome_seen`.
+
+- **Deslize automático**: `requestAnimationFrame` acumulando frações de pixel, velocidade 1–10 mapeada por `speedToPixelsPerSecond`. Qualquer scroll manual (wheel/touch/teclas de navegação) pausa o deslize — de propósito, para não brigar com o usuário.
+- **Zoom de fonte** (estilo Kindle): níveis discretos em `READER_FONT_LEVELS` (0.88–1.5), aplicados como o multiplicador CSS var `--reader-font-scale` **inline no `.reader-body`**. **Regra crítica**: o scale só é aplicado a `font-size` de elementos de texto (`.reader-body p`, `.reader-legend p`) via `calc(base * var(--reader-font-scale))` — **nunca** às ilustrações (`.reader-illustration img` tem `width: 100%` fixo). Escalar a fonte não pode mudar o tamanho das imagens. Usar sempre `calc()` sobre a var, não reescrever a cadeia de herança. `em`/`strong` herdam o `font-size` do `p`, então não precisam de regra própria.
+- **Modo foco (+ inversão)**: aplica as classes `reader-focus-mode` / `reader-focus-invert` no `<body>` (fundo preto+texto branco, ou fundo claro+texto preto). Por serem globais no `<body>`, `teardownReaderTools()` (chamado no início de `router()`) **precisa** removê-las ao sair da rota de capítulo, senão vazam para outras páginas.
+
+Modais do leitor (`.reader-modal-overlay`): boas-vindas/novidades (uma vez por usuário) e apoio (ao salvar checkpoint, convida a seguir `@ByGuizo` no Instagram — `instagram.com/byguizo`). **Armadilha de CSS já resolvida**: o card do modal usa `clip-path` diagonal; um `outline` (retangular) não segue o clip-path e vaza como uma barra fantasma na diagonal, que ainda pisca a cada repaint das animações internas. Usar `box-shadow: inset` para a moldura interna (segue o clip-path), **nunca** `outline`, em qualquer elemento com `clip-path`.
+
+O botão de Instagram (`@ByGuizo` → `instagram.com/byguizo`) aparece em três lugares, todos com o mesmo gradiente da marca: seção "Sobre o autor" na home (botão + foto clicável com selo), e o modal de apoio do leitor.
 
 ## Verificação antes de considerar uma mudança visual pronta
 

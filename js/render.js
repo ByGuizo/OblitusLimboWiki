@@ -102,10 +102,16 @@ function renderHome() {
           <p>Eu sou Guizo. Se você me perguntar o que eu faço, a resposta curta é: de tudo um pouco. Nasci no interior do RN e estudo no IFRN, onde me envolvi de cabeça na cultura Maker. Sou aquele cara que gosta de botar a mão na massa, seja programando, editando vídeos, fazendo design ou escrevendo histórias. E eu até tento desenhar também.</p>
           <p>Este livro é só mais um dos mundos da minha cabeça que decidi trazer à vida!</p>
           <p class="about-author-signature">— Abril, 2026</p>
+          <a href="https://instagram.com/byguizo" target="_blank" rel="noopener noreferrer" class="author-insta-cta">
+            ${icon("fa-brands fa-instagram")}
+            <span>Siga <strong>@ByGuizo</strong> no Instagram</span>
+            ${icon("fa-solid fa-arrow-right-long author-insta-arrow")}
+          </a>
         </div>
-        <div class="about-author-photo reveal">
+        <a href="https://instagram.com/byguizo" target="_blank" rel="noopener noreferrer" class="about-author-photo reveal" aria-label="Instagram de ByGuizo">
           <img src="Imagens/ByGuizoAutor.jpeg" alt="Foto de ByGuizo, autor de Oblitus Limbo">
-        </div>
+          <span class="about-author-photo-badge">${icon("fa-brands fa-instagram")}</span>
+        </a>
       </div>
     </section>
   `;
@@ -458,9 +464,102 @@ async function renderCapitulo(slug) {
         ${proximoHtml}
       </div>
     </div>
+    ${readerToolbar()}
+    ${readerWelcomeModal()}
+    ${supportModal()}
     <button type="button" class="checkpoint-btn" aria-label="Salvar checkpoint de leitura">
       ${icon("fa-solid fa-bookmark")}
     </button>
+  `;
+}
+
+/* Barra de ferramentas de leitura: deslize automático + modo foco. */
+function readerToolbar() {
+  return `
+    <div class="reader-tools" role="toolbar" aria-label="Ferramentas de leitura">
+      <div class="reader-tool-group">
+        <button type="button" class="reader-tool-btn" data-tool="autoscroll" aria-pressed="false" title="Deslize automático">
+          ${icon("fa-solid fa-arrows-down-to-line")}
+          <span class="reader-tool-label">Deslize</span>
+        </button>
+        <div class="reader-speed" hidden>
+          <button type="button" class="reader-speed-step" data-step="-1" aria-label="Diminuir velocidade">${icon("fa-solid fa-minus")}</button>
+          <input type="range" class="reader-speed-range" min="1" max="10" step="1" value="4" aria-label="Velocidade do deslize">
+          <button type="button" class="reader-speed-step" data-step="1" aria-label="Aumentar velocidade">${icon("fa-solid fa-plus")}</button>
+          <span class="reader-speed-value" aria-hidden="true">4</span>
+        </div>
+      </div>
+      <div class="reader-tool-group">
+        <button type="button" class="reader-tool-btn" data-tool="fontsize" aria-expanded="false" title="Tamanho da fonte">
+          ${icon("fa-solid fa-text-height")}
+          <span class="reader-tool-label">Fonte</span>
+        </button>
+        <div class="reader-fontsize" hidden>
+          <button type="button" class="reader-font-step" data-step="-1" aria-label="Diminuir fonte">${icon("fa-solid fa-minus")}</button>
+          <span class="reader-font-preview" aria-hidden="true">A</span>
+          <button type="button" class="reader-font-step" data-step="1" aria-label="Aumentar fonte">${icon("fa-solid fa-plus")}</button>
+          <span class="reader-font-value" aria-hidden="true">100%</span>
+        </div>
+      </div>
+      <div class="reader-tool-group">
+        <button type="button" class="reader-tool-btn" data-tool="focus" aria-pressed="false" title="Modo foco">
+          ${icon("fa-solid fa-circle-half-stroke")}
+          <span class="reader-tool-label">Modo foco</span>
+        </button>
+        <button type="button" class="reader-tool-btn reader-invert-btn" data-tool="invert" aria-pressed="false" title="Inverter cores (fundo claro)" hidden>
+          ${icon("fa-solid fa-adjust")}
+          <span class="reader-tool-label">Inverter</span>
+        </button>
+      </div>
+    </div>
+  `;
+}
+
+/* Modal de boas-vindas: anuncia as novas funções de leitura. Só aparece uma vez por usuário. */
+function readerWelcomeModal() {
+  return `
+    <div class="reader-modal-overlay" data-modal="welcome" hidden>
+      <div class="reader-modal reader-modal-welcome" role="dialog" aria-modal="true" aria-labelledby="welcome-modal-title">
+        <span class="reader-modal-accent" aria-hidden="true"></span>
+        <button type="button" class="reader-modal-close" aria-label="Fechar">${icon("fa-solid fa-xmark")}</button>
+        <span class="reader-modal-kicker">${icon("fa-solid fa-sparkles")} Novidades na leitura</span>
+        <h2 id="welcome-modal-title">A leitura ficou melhor</h2>
+        <ul class="reader-modal-features">
+          <li>${icon("fa-solid fa-arrows-down-to-line")} <span><strong>Deslize automático</strong> — deixe a página rolar sozinha, com velocidade ajustável.</span></li>
+          <li>${icon("fa-solid fa-text-height")} <span><strong>Tamanho da fonte</strong> — aumente ou diminua o texto, como num leitor de e-book.</span></li>
+          <li>${icon("fa-solid fa-circle-half-stroke")} <span><strong>Modo foco</strong> — fundo liso e texto limpo, com opção de inverter (claro/escuro).</span></li>
+        </ul>
+        <p class="reader-modal-hint">Os controles ficam na barra flutuante no canto da tela. Boa leitura!</p>
+        <button type="button" class="hero-cta reader-modal-cta" data-modal-dismiss="welcome">
+          ${icon("fa-solid fa-book-open")} Começar a ler
+        </button>
+      </div>
+    </div>
+  `;
+}
+
+/* Modal de apoio: aparece ao salvar checkpoint, convidando a seguir @ByGuizo. */
+function supportModal() {
+  return `
+    <div class="reader-modal-overlay" data-modal="support" hidden>
+      <div class="reader-modal reader-modal-support" role="dialog" aria-modal="true" aria-labelledby="support-modal-title">
+        <span class="reader-modal-accent" aria-hidden="true"></span>
+        <button type="button" class="reader-modal-close" aria-label="Fechar">${icon("fa-solid fa-xmark")}</button>
+        <div class="support-modal-seal">
+          <span class="support-modal-ring" aria-hidden="true"></span>
+          <span class="support-modal-glyph">${icon("fa-solid fa-heart")}</span>
+        </div>
+        <span class="reader-modal-kicker">${icon("fa-solid fa-bookmark")} Checkpoint salvo</span>
+        <h2 id="support-modal-title">Espera, que tal apoiar o projeto?</h2>
+        <p class="reader-modal-hint">Oblitus Limbo é um projeto independente feito com paixão. Seguir o autor no Instagram ajuda demais a manter tudo isso vivo e gratuito.</p>
+        <a href="https://instagram.com/byguizo" target="_blank" rel="noopener noreferrer" class="support-modal-cta">
+          ${icon("fa-brands fa-instagram")}
+          <span class="support-modal-cta-text">Seguir <strong>@ByGuizo</strong></span>
+          ${icon("fa-solid fa-arrow-right-long support-modal-cta-arrow")}
+        </a>
+        <button type="button" class="reader-modal-skip" data-modal-dismiss="support">Continuar lendo</button>
+      </div>
+    </div>
   `;
 }
 

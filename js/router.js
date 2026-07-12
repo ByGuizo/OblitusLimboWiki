@@ -47,9 +47,12 @@ async function router() {
   const route = parseHash();
   const renderFn = resolveRenderFn(route);
   updateActiveNavLink(route);
+  // Limpa qualquer estado global do leitor (modo foco/inversão) ao trocar de rota.
+  if (typeof teardownReaderTools === "function") teardownReaderTools();
   await transitionRoute(appEl, renderFn);
   if (route.name === "capitulo") {
     initReaderCheckpoint(appEl, route.param);
+    if (typeof initReaderTools === "function") initReaderTools(appEl, route.param);
   }
 }
 

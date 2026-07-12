@@ -190,6 +190,26 @@
   100% { transform: scale(1); }
 }
 
+/* Modal de apoio: entrada "pulando" com overshoot marcante. */
+@keyframes support-pop {
+  0% { transform: translateY(40px) scale(0.7) rotate(-3deg); opacity: 0; }
+  55% { transform: translateY(-10px) scale(1.06) rotate(1.5deg); opacity: 1; }
+  75% { transform: translateY(4px) scale(0.98) rotate(-0.5deg); }
+  100% { transform: translateY(0) scale(1) rotate(0deg); }
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  25% { transform: scale(1.18); }
+  40% { transform: scale(1); }
+  60% { transform: scale(1.12); }
+}
+
+@keyframes seal-ring-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.08); opacity: 0.75; }
+}
+
 /* ---------- Field/card entrance ---------- */
 .field-section.reveal,
 .lore-quote.reveal {
@@ -212,6 +232,9 @@
     transform: none !important;
   }
   .checkpoint-btn.checkpoint-pulse, .checkpoint-flash {
+    animation: none !important;
+  }
+  .reader-modal, .reader-modal-support, .support-modal-glyph, .support-modal-ring, .reader-speed, .reader-fontsize {
     animation: none !important;
   }
 }

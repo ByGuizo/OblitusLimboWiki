@@ -93,5 +93,9 @@ function initReaderCheckpoint(appEl, slug) {
     flashBlock(target);
     btn.classList.add("checkpoint-pulse");
     setTimeout(() => btn.classList.remove("checkpoint-pulse"), 500);
+    // Convida o leitor a apoiar o projeto ao marcar onde parou.
+    if (typeof openReaderModal === "function") {
+      setTimeout(() => openReaderModal(appEl, "support"), 260);
+    }
   });
 }
