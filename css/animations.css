@@ -237,4 +237,10 @@
   .reader-modal, .reader-modal-support, .support-modal-glyph, .support-modal-ring, .reader-speed, .reader-fontsize {
     animation: none !important;
   }
+  /* FAB de configurações: abre/fecha instantâneo, sem giro nem stagger. */
+  .reader-fab .reader-fab-icon,
+  .reader-tools,
+  .reader-tools .reader-tool-group {
+    transition: none !important;
+  }
 }

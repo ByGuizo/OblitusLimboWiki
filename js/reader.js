@@ -17,6 +17,9 @@ const READER_PREFS_KEY = "ol_reader_prefs";
 const READER_FONT_LEVELS = [0.88, 0.94, 1.0, 1.1, 1.22, 1.36, 1.5];
 const READER_FONT_DEFAULT = 2;
 
+/* Handler de "clicar fora para fechar o FAB" — guardado para remoção no teardown. */
+let readerOutsideClickHandler = null;
+
 /* Preferências persistidas (modo foco / inversão) — sobrevivem entre capítulos. */
 function readReaderPrefs() {
   try {
@@ -153,6 +156,29 @@ function initReaderTools(appEl, slug) {
   if (!welcomeSeen) {
     setTimeout(() => openReaderModal(appEl, "welcome"), 450);
     try { localStorage.setItem(READER_WELCOME_KEY, "1"); } catch (e) { /* no-op */ }
+  }
+
+  /* --- FAB de configurações (só ativo no mobile via CSS) --- */
+  const fab = appEl.querySelector(".reader-fab");
+  if (fab) {
+    function setExpanded(open) {
+      tools.classList.toggle("is-expanded", open);
+      fab.classList.toggle("is-open", open);
+      fab.setAttribute("aria-expanded", String(open));
+    }
+    fab.addEventListener("click", (e) => {
+      e.stopPropagation();
+      setExpanded(!tools.classList.contains("is-expanded"));
+    });
+    // Toca fora do painel/FAB fecha (só relevante quando expandido no mobile).
+    // Guardado em variável de módulo para poder remover no teardown (evita
+    // acumular um listener por capítulo visitado).
+    readerOutsideClickHandler = (e) => {
+      if (!tools.classList.contains("is-expanded")) return;
+      if (tools.contains(e.target) || fab.contains(e.target)) return;
+      setExpanded(false);
+    };
+    document.addEventListener("click", readerOutsideClickHandler);
   }
 
   /* --- Deslize automático --- */
@@ -313,4 +339,8 @@ function initReaderTools(appEl, slug) {
 /* Chamada ao SAIR da rota de capítulo — limpa estado global que não deve vazar. */
 function teardownReaderTools() {
   document.body.classList.remove("reader-focus-mode", "reader-focus-invert");
+  if (readerOutsideClickHandler) {
+    document.removeEventListener("click", readerOutsideClickHandler);
+    readerOutsideClickHandler = null;
+  }
 }

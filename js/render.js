@@ -473,10 +473,14 @@ async function renderCapitulo(slug) {
   `;
 }
 
-/* Barra de ferramentas de leitura: deslize automático + modo foco. */
+/* Barra de ferramentas de leitura: deslize automático + zoom + modo foco.
+   No mobile fica recolhida atrás do botão de engrenagem (.reader-fab). */
 function readerToolbar() {
   return `
-    <div class="reader-tools" role="toolbar" aria-label="Ferramentas de leitura">
+    <button type="button" class="reader-fab" aria-expanded="false" aria-controls="reader-tools-panel" aria-label="Configurações de leitura" title="Configurações de leitura">
+      ${icon("fa-solid fa-gear reader-fab-icon")}
+    </button>
+    <div class="reader-tools" id="reader-tools-panel" role="toolbar" aria-label="Ferramentas de leitura">
       <div class="reader-tool-group">
         <button type="button" class="reader-tool-btn" data-tool="autoscroll" aria-pressed="false" title="Deslize automático">
           ${icon("fa-solid fa-arrows-down-to-line")}
