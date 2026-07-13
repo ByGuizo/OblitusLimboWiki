@@ -157,46 +157,56 @@ function hubCard(route, iconCls, title, desc) {
 
 /* ---------------- CATEGORIA ---------------- */
 
+/*
+ * Lista uma categoria dividida em subgrupos, na ordem definida por GRUPOS
+ * (em data.js): os importantes primeiro, os secundários depois. Dentro de cada
+ * subgrupo, ordena por `peso` (menor primeiro) e desempata alfabeticamente.
+ */
 function renderCategory(routeSlug) {
   const typeEntry = Object.entries(TYPE_META).find(([, meta]) => meta.route === routeSlug);
   if (!typeEntry) return renderNotFound();
   const [type, meta] = typeEntry;
 
-  const items = Object.entries(ENTITIES)
-    .filter(([, ent]) => ent.type === type)
-    .sort((a, b) => a[1].nome.localeCompare(b[1].nome, "pt-BR"));
+  const items = Object.entries(ENTITIES).filter(([, ent]) => ent.type === type);
+  const grupos = GRUPOS[type] || [];
 
-  if (type === "artefato") {
-    const objetos = items.filter(([, e]) => e.subtype === "objeto");
-    const termos = items.filter(([, e]) => e.subtype === "termo");
-    return `
-      <div class="container">
-        <div class="section-heading reveal">
-          <span class="hero-kicker">${icon(meta.icon)} Categoria</span>
-          <h1>${meta.label}</h1>
-          <p>Os objetos que os personagens carregam, e os termos que dão nome às forças que os cercam.</p>
-        </div>
-        <h2 class="subgroup-heading">${icon("fa-solid fa-box-archive")} Objetos</h2>
-        <div class="category-grid reveal-stagger">
-          ${objetos.map(([slug, ent]) => entityCard(slug, ent)).join("")}
-        </div>
-        <h2 class="subgroup-heading">${icon("fa-solid fa-spell-check")} Termos &amp; Conceitos</h2>
-        <div class="category-grid reveal-stagger">
-          ${termos.map(([slug, ent]) => entityCard(slug, ent)).join("")}
-        </div>
-      </div>
-    `;
+  const byWeight = (a, b) => {
+    const pa = a[1].peso ?? 999;
+    const pb = b[1].peso ?? 999;
+    if (pa !== pb) return pa - pb;
+    return a[1].nome.localeCompare(b[1].nome, "pt-BR");
+  };
+
+  const blocos = grupos
+    .map((g) => ({ meta: g, itens: items.filter(([, e]) => e.grupo === g.id).sort(byWeight) }))
+    .filter((b) => b.itens.length > 0);
+
+  // rede de segurança: quem tiver um grupo desconhecido cai num bloco final,
+  // para nunca sumir da listagem
+  const cobertos = new Set(blocos.flatMap((b) => b.itens.map(([slug]) => slug)));
+  const restantes = items.filter(([slug]) => !cobertos.has(slug)).sort(byWeight);
+  if (restantes.length) {
+    blocos.push({ meta: { label: "Outros", icon: "fa-solid fa-ellipsis" }, itens: restantes });
   }
+
+  // um único subgrupo não merece subtítulo — a categoria já diz o que é
+  const mostrarSubtitulos = blocos.length > 1;
+
+  const corpo = blocos.map((b) => `
+    ${mostrarSubtitulos ? `<h2 class="subgroup-heading reveal">${icon(b.meta.icon)} ${escapeHtml(b.meta.label)}</h2>` : ""}
+    <div class="category-grid reveal-stagger">
+      ${b.itens.map(([slug, ent]) => entityCard(slug, ent)).join("")}
+    </div>
+  `).join("");
 
   return `
     <div class="container">
       <div class="section-heading reveal">
         <span class="hero-kicker">${icon(meta.icon)} Categoria</span>
         <h1>${meta.label}</h1>
+        ${meta.descricao ? `<p>${escapeHtml(meta.descricao)}</p>` : ""}
       </div>
-      <div class="category-grid reveal-stagger">
-        ${items.map(([slug, ent]) => entityCard(slug, ent)).join("")}
-      </div>
+      ${corpo}
     </div>
   `;
 }

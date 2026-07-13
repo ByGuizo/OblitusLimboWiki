@@ -44,7 +44,9 @@ Tema **preto + roxo** como base (dark fantasy do livro), **vermelho** como acent
 
 Cada entidade em `ENTITIES` tem `type` (`personagem` | `lugar` | `lore` | `criatura` | `artefato`), `imagem` (caminho ou `null`), `campos` (objeto label → texto). Dentro de qualquer texto, use `[[slug]]` ou `[[slug|Texto exibido]]` para garantir um link para outra entidade.
 
-**Categorias são dirigidas por dados**: `TYPE_META` (fim de `data.js`) mapeia `type` → label/ícone/rota. Adicionar uma entrada ali cria a categoria inteira (rota `#/categoria/:rota`, grid, breadcrumb) — `renderCategory()` deriva tudo dela. Ao criar um tipo novo, só falta acrescentar o link no `<nav>` do `index.html` e um `hubCard()` no `renderHome()`. Foi assim que a categoria `criatura` (Bestiário) foi adicionada. O `.hub-grid` usa `auto-fit`, então não quebra ao ganhar categorias novas.
+**Categorias são dirigidas por dados**: `TYPE_META` (fim de `data.js`) mapeia `type` → label/ícone/rota/descrição. Adicionar uma entrada ali cria a categoria inteira (rota `#/categoria/:rota`, grid, breadcrumb) — `renderCategory()` deriva tudo dela. Ao criar um tipo novo, só falta acrescentar o link no `<nav>` do `index.html` e um `hubCard()` no `renderHome()`. Foi assim que a categoria `criatura` (Bestiário) foi adicionada. O `.hub-grid` usa `auto-fit`, então não quebra ao ganhar categorias novas.
+
+**Ordem de exibição (`GRUPOS` + `grupo`/`peso`)**: listagem alfabética pura é proibida aqui — ela espalhava os protagonistas no meio dos figurantes. Toda entidade tem `grupo` (subgrupo dentro da categoria) e `peso` (menor = antes, dentro do grupo). `GRUPOS` (em `data.js`) define **quais** subgrupos existem por `type` e **em que ordem** aparecem; `renderCategory()` monta um subtítulo por grupo nessa ordem. Ex: em Personagens, "O Grupo" (Kiana primeiro) vem antes de Aliados, Antagonistas, Presságios e Vozes do Passado. Ao criar uma entidade, **sempre** defina `grupo` e `peso` — quem tiver grupo desconhecido cai num bloco "Outros" no fim (rede de segurança, não destino desejado). Evite grupos de 1 item só: eles viram uma seção inteira para um card.
 
 **Negrito**: `**texto**` dentro de qualquer campo vira `<strong>` — `linkify()` aplica isso **por último**, sobre o HTML já escapado e já linkado (ver `applyBold()` em `linkify.js`). Em `plainText()` (usado nos cards, onde não pode entrar HTML) os `**` são apenas removidos, para não vazarem como asteriscos literais na tela. Use com parcimônia, para destacar o termo-chave de um parágrafo.
 
@@ -105,7 +107,33 @@ Modais (`.reader-modal-overlay`, estilo compartilhado): **leitor** — boas-vind
 
 Status de personagem (`ENTITIES[slug].status`) é sempre uma de três chaves visíveis — `alive`/`dead`/`unknown` — com label objetivo ("Vivo"/"Morto"/"Desconhecido", sem detalhes). A cor vem de `--status-*` em `theme.css`: **`dead` é vermelho** (`--status-dead`), `alive` verde, `unknown` roxo. (A chave `destroyed` ainda existe no CSS/`STATUS_META` mas não é usada por nenhuma entidade.)
 
+Epítetos (`epiteto`) devem ser **títulos descritivos**, não apelidos ou piadas internas do livro. "O Pilar do Gelo" sim; "o picolé (deboche dos Presságios)" não — apelidos assim já foram removidos por decisão do autor. Se um apelido for relevante, ele vive no corpo do texto, onde há espaço para o contexto.
+
+### Cânone dos Presságios (não contrariar)
+
+Pontos já corrigidos uma vez — cuidado ao editar textos que os toquem:
+
+- **A hierarquia é numerada.** Krauser é o Quinto; Gyotto, o Sexto.
+- **A Silhueta é a Segunda Presságio.** A Presença a chama de "a Segunda em poder e soberania", e como os Presságios são numerados, isso a situa como a Segunda — logo abaixo do Mestre.
+- **O Mascarado é um Presságio de numeração não revelada, mas acima de Krauser** — ou seja, algo entre o Primeiro e o Quarto. Não inventar um número para ele.
+- **O conselho são os demais Presságios** (a mulher, o velho, a criança), não "figuras de autoridade" genéricas.
+- **Gauss pode ou não ser um Presságio** — o livro nunca diz. Manter em aberto; não afirmar que é.
+- **O Falso Presságio não era um Presságio.** Era um peão fabricado por Krauser com um propósito único: **distrair o grupo da busca por Viktor**. Não foi ele quem coagiu Darius (foi o Mascarado), e a tortura de Viktor foi obra do próprio Krauser.
+
 O botão de Instagram (`@ByGuizo` → `instagram.com/byguizo`) aparece em três lugares, todos com o mesmo gradiente da marca: seção "Sobre o autor" na home (botão + foto clicável com selo), e o modal de apoio do leitor.
+
+## Animação de entrada (`.reveal`) — armadilha que já escondeu o site inteiro
+
+Elementos com `.reveal`/`.reveal-stagger` começam com `opacity: 0` e só aparecem quando o `IntersectionObserver` lhes dá `.is-visible`. Isso significa que **se o observer não disparar, o conteúdo simplesmente não existe para o usuário**. Já aconteceu: no mobile, abrir uma categoria mostrava uma tela vazia até o usuário rolar. Duas causas somadas — o `threshold` alto exigia que uma boa fatia da grid entrasse na tela (numa grid alta de celular, o topo não bastava), e o `window.scrollTo(0, 0)` da troca de rota ainda estava *animando* (por causa do `scroll-behavior: smooth` do reset) quando o observer media as posições.
+
+Por isso `initRevealAnimations()` (`animations.js`) agora **revela imediatamente, de forma síncrona, tudo que já está na viewport** (`isInViewport()`), e só entrega ao observer o que está abaixo da dobra; e `scrollToTopInstantly()` força o salto ao topo a ser instantâneo antes de medir. Regra geral: **nenhuma animação de entrada pode ser o único caminho para o conteúdo ficar visível** — na pior das hipóteses o elemento aparece sem animação, nunca invisível.
+
+## Performance no mobile
+
+Duas coisas deixavam o site pesado no celular, e ambas têm defesa no código:
+
+- **`backdrop-filter` é a propriedade mais cara desta base.** Cada card/painel com o blur do glassmorphism vira uma camada composta que reamostra o fundo a cada frame; com dezenas de cards numa grid, a navegação travava. Há uma regra em `theme.css` que **desliga todo `backdrop-filter` em telas ≤860px** (os fundos `--glass-bg*` já são semi-opacos, então os painéis continuam legíveis). Não reintroduza blur em componentes novos sem considerar isso. O `background-attachment: fixed` do `body` também é desligado ali (força repaint do viewport inteiro a cada scroll).
+- **Imagens.** Os assets vinham direto do material de impressão (o fundo do hero tinha 1.8 MB; retratos de 1.5 MB eram exibidos em miniaturas de 200px). Foram redimensionados/recomprimidos (~63% menores) — **ao adicionar uma imagem nova, redimensione antes** para perto do tamanho em que ela é realmente exibida (retratos: ~900px de largura bastam; o hero: ~1600px).
 
 ## Verificação antes de considerar uma mudança visual pronta
 

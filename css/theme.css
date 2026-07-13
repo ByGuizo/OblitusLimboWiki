@@ -69,6 +69,27 @@
   --dur-slow: 620ms;
 }
 
+/* PERFORMANCE MOBILE — não remover sem medir.
+ * `backdrop-filter` (o blur do glassmorphism) é a propriedade mais cara desta
+ * base em GPU de celular: cada card/painel que a usa vira uma camada composta
+ * que precisa reamostrar o fundo a cada frame. Com dezenas de cards numa grid,
+ * isso deixava a navegação visivelmente travada no telefone.
+ * Em telas pequenas o blur é desligado — os fundos (--glass-bg*) já são
+ * semi-opacos, então os painéis continuam legíveis; só o efeito de vidro some.
+ * O background fixo do body também é desativado: `background-attachment: fixed`
+ * força repaint do viewport inteiro a cada scroll em mobile. */
+@media (max-width: 860px) {
+  *,
+  *::before,
+  *::after {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  body {
+    background-attachment: scroll;
+  }
+}
+
 body {
   background: var(--bg-base);
   background-image:

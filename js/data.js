@@ -10,6 +10,8 @@ const ENTITIES = {
 
   "kiana": {
     type: "personagem",
+    grupo: "protagonistas",
+    peso: 1,
     nome: "Kiana",
     epiteto: "A bardo de [[vardun]] · narradora e protagonista",
     status: "alive",
@@ -45,6 +47,8 @@ const ENTITIES = {
 
   "near-shade": {
     type: "personagem",
+    grupo: "protagonistas",
+    peso: 3,
     nome: "Near Shade",
     epiteto: "O elfo da máscara",
     status: "alive",
@@ -67,6 +71,8 @@ const ENTITIES = {
 
   "amnon-akmenos": {
     type: "personagem",
+    grupo: "protagonistas",
+    peso: 4,
     nome: "Amnon Akmenos",
     epiteto: "O tiefling exilado",
     status: "alive",
@@ -90,6 +96,8 @@ const ENTITIES = {
 
   "darin-leafheart": {
     type: "personagem",
+    grupo: "protagonistas",
+    peso: 5,
     nome: "Darin Leafheart",
     epiteto: "O druida dos lobos",
     status: "alive",
@@ -113,8 +121,10 @@ const ENTITIES = {
 
   "viktor-vanshee": {
     type: "personagem",
+    grupo: "protagonistas",
+    peso: 2,
     nome: "Viktor Vanshee",
-    epiteto: "O Pilar do Gelo · Mestre do Gelo · \"o picolé\" (deboche dos Presságios)",
+    epiteto: "O Pilar do Gelo · Mestre do Gelo",
     status: "alive",
     statusLabel: "Vivo",
     imagem: "Imagens/Personagens/ViktorVanshee.jpeg",
@@ -141,6 +151,8 @@ const ENTITIES = {
 
   "calista-vanshee": {
     type: "personagem",
+    grupo: "protagonistas",
+    peso: 6,
     nome: "Calista Vanshee",
     epiteto: "A arqueira de [[emberfall|EmberFall]]",
     status: "dead",
@@ -170,6 +182,8 @@ const ENTITIES = {
 
   "yuto": {
     type: "personagem",
+    grupo: "aliados",
+    peso: 1,
     nome: "Yuto",
     epiteto: "O ronin de passagem",
     status: "unknown",
@@ -190,15 +204,17 @@ const ENTITIES = {
 
   "lorde-krauser": {
     type: "personagem",
+    grupo: "antagonistas",
+    peso: 1,
     nome: "Lorde Krauser",
-    epiteto: "O verdadeiro Quinto Presságio · \"Largato\" (deboche do conselho)",
+    epiteto: "O verdadeiro Quinto Presságio",
     status: "dead",
     statusLabel: "Morto",
     imagem: "Imagens/Personagens/LordeKrauser.jpg",
     resumo: "Draconato rejeitado pelo próprio pai, tornou-se Presságio e governou Hikari por dez anos sob identidade forjada.",
     campos: {
       "Biografia": "Nasceu com traços Draconato visíveis desde o berço. Seu pai humano o rejeitou com violência — \"Eu não sou pai de um monstro... de um dragão!\" — e assassinou sua mãe, **Layla**, estrangulando-a diante do próprio filho. O menino reagiu incinerando o pai vivo com uma rajada de fogo: **criado no ódio, batizado no fogo**. Tornou-se, com o tempo, um dos [[termo-pressagio|Presságios]]. Já adulto, encontrou numa floresta uma criança rejeitada com poderes de tinta negra — [[gyotto|Gyotto]], de uns sete anos — e a corrompeu deliberadamente, reproduzindo sem hesitar o mesmo ciclo de abuso que o formara. Anos depois, o já corrompido Gyotto destruiria o [[o-orfanato|orfanato]] onde [[kiana|Kiana]] crescia, tornando Krauser o **autor indireto** da morte de [[tia-lanis|Tia Lanis]], [[emma|Emma]] e todas as crianças.",
-      "A gaiola de castigo": "Por ser considerado **o Presságio mais fraco**, foi humilhado e exilado pelo [[o-mascarado|Mascarado]] para [[hikari|Hikari]], com ordens de assassinar o Lorde local, tomar seu lugar e \"apodrecer lá\" até descobrir algo. Hikari **nunca foi um reino** para ele: era uma *gaiola de castigo*. Ainda assim, governou como um \"Lorde heroico\" fabricado por dez anos, conquistando a devoção genuína do povo — enquanto orquestrava em segredo o sequestro e a tortura de [[viktor-vanshee|Viktor Vanshee]] através do [[falso-pressagio|Falso Presságio]].",
+      "A gaiola de castigo": "Por ser considerado **o Presságio mais fraco**, foi humilhado e exilado pelo [[o-mascarado|Mascarado]] para [[hikari|Hikari]], com ordens de assassinar o Lorde local, tomar seu lugar e \"apodrecer lá\" até descobrir algo. Hikari **nunca foi um reino** para ele: era uma *gaiola de castigo*. Ainda assim, governou como um \"Lorde heroico\" fabricado por dez anos, conquistando a devoção genuína do povo — enquanto mantinha [[viktor-vanshee|Viktor Vanshee]] sequestrado e o torturava em segredo, no próprio castelo.",
       "Vínculos": [
         { slug: null, nome: "Layla", relacao: "Mãe" },
         { slug: "o-mascarado", nome: "O Mascarado", relacao: "Superior e algoz" },
@@ -221,6 +237,8 @@ const ENTITIES = {
 
   "gyotto": {
     type: "personagem",
+    grupo: "antagonistas",
+    peso: 2,
     nome: "Gyotto",
     epiteto: "O garoto da tinta · o Sexto Presságio",
     status: "dead",
@@ -244,6 +262,8 @@ const ENTITIES = {
 
   "rurik": {
     type: "personagem",
+    grupo: "aliados",
+    peso: 2,
     nome: "Rurik",
     epiteto: "Dono da Taverna de Rurik, pai de Viktor",
     status: "alive",
@@ -257,6 +277,8 @@ const ENTITIES = {
 
   "tia-lanis": {
     type: "personagem",
+    grupo: "passado",
+    peso: 1,
     nome: "Tia Lanis",
     epiteto: "Cuidadora do orfanato",
     status: "dead",
@@ -273,6 +295,8 @@ const ENTITIES = {
 
   "emma": {
     type: "personagem",
+    grupo: "passado",
+    peso: 2,
     nome: "Emma",
     epiteto: "Melhor amiga de Kiana no orfanato",
     status: "dead",
@@ -286,6 +310,8 @@ const ENTITIES = {
 
   "kael": {
     type: "personagem",
+    grupo: "passado",
+    peso: 4,
     nome: "Kael",
     epiteto: "Melhor amigo de Viktor",
     status: "dead",
@@ -299,6 +325,8 @@ const ENTITIES = {
 
   "matilde": {
     type: "personagem",
+    grupo: "aliados",
+    peso: 4,
     nome: "Matilde",
     epiteto: "Anciã de Hikari",
     status: "alive",
@@ -312,16 +340,22 @@ const ENTITIES = {
 
   "o-mascarado": {
     type: "personagem",
+    grupo: "pressagios",
+    peso: 3,
     nome: "O Mascarado",
-    epiteto: "Figura de autoridade entre os Presságios",
+    epiteto: "Presságio de numeração não revelada · a autoridade do conselho",
     status: "unknown",
     statusLabel: "Desconhecido",
     imagem: "Imagens/Personagens/Mascarado.jpeg",
-    resumo: "Figura de autoridade entre os Presságios, com chifres esculpidos em osso antigo. Reverencia Viktor Vanshee quase como uma divindade.",
+    resumo: "Presságio que preside o conselho. Sua numeração nunca é revelada, mas está acima de Krauser — logo, entre o Primeiro e o Quarto.",
     campos: {
-      "Biografia": "Figura de autoridade entre os [[termo-pressagio|Presságios]], com chifres esculpidos em osso antigo. Comanda reuniões do conselho secreto, decide punições — como o exílio de [[lorde-krauser|Krauser]] para [[hikari|Hikari]] — e reverencia [[viktor-vanshee|Viktor Vanshee]] quase como uma divindade, associando-o ao evento do \"[[ankiquilarke|Ankiquilarke]]\" e à morte do Presságio Gauss. A natureza exata dessa reverência não é esclarecida no Volume 1.",
+      "Biografia": "**Presságio** e autoridade operacional do conselho, com máscara e chifres \"esculpidos em osso antigo\". Sua presença silencia o ar. É quem convoca as reuniões, quem revela a morte de [[gyotto|Gyotto]], quem desmente os livros de história e quem condena [[lorde-krauser|Krauser]] ao exílio em [[hikari|Hikari]] — transmitindo as ordens do Mestre.",
+      "Sua numeração": "O livro **nunca revela** que número ele é. Mas a hierarquia deixa claro que ele está **acima de Krauser**, o Quinto: é ele quem pune, humilha e exila o Quinto Presságio, e quem fala em nome da [[a-presenca|Presença]] diante do conselho. Isso o coloca necessariamente entre o **Primeiro e o Quarto** — mas onde exatamente, o Volume 1 não diz.",
+      "O interesse em Viktor": "Reverencia [[viktor-vanshee|Viktor Vanshee]] de um modo perturbador — chama-o de \"o peixe grande\" e ordena que ninguém o toque: \"preciso do Vanshee com vida por enquanto. Eu tenho **planos para o que corre nas veias daquele homem**.\" A natureza dessa reverência, e o que exatamente ele quer do sangue de Viktor, permanecem sem explicação.",
       "Vínculos": [
         { slug: "lorde-krauser", nome: "Lorde Krauser", relacao: "Subordinado" },
+        { slug: "o-conselho", nome: "O Conselho", relacao: "Preside-o" },
+        { slug: "a-presenca", nome: "A Presença", relacao: "Mestre" },
         { slug: "viktor-vanshee", nome: "Viktor Vanshee", relacao: "Reverencia-o" }
       ]
     }
@@ -329,6 +363,8 @@ const ENTITIES = {
 
   "a-presenca": {
     type: "personagem",
+    grupo: "pressagios",
+    peso: 1,
     nome: "A Presença",
     epiteto: "O Mestre · entidade central do Limbo",
     status: "unknown",
@@ -345,16 +381,21 @@ const ENTITIES = {
 
   "a-silhueta": {
     type: "personagem",
+    grupo: "pressagios",
+    peso: 2,
     nome: "A Silhueta",
-    epiteto: "\"A Segunda\" · serva de maior hierarquia da Presença",
+    epiteto: "A Segunda · a serva de maior hierarquia da Presença",
     status: "unknown",
     statusLabel: "Desconhecida",
     imagem: null,
-    resumo: "Segunda em poder e soberania entre os servos da Presença. Chora lágrimas de sangue e não ousa limpá-las.",
+    resumo: "Chamada de \"a Segunda em poder e soberania\" — o que a coloca como a Segunda Presságio, logo abaixo da própria Presença.",
     campos: {
-      "Biografia": "Serva de maior hierarquia da [[a-presenca|Presença]], explicitamente chamada de \"a Segunda em poder e soberania entre os seus\". Mulher que flutua rente ao chão, com movimentos \"elegantes como fitas de seda negra ao vento\" — uma graça que desaparece por completo diante da gravidade esmagadora do Mestre, que a força de joelhos. Chora lágrimas de sangue e não ousa limpá-las: \"a dor era o lembrete de sua inferioridade\". É ela quem, no prólogo, traz a notícia de que o Quinto Fio caiu — e é a ela que cabe vigiar o grupo dentro do [[o-limbo|Limbo]].",
+      "Biografia": "A serva de maior hierarquia da [[a-presenca|Presença]], explicitamente chamada de \"**a Segunda em poder e soberania entre os seus**\". Mulher que flutua rente ao chão, com movimentos \"elegantes como fitas de seda negra ao vento\" — uma graça que desaparece por completo diante da gravidade esmagadora do Mestre, que a força de joelhos. Chora lágrimas de sangue e não ousa limpá-las: \"a dor era o lembrete de sua inferioridade\".",
+      "A Segunda Presságio": "O título que a Presença lhe dá é a chave: se os [[termo-pressagio|Presságios]] são **numerados** por hierarquia — o Quinto ([[lorde-krauser|Krauser]]), o Sexto ([[gyotto|Gyotto]]) — e ela é \"a Segunda em poder e soberania\", então ela é a **Segunda Presságio**. Isso a coloca imediatamente abaixo da própria Presença e acima de todos os outros, inclusive do [[o-mascarado|Mascarado]].",
+      "Seu papel": "É ela quem, no prólogo, traz a notícia de que o Quinto Fio caiu. E é a ela que cabe a ordem final: **vigiar** o grupo dentro do [[o-limbo|Limbo]], enquanto a Presença os deixa apodrecer no desespero.",
       "Vínculos": [
-        { slug: "a-presenca", nome: "A Presença", relacao: "Mestre" }
+        { slug: "a-presenca", nome: "A Presença", relacao: "Mestre" },
+        { slug: "termo-pressagio", nome: "Os Presságios", relacao: "A Segunda" }
       ]
     },
     quotes: [
@@ -364,52 +405,61 @@ const ENTITIES = {
 
   "o-conselho": {
     type: "personagem",
+    grupo: "pressagios",
+    peso: 4,
     nome: "O Conselho",
-    epiteto: "A mulher, o velho e a criança · Presságios não nomeados",
+    epiteto: "Os demais Presságios · a mulher, o velho e a criança",
     status: "unknown",
     statusLabel: "Desconhecido",
     imagem: null,
-    resumo: "Três silhuetas envoltas em névoa sob uma lua de sorriso macabro. Nenhum dos três é nomeado no Volume 1.",
+    resumo: "Os outros Presságios do conselho — três figuras não nomeadas que julgam, humilham e punem seus pares.",
     campos: {
-      "Biografia": "Além do [[o-mascarado|Mascarado]] e de [[lorde-krauser|Krauser]], a memória do conselho revelada dentro da mente de Krauser mostra três figuras, reunidas sob uma **lua antropomórfica de sorriso macabro**. Nenhuma delas é nomeada.",
-      "As três figuras": "**A mulher** — postura altiva e desprezo aristocrático. É ela quem apelida Krauser de \"Largato\" e o humilha por não conseguir manter o próprio sigilo estável. **O velho** — curvado, de risada seca e asmática, descarta a morte de [[gyotto|Gyotto]] com um \"menos um\" e resmunga que \"se ele caiu, é porque não era digno\". **A criança** — voz infantil \"carregada de uma malícia que me deu náuseas\", brinca com algo invisível nas mãos e dá de ombros para a morte de Gyotto: \"sempre foi um imprestável mesmo\".",
+      "Biografia": "Os **demais [[termo-pressagio|Presságios]]**: além do [[o-mascarado|Mascarado]] e de [[lorde-krauser|Krauser]], a memória revelada dentro da mente de Krauser mostra outros três, reunidos sob uma **lua antropomórfica de sorriso macabro**. Nenhum deles é nomeado, e nenhuma de suas numerações é revelada — mas todos ocupam o mesmo conselho que julga, humilha e pune seus pares.",
+      "As três figuras": "**A mulher** — postura altiva e desprezo aristocrático. É ela quem humilha Krauser por não conseguir manter o próprio sigilo estável. **O velho** — curvado, de risada seca e asmática, descarta a morte de [[gyotto|Gyotto]] com um \"menos um\" e resmunga que \"se ele caiu, é porque não era digno\". **A criança** — voz infantil \"carregada de uma malícia que me deu náuseas\", brinca com algo invisível nas mãos e dá de ombros para a morte de Gyotto: \"sempre foi um imprestável mesmo\".",
+      "O que o conselho revela": "É nessa reunião que se decide o destino de Krauser — exilado a [[hikari|Hikari]] por ser considerado o **mais fraco** — e que se revela o que os Presságios sabem sobre [[viktor-vanshee|Viktor]]: que ele matou Gyotto, que a história oficial mente sobre [[gauss|Gauss]], e que o Mascarado tem planos para o que corre em suas veias.",
       "Vínculos": [
         { slug: "o-mascarado", nome: "O Mascarado", relacao: "Preside o conselho" },
-        { slug: "lorde-krauser", nome: "Lorde Krauser", relacao: "Humilhado e exilado por eles" }
+        { slug: "lorde-krauser", nome: "Lorde Krauser", relacao: "Exilado por eles" },
+        { slug: "termo-pressagio", nome: "Os Presságios", relacao: "Membros" }
       ]
     }
   },
 
   "falso-pressagio": {
     type: "personagem",
+    grupo: "antagonistas",
+    peso: 3,
     nome: "O Falso Presságio",
-    epiteto: "O encapuzado · o metamorfo · peão de Krauser",
+    epiteto: "O encapuzado · a isca criada por Krauser",
     status: "dead",
     statusLabel: "Morto",
     imagem: null,
-    resumo: "Homem envolto num manto que devora a luz. Torturou Viktor, plantou a dúvida sobre a morte de Kael e serviu de isca para Krauser.",
+    resumo: "Não era um Presságio de verdade: um peão criado por Krauser com um único propósito — distrair o grupo da busca por Viktor.",
     campos: {
-      "Biografia": "Homem magro envolto num manto \"tão negro que parecia devorar a luz\", com um sorriso descrito como \"uma fenda branca e macabra que se estendia além do que a anatomia permitiria\". Não era um Presságio de verdade: era um **peão criado por [[lorde-krauser|Krauser]]**, uma isca encenada para que o próprio Krauser pudesse \"ajudar\" o grupo a derrotá-lo e assim conquistar sua confiança.",
-      "Papel na trama": "Foi ele quem torturou [[viktor-vanshee|Viktor]] a mando de Krauser, e foi ele quem plantou a dúvida mais corrosiva do volume: reivindicou ter matado [[kael|Kael]] com as próprias mãos, contradizendo frontalmente a versão de Viktor sobre goblins, e acusou-o de ser \"um mestre em pintar tragédias para esconder a própria podridão\". Confrontou [[kiana|Kiana]] na névoa de [[hikari|Hikari]] e a levou, com um desenho, até a caverna do ritual.",
-      "Em combate": "Empunha uma **flamberge curta**, de lâmina em ziguezague, \"que parecia pulsar com vontade própria\". Não bloqueia golpes — simplesmente não está lá onde a lâmina chega. Dissolve-se em fumaça negra. Ao ser derrotado na caverna, recusa-se a revelar o paradeiro de Viktor e comete suicídio ritualístico, transformando o próprio braço em lâmina de sombra.",
+      "Biografia": "Homem magro envolto num manto \"tão negro que parecia devorar a luz\", com um sorriso descrito como \"uma fenda branca e macabra que se estendia além do que a anatomia permitiria\". **Não era um Presságio de verdade** — nunca teve número, nunca esteve no conselho, nunca serviu à [[a-presenca|Presença]]. Era um **peão criado por [[lorde-krauser|Krauser]]** com um propósito único e limitado: **distrair o grupo da busca por [[viktor-vanshee|Viktor]]**.",
+      "A encenação": "Krauser o fabricou como uma isca. O plano era simples: o falso Presságio se passaria pelo \"Quinto\" comandando um ritual na caverna, o grupo iria atrás dele, e o próprio Krauser apareceria para \"ajudar\" a derrotá-lo — encerrando a ameaça publicamente, conquistando a confiança de todos e desviando as suspeitas de si mesmo. Funcionou: depois da caverna, [[hikari|Hikari]] celebrou o \"mal desmantelado\" com um festival, e ninguém olhou para o Lorde.",
+      "O que ele disse": "Confrontou [[kiana|Kiana]] na névoa de Hikari e plantou a dúvida mais corrosiva do volume: reivindicou ter matado [[kael|Kael]] com as próprias mãos, contradizendo a versão de Viktor sobre goblins, e o acusou de ser \"um mestre em pintar tragédias para esconder a própria podridão\". Depois de uma perseguição pelos telhados, dissolveu-se em fumaça, deixando o desenho de uma caverna: \"Vá ver o que o seu herói realmente é.\" Se essa provocação era verdade ou apenas parte da encenação de Krauser, o volume não resolve.",
+      "Em combate": "Empunha uma **flamberge curta**, de lâmina em ziguezague, \"que parecia pulsar com vontade própria\". Não bloqueia golpes — simplesmente não está lá onde a lâmina chega. Dissolve-se em fumaça negra. Ao ser derrotado na caverna, recusa-se a revelar o paradeiro de Viktor e comete suicídio ritualístico, transformando o próprio braço em lâmina de sombra — levando consigo o que sabia.",
       "Vínculos": [
-        { slug: "lorde-krauser", nome: "Lorde Krauser", relacao: "Mestre" },
-        { slug: "viktor-vanshee", nome: "Viktor Vanshee", relacao: "Torturou-o" }
+        { slug: "lorde-krauser", nome: "Lorde Krauser", relacao: "Criador" }
       ]
     }
   },
 
   "gauss": {
     type: "personagem",
+    grupo: "pressagios",
+    peso: 5,
     nome: "Gauss",
-    epiteto: "Presságio morto por Viktor · portador do Ankiquilarke",
+    epiteto: "O nome ligado ao Ankiquilarke",
     status: "dead",
     statusLabel: "Morto",
     imagem: null,
-    resumo: "Presságio que nunca aparece em cena. Existe em uma única linha de diálogo — e no material ilustrado, associado ao Ankiquilarke.",
+    resumo: "Figura que nunca aparece em cena. Existe em uma única linha de diálogo — e no material ilustrado, associado ao Ankiquilarke.",
     campos: {
       "Biografia": "Nunca aparece em cena. Existe em **uma única linha de diálogo** — o [[o-mascarado|Mascarado]] revelando que [[viktor-vanshee|Viktor Vanshee]] é \"o mesmo homem que tirou a vida de Gauss\" — e no material ilustrado do livro, onde aparece associado ao [[ankiquilarke|Ankiquilarke]], aparentemente como seu portador.",
-      "A história reescrita": "Os livros de história do mundo creditam sua morte a um tal [[gale-akmenos|Gale Akmenos]]. O Mascarado desmente com desprezo: \"Eles são escritos por covardes que não sabem da verdade.\" É o mesmo padrão de apagamento que se repete com [[gyotto|Gyotto]] — a história oficial parece ter sido reescrita para apagar o rastro de Viktor.",
+      "Era um Presságio?": "**O livro nunca diz.** É uma dedução tentadora — o Mascarado o menciona no meio de uma conversa sobre a morte de [[gyotto|Gyotto]], um Presságio numerado, e o compara a ele como mais uma baixa causada por Viktor. Mas em nenhum momento Gauss recebe um número, é chamado de Presságio ou é situado dentro do conselho. Ele pode ter sido um deles, ou pode ter sido outra coisa inteiramente: um portador de Herança Celestial fora da hierarquia, um inimigo antigo, alguém de quem só os Presságios se lembram. **A questão fica em aberto.**",
+      "A história reescrita": "Os livros de história do mundo creditam sua morte a um tal [[gale-akmenos|Gale Akmenos]]. O Mascarado desmente com desprezo: \"Eles são escritos por covardes que não sabem da verdade.\" É o mesmo padrão de apagamento que se repete com Gyotto — a história oficial parece ter sido reescrita para apagar o rastro de Viktor.",
       "Vínculos": [
         { slug: "viktor-vanshee", nome: "Viktor Vanshee", relacao: "Matador" },
         { slug: "ankiquilarke", nome: "Ankiquilarke", relacao: "Portador (segundo o material ilustrado)" }
@@ -419,14 +469,16 @@ const ENTITIES = {
 
   "gale-akmenos": {
     type: "personagem",
+    grupo: "pressagios",
+    peso: 6,
     nome: "Gale Akmenos",
     epiteto: "O herói dos livros de história",
     status: "unknown",
     statusLabel: "Desconhecido",
     imagem: null,
-    resumo: "Nome creditado pela historiografia oficial pela morte do Presságio Gauss — feito que o Mascarado atribui a Viktor Vanshee.",
+    resumo: "Nome creditado pela historiografia oficial pela morte de Gauss — feito que o Mascarado atribui, na verdade, a Viktor Vanshee.",
     campos: {
-      "Biografia": "Nome creditado pela **historiografia oficial** pela morte do Presságio [[gauss|Gauss]] — um feito que o [[o-mascarado|Mascarado]] atribui, na verdade, a [[viktor-vanshee|Viktor Vanshee]], chamando os livros de história de obra de \"covardes que não sabem da verdade\". Nunca aparece em cena.",
+      "Biografia": "Nome creditado pela **historiografia oficial** pela morte de [[gauss|Gauss]] — um feito que o [[o-mascarado|Mascarado]] atribui, na verdade, a [[viktor-vanshee|Viktor Vanshee]], chamando os livros de história de obra de \"covardes que não sabem da verdade\". Nunca aparece em cena.",
       "O fio solto": "Compartilha o sobrenome de [[amnon-akmenos|Amnon Akmenos]], cuja família o expulsou por uma acusação de roubo que ele nega. O livro **nunca conecta explicitamente os dois** — mas a coincidência é um dos fios mais promissores deixados em aberto no Volume 1.",
       "Vínculos": [
         { slug: "amnon-akmenos", nome: "Amnon Akmenos", relacao: "Mesmo sobrenome (ligação não confirmada)" },
@@ -437,8 +489,10 @@ const ENTITIES = {
 
   "velha-mira": {
     type: "personagem",
+    grupo: "aliados",
+    peso: 5,
     nome: "Velha Mira",
-    epiteto: "\"Vovó Mira\" · anciã de Vardun",
+    epiteto: "Anciã de Vardun",
     status: "alive",
     statusLabel: "Viva",
     imagem: null,
@@ -456,6 +510,8 @@ const ENTITIES = {
 
   "helena": {
     type: "personagem",
+    grupo: "aliados",
+    peso: 3,
     nome: "Helena",
     epiteto: "Dona da estalagem onde Kiana mora",
     status: "alive",
@@ -473,6 +529,8 @@ const ENTITIES = {
 
   "lili": {
     type: "personagem",
+    grupo: "passado",
+    peso: 5,
     nome: "Lili",
     epiteto: "A criança tiefling assassinada",
     status: "dead",
@@ -490,6 +548,8 @@ const ENTITIES = {
 
   "darius": {
     type: "personagem",
+    grupo: "antagonistas",
+    peso: 4,
     nome: "Darius",
     epiteto: "O maior criminoso de Vardun",
     status: "dead",
@@ -497,10 +557,10 @@ const ENTITIES = {
     imagem: null,
     resumo: "Orc coberto de tatuagens que narram crimes. Não era o cérebro por trás dos assassinatos — foi obrigado por um mascarado.",
     campos: {
-      "Biografia": "Orc de estatura mediana, coberto de tatuagens \"que narravam crimes, algumas antigas, outras ainda vermelhas e recentes\". Dentes manchados. O maior criminoso de [[vardun|Vardun]] — mas **não era o cérebro por trás dos assassinatos**: foi *obrigado* por um mascarado (o [[falso-pressagio|Falso Presságio]]) a fazer o trabalho sujo, e o mestre desse mascarado queria [[viktor-vanshee|Viktor]] vivo.",
+      "Biografia": "Orc de estatura mediana, coberto de tatuagens \"que narravam crimes, algumas antigas, outras ainda vermelhas e recentes\". Dentes manchados. O maior criminoso de [[vardun|Vardun]] — mas **não era o cérebro por trás dos assassinatos**: foi *obrigado* pelo [[o-mascarado|Mascarado]], que apareceu do nada e coagiu sua gangue a fazer o trabalho sujo. E o mestre do Mascarado queria [[viktor-vanshee|Viktor]] **vivo**.",
       "Morte": "Ao confrontá-lo sozinha, [[kiana|Kiana]] ouve sua confissão e então o vê se virar de costas, mandando seus homens fazerem o que quisessem com ela. Algo dentro dela estala. Ele morre com a [[adaga-de-kael|adaga de Kael]] no peito, sem entender como morreu tão rápido — e os mais de vinte homens de sua taverna morrem em seguida, no primeiro **apagão** de Kiana. Sob seu cadáver, ela encontra a [[carta-ensanguentada|carta ensanguentada]] que aponta para [[hikari|Hikari]].",
       "Vínculos": [
-        { slug: "falso-pressagio", nome: "O Falso Presságio", relacao: "Coagido por ele" },
+        { slug: "o-mascarado", nome: "O Mascarado", relacao: "Coagido por ele" },
         { slug: "kiana", nome: "Kiana", relacao: "Matadora" }
       ]
     }
@@ -508,6 +568,8 @@ const ENTITIES = {
 
   "tyler": {
     type: "personagem",
+    grupo: "passado",
+    peso: 3,
     nome: "Tyler",
     epiteto: "O valentão do orfanato",
     status: "dead",
@@ -522,6 +584,8 @@ const ENTITIES = {
 
   "flyn": {
     type: "personagem",
+    grupo: "passado",
+    peso: 6,
     nome: "Flyn",
     epiteto: "Marido falecido de Matilde",
     status: "dead",
@@ -540,6 +604,8 @@ const ENTITIES = {
 
   "vardun": {
     type: "lugar",
+    grupo: "principais",
+    peso: 1,
     nome: "Vardun",
     epiteto: "A ferida aberta",
     status: null,
@@ -555,6 +621,8 @@ const ENTITIES = {
 
   "hikari": {
     type: "lugar",
+    grupo: "principais",
+    peso: 2,
     nome: "Hikari",
     epiteto: "A máscara de ordem",
     status: null,
@@ -570,6 +638,8 @@ const ENTITIES = {
 
   "emberfall": {
     type: "lugar",
+    grupo: "principais",
+    peso: 4,
     nome: "EmberFall",
     epiteto: "O horizonte distante",
     status: null,
@@ -584,6 +654,8 @@ const ENTITIES = {
 
   "vale-das-flores-sangrentas": {
     type: "lugar",
+    grupo: "principais",
+    peso: 3,
     nome: "Vale das Flores Sangrentas",
     epiteto: "A floresta amaldiçoada",
     status: null,
@@ -599,6 +671,8 @@ const ENTITIES = {
 
   "o-limbo": {
     type: "lugar",
+    grupo: "principais",
+    peso: 5,
     nome: "O Limbo",
     epiteto: "A dimensão viva e faminta",
     status: null,
@@ -614,6 +688,8 @@ const ENTITIES = {
 
   "o-orfanato": {
     type: "lugar",
+    grupo: "secundarios",
+    peso: 1,
     nome: "O Orfanato",
     epiteto: "O passado de Kiana",
     status: null,
@@ -631,6 +707,8 @@ const ENTITIES = {
 
   "sigilos-da-alma": {
     type: "lore",
+    grupo: "magia",
+    peso: 1,
     nome: "Sigilos da Alma",
     epiteto: "O sistema de magia de Oblitus Limbo",
     status: null,
@@ -665,6 +743,8 @@ const ENTITIES = {
 
   "estudo-de-caso-kiana": {
     type: "lore",
+    grupo: "misterios",
+    peso: 1,
     nome: "Estudo de Caso: o Sigilo da Alma em Kiana",
     epiteto: "Um mistério propositalmente aberto",
     status: null,
@@ -684,6 +764,8 @@ const ENTITIES = {
 
   "sigilo-do-caos": {
     type: "lore",
+    grupo: "misterios",
+    peso: 3,
     nome: "O Sigilo do Caos",
     epiteto: "Natureza desconhecida",
     status: null,
@@ -697,6 +779,8 @@ const ENTITIES = {
 
   "ankiquilarke": {
     type: "lore",
+    grupo: "misterios",
+    peso: 2,
     nome: "O Ankiquilarke",
     epiteto: "O maior mistério em aberto sobre o passado de Viktor",
     status: null,
@@ -714,6 +798,8 @@ const ENTITIES = {
 
   "resumo-narrativo": {
     type: "lore",
+    grupo: "historia",
+    peso: 1,
     nome: "Resumo Narrativo — Volume 1",
     epiteto: "Do prólogo ao desfecho",
     status: null,
@@ -740,6 +826,8 @@ const ENTITIES = {
 
   "essencia-mutavel": {
     type: "criatura",
+    grupo: "criaturas",
+    peso: 1,
     nome: "A Essência Mutável",
     epiteto: "A criatura do Vale das Flores Sangrentas",
     status: "dead",
@@ -755,6 +843,8 @@ const ENTITIES = {
 
   "silhuetas-de-sombra": {
     type: "criatura",
+    grupo: "criaturas",
+    peso: 2,
     nome: "As Silhuetas de Sombra",
     epiteto: "O ataque a Hikari",
     status: "unknown",
@@ -772,6 +862,8 @@ const ENTITIES = {
 
   "adaga-de-kael": {
     type: "artefato",
+    grupo: "objeto",
+    peso: 1,
     subtype: "objeto",
     nome: "A Adaga de Kael",
     epiteto: "Objeto",
@@ -786,6 +878,8 @@ const ENTITIES = {
 
   "ukulele-de-kiana": {
     type: "artefato",
+    grupo: "objeto",
+    peso: 2,
     subtype: "objeto",
     nome: "O Ukulele de Kiana",
     epiteto: "Objeto",
@@ -800,6 +894,8 @@ const ENTITIES = {
 
   "pulseira-de-matilde": {
     type: "artefato",
+    grupo: "objeto",
+    peso: 4,
     subtype: "objeto",
     nome: "A Pulseira Dourada de Matilde",
     epiteto: "Objeto",
@@ -814,6 +910,8 @@ const ENTITIES = {
 
   "colar-de-cristal-vermelho": {
     type: "artefato",
+    grupo: "objeto",
+    peso: 3,
     subtype: "objeto",
     nome: "O Colar de Cristal Vermelho de Krauser",
     epiteto: "Objeto",
@@ -828,6 +926,8 @@ const ENTITIES = {
 
   "orbe-de-calista": {
     type: "artefato",
+    grupo: "objeto",
+    peso: 5,
     subtype: "objeto",
     nome: "O Orbe Azul Cristalino de Calista",
     epiteto: "Objeto",
@@ -842,6 +942,8 @@ const ENTITIES = {
 
   "reliquia-de-nostradamus": {
     type: "artefato",
+    grupo: "objeto",
+    peso: 8,
     subtype: "objeto",
     nome: "A Relíquia de Nostradamus",
     epiteto: "Objeto",
@@ -856,6 +958,8 @@ const ENTITIES = {
 
   "peca-perdida": {
     type: "artefato",
+    grupo: "objeto",
+    peso: 7,
     subtype: "objeto",
     nome: "A Peça Perdida / O Fragmento",
     epiteto: "O macguffin central da obra",
@@ -872,6 +976,8 @@ const ENTITIES = {
 
   "alianca-dos-lordes": {
     type: "artefato",
+    grupo: "termo",
+    peso: 1,
     subtype: "termo",
     nome: "Aliança dos Lordes",
     epiteto: "Termo / Conceito",
@@ -886,6 +992,8 @@ const ENTITIES = {
 
   "carta-ensanguentada": {
     type: "artefato",
+    grupo: "objeto",
+    peso: 6,
     subtype: "objeto",
     nome: "A Carta Ensanguentada",
     epiteto: "Objeto",
@@ -900,6 +1008,8 @@ const ENTITIES = {
 
   "selo-alianca-dos-lordes": {
     type: "artefato",
+    grupo: "objeto",
+    peso: 9,
     subtype: "objeto",
     nome: "O Selo de Cera Azul",
     epiteto: "Objeto",
@@ -914,6 +1024,8 @@ const ENTITIES = {
 
   "manifestacao-harmonica": {
     type: "lore",
+    grupo: "magia",
+    peso: 2,
     nome: "Manifestação Harmônica",
     epiteto: "A técnica de última instância de Kiana",
     status: null,
@@ -931,6 +1043,8 @@ const ENTITIES = {
 
   "termo-pressagio": {
     type: "lore",
+    grupo: "conceitos",
+    peso: 1,
     nome: "Os Presságios",
     epiteto: "Hierarquia e doutrina",
     status: null,
@@ -940,16 +1054,18 @@ const ENTITIES = {
     campos: {
       "O que é um Presságio": "Nas palavras de [[calista-vanshee|Calista]]: \"Não são apenas vilões de contos. São um grupo de almas devoradas pela própria ambição. Homens e mulheres que, na busca desenfreada por poder, entregaram a única coisa que realmente possuíam: o próprio livre arbítrio. Tornaram-se cascas vazias, preenchidas por vontades que não lhes pertencem.\" São **numerados** — o Quinto ([[lorde-krauser|Krauser]]), o Sexto ([[gyotto|Gyotto]]) —, o que sugere uma ordem ou hierarquia fixa. A [[a-presenca|Presença]], porém, refere-se a eles por outro nome: [[termo-fio|Fios]].",
       "A doutrina — a lenda de Kynare e o Corvo Celeste": "Calista conta a lenda ao grupo, na carroça a caminho de [[hikari|Hikari]], como forma de explicar o que os Presságios realmente são. Kynare era um homem consumido pela fome de poder. O Corvo Celeste lhe ofereceu força, domínio e glória eterna em troca de uma única coisa: seguir o caminho que o Corvo apontasse. Kynare aceitou — rápido demais. No instante em que o fez, correntes finas como fios de cabelo subiram por suas pernas, seu tronco, seu pescoço, e ele nem percebeu. Com o tempo, esqueceu que um dia teve vontade própria, e passou a acreditar que tudo o que fazia era escolha sua. E o Corvo deixou que ele acreditasse — *\"porque nada é mais fácil de controlar do que alguém que acha que está no comando\"*. A moral que as mães contavam às crianças: algumas promessas, mesmo as feitas por criaturas celestes, são só correntes disfarçadas.",
-      "A instabilidade como insulto": "Ser um Presságio não garante controle. No conselho, a mulher de postura altiva zomba de Krauser dizendo que ele \"mal consegue manter seu próprio sigilo estável\" — e o apelida de \"Largato\". O próprio Viktor é chamado, com deboche, de \"o picolé\"."
+      "Hierarquia e desprezo": "Ser um Presságio não garante respeito entre pares — nem controle sobre o próprio poder. No conselho, [[lorde-krauser|Krauser]] é humilhado abertamente por \"mal conseguir manter seu próprio sigilo estável\", e a morte de [[gyotto|Gyotto]] é descartada com desdém pelos demais. Força e posição são tudo: quem cai, caiu porque \"não era digno\"."
     },
     table: {
-      title: "A cadeia de comando",
-      headers: ["Figura", "Papel"],
+      title: "A hierarquia",
+      headers: ["Posição", "Quem é", "O que se sabe"],
       rows: [
-        ["[[a-presenca|A Presença / o Mestre]]", "A entidade no centro do [[o-limbo|Limbo]]. Nunca descrita fisicamente. Sua voz \"ecoa não nos ouvidos, mas nos ossos\". Busca a [[peca-perdida|Peça Perdida]]. Sua satisfação é descrita como mais aterrorizante que sua fúria."],
-        ["[[a-silhueta|A Silhueta / \"a Segunda\"]]", "Serva de maior hierarquia, \"a Segunda em poder e soberania entre os seus\". Ao se aproximar da Presença, é esmagada pela gravidade dela e chora lágrimas de sangue. Cabe a ela vigiar o grupo dentro do Limbo."],
-        ["[[o-mascarado|O Mascarado]]", "Autoridade operacional do conselho. Máscara e chifres \"esculpidos em osso antigo\". Convoca as reuniões, decide punições e transmite as ordens do Mestre. Reverencia [[viktor-vanshee|Viktor]] com uma admiração inquietante."],
-        ["[[o-conselho|O conselho]]", "Além do Mascarado e de Krauser, três figuras não nomeadas: uma mulher de desprezo aristocrático, um velho de risada asmática e uma criança de voz maliciosa."]
+        ["O Mestre", "[[a-presenca|A Presença]]", "A entidade no centro do [[o-limbo|Limbo]], acima de toda a hierarquia. Nunca descrita fisicamente. Sua voz \"ecoa não nos ouvidos, mas nos ossos\". Busca a [[peca-perdida|Peça Perdida]]."],
+        ["A Segunda", "[[a-silhueta|A Silhueta]]", "Chamada de \"a Segunda em poder e soberania entre os seus\" — logo, a **Segunda Presságio**. Serva mais próxima do Mestre. Cabe a ela vigiar o grupo dentro do Limbo."],
+        ["Entre o 1º e o 4º", "[[o-mascarado|O Mascarado]]", "Sua numeração **nunca é revelada**, mas está acima de Krauser (o Quinto): é ele quem pune, exila e fala em nome do Mestre diante do conselho."],
+        ["Numeração não revelada", "[[o-conselho|Os demais Presságios]]", "A mulher, o velho e a criança do conselho. Nenhum é nomeado, nenhum recebe número — mas todos julgam e punem seus pares."],
+        ["O Quinto", "[[lorde-krauser|Lorde Krauser]]", "Considerado **o mais fraco** do conselho. Humilhado e exilado a [[hikari|Hikari]] como castigo."],
+        ["O Sexto", "[[gyotto|Gyotto]]", "Corrompido por Krauser ainda criança. Morto por [[viktor-vanshee|Viktor]] durante o massacre do orfanato."]
       ]
     },
     calloutTitle: "A dimensão fica instável",
@@ -958,6 +1074,8 @@ const ENTITIES = {
 
   "oblitus-limbo": {
     type: "lore",
+    grupo: "conceitos",
+    peso: 4,
     nome: "Oblitus Limbo",
     epiteto: "O ritual que dá nome ao livro",
     status: null,
@@ -975,6 +1093,8 @@ const ENTITIES = {
 
   "runas": {
     type: "lore",
+    grupo: "magia",
+    peso: 3,
     nome: "Runas",
     epiteto: "O sistema mágico escrito",
     status: null,
@@ -990,6 +1110,8 @@ const ENTITIES = {
 
   "termo-fio": {
     type: "lore",
+    grupo: "conceitos",
+    peso: 2,
     nome: "Fio",
     epiteto: "Como a Presença chama seus servos",
     status: null,
@@ -1003,6 +1125,8 @@ const ENTITIES = {
 
   "aquele-que-sabe": {
     type: "lore",
+    grupo: "conceitos",
+    peso: 3,
     nome: "Aquele que Sabe",
     epiteto: "O portador da verdade oculta",
     status: null,
@@ -1017,14 +1141,59 @@ const ENTITIES = {
 
 };
 
+/*
+ * ORDEM DE EXIBIÇÃO DAS CATEGORIAS
+ *
+ * Cada entidade tem um `grupo`. Dentro de uma categoria, os cards são exibidos
+ * agrupados e na ordem definida abaixo — os importantes primeiro, os secundários
+ * depois. Sem isto a listagem cai em ordem alfabética e os protagonistas acabam
+ * espalhados no meio de figurantes.
+ *
+ * `renderCategory()` monta um subtítulo por grupo, na ordem desta lista. Uma
+ * entidade sem `grupo` (ou com um grupo não listado aqui) cai no último bloco.
+ * Dentro de cada grupo a ordem é alfabética, exceto onde `peso` for definido
+ * (menor peso = aparece antes) — usado para pôr Kiana à frente do grupo dela.
+ */
+const GRUPOS = {
+  personagem: [
+    { id: "protagonistas", label: "O Grupo", icon: "fa-solid fa-users" },
+    { id: "aliados",       label: "Aliados",  icon: "fa-solid fa-handshake-angle" },
+    { id: "antagonistas",  label: "Antagonistas", icon: "fa-solid fa-skull" },
+    { id: "pressagios",    label: "Os Presságios e o Limbo", icon: "fa-solid fa-eye" },
+    { id: "passado",       label: "Vozes do Passado", icon: "fa-solid fa-hourglass-half" }
+  ],
+  lugar: [
+    { id: "principais",   label: "Cidades e Regiões", icon: "fa-solid fa-map-location-dot" },
+    { id: "secundarios",  label: "Outros Lugares",    icon: "fa-solid fa-location-dot" }
+  ],
+  lore: [
+    { id: "magia",     label: "O Sistema de Magia", icon: "fa-solid fa-wand-sparkles" },
+    { id: "misterios", label: "Mistérios em Aberto", icon: "fa-solid fa-circle-question" },
+    { id: "conceitos", label: "Termos e Conceitos",  icon: "fa-solid fa-spell-check" },
+    { id: "historia",  label: "A História",          icon: "fa-solid fa-scroll" }
+  ],
+  criatura: [
+    { id: "criaturas", label: "Criaturas", icon: "fa-solid fa-dragon" }
+  ],
+  artefato: [
+    { id: "objeto", label: "Objetos", icon: "fa-solid fa-box-archive" },
+    { id: "termo",  label: "Termos & Conceitos", icon: "fa-solid fa-spell-check" }
+  ]
+};
+
 /* Mapa auxiliar: type -> label plural / singular usados na UI.
    Adicionar uma entrada aqui cria a categoria inteira (rota, grid, breadcrumb). */
 const TYPE_META = {
-  personagem: { label: "Personagens", singular: "Personagem", icon: "fa-solid fa-user-ninja", route: "personagens" },
-  lugar:      { label: "Lugares",     singular: "Lugar",      icon: "fa-solid fa-map-location-dot", route: "lugares" },
-  lore:       { label: "Lore & Sistemas de Magia", singular: "Lore", icon: "fa-solid fa-book-skull", route: "lore" },
-  criatura:   { label: "Bestiário",   singular: "Criatura",   icon: "fa-solid fa-dragon", route: "bestiario" },
-  artefato:   { label: "Artefatos & Termos", singular: "Artefato", icon: "fa-solid fa-gem", route: "artefatos" }
+  personagem: { label: "Personagens", singular: "Personagem", icon: "fa-solid fa-user-ninja", route: "personagens",
+                descricao: "Do grupo que atravessou o Vale às sombras que os esperavam do outro lado." },
+  lugar:      { label: "Lugares",     singular: "Lugar",      icon: "fa-solid fa-map-location-dot", route: "lugares",
+                descricao: "As cidades, as florestas e as dimensões que moldaram esta história." },
+  lore:       { label: "Lore & Sistemas de Magia", singular: "Lore", icon: "fa-solid fa-book-skull", route: "lore",
+                descricao: "O sistema de magia, os mistérios em aberto e os termos que dão nome às forças deste mundo." },
+  criatura:   { label: "Bestiário",   singular: "Criatura",   icon: "fa-solid fa-dragon", route: "bestiario",
+                descricao: "As criaturas que o grupo enfrentou ao longo do Volume 1." },
+  artefato:   { label: "Artefatos & Termos", singular: "Artefato", icon: "fa-solid fa-gem", route: "artefatos",
+                descricao: "Os objetos que os personagens carregam, e as marcas que eles deixam na trama." }
 };
 
 const STATUS_META = {
