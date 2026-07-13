@@ -13,7 +13,7 @@ const ENTITIES = {
     nome: "Kiana",
     epiteto: "A bardo de [[vardun]] · narradora e protagonista",
     status: "alive",
-    statusLabel: "Viva — arrastada para o [[o-limbo|Limbo]]",
+    statusLabel: "Viva",
     imagem: "Imagens/Kiana.jpeg",
     resumo: "Bardo meia-orc de cabelos brancos e olhos vermelhos, criada em um orfanato e resgatada por Viktor Vanshee. Carrega um poder ainda sem nome.",
     campos: {
@@ -25,8 +25,8 @@ const ENTITIES = {
         { slug: "darin-leafheart", nome: "Darin Leafheart", relacao: "Amigo" },
         { slug: "rurik", nome: "Rurik", relacao: "Figura paterna adotiva" },
         { slug: "calista-vanshee", nome: "Calista Vanshee", relacao: "Aliada" },
-        { slug: "tia-lanis", nome: "Tia Lanis", relacao: "Cuidadora falecida" },
-        { slug: "emma", nome: "Emma", relacao: "Melhor amiga falecida" }
+        { slug: "tia-lanis", nome: "Tia Lanis", relacao: "Cuidadora" },
+        { slug: "emma", nome: "Emma", relacao: "Melhor amiga" }
       ],
       "Aparência": "Meia-orc, cabelos brancos longos, olhos vermelhos brilhantes mesmo no escuro. Carrega sempre um [[ukulele-de-kiana|ukulele]] e uma [[adaga-de-kael|adaga]].",
       "Feitos": "Massacrou sozinha mais de vinte homens na Taverna de Darius, em [[vardun|Vardun]], num episódio de fúria amnésica (o \"apagão\"). Ajudou a derrotar a criatura multi-elemental do [[vale-das-flores-sangrentas|Vale das Flores Sangrentas]]. Confrontou o Falso Presságio nas ruas de [[hikari|Hikari]]. Lutou no ritual da caverna contra o Presságio-isca. Enfrentou diretamente o verdadeiro Quinto Presságio ([[lorde-krauser|Lorde Krauser]]), desenvolvendo em pleno combate a técnica [[manifestacao-harmonica|Manifestação Harmônica]], decisiva para a derrota final do inimigo.",
@@ -44,7 +44,7 @@ const ENTITIES = {
     nome: "Near Shade",
     epiteto: "O elfo da máscara",
     status: "alive",
-    statusLabel: "Vivo — arrastado para o [[o-limbo|Limbo]]",
+    statusLabel: "Vivo",
     imagem: "Imagens/NearShade.jpeg",
     resumo: "Elfo ladino de máscara preta, amigo de Kiana há três anos. Raramente mostra o rosto ou fala sobre o próprio passado.",
     campos: {
@@ -66,7 +66,7 @@ const ENTITIES = {
     nome: "Amnon Akmenos",
     epiteto: "O tiefling exilado",
     status: "alive",
-    statusLabel: "Vivo — arrastado para o [[o-limbo|Limbo]]",
+    statusLabel: "Vivo",
     imagem: "Imagens/AmnonAkmenos.jpeg",
     resumo: "Tiefling de origem burguesa, expulso da própria família por uma acusação injusta. Esconde a dor atrás de deboche e bebida.",
     campos: {
@@ -75,7 +75,7 @@ const ENTITIES = {
         { slug: "kiana", nome: "Kiana", relacao: "Amiga" },
         { slug: "near-shade", nome: "Near Shade", relacao: "Amigo" },
         { slug: "darin-leafheart", nome: "Darin Leafheart", relacao: "Amigo" },
-        { slug: null, nome: "Família Akmenos", relacao: "Rompida e hostil" }
+        { slug: null, nome: "Família Akmenos", relacao: "Família (rompida)" }
       ],
       "Aparência": "Tiefling, chifres curtos, pele de um vermelho vivo.",
       "Feitos": "Segurou com as próprias mãos o núcleo em chamas da criatura elemental do [[vale-das-flores-sangrentas|Vale das Flores Sangrentas]], sofrendo queimaduras graves para permitir que [[calista-vanshee|Calista]] a eliminasse. Lutou com arco contra o Presságio-isca na caverna. Defendeu civis com arma improvisada durante o ataque de sombras em [[hikari|Hikari]].",
@@ -89,7 +89,7 @@ const ENTITIES = {
     nome: "Darin Leafheart",
     epiteto: "O druida dos lobos",
     status: "alive",
-    statusLabel: "Vivo — arrastado para o [[o-limbo|Limbo]]",
+    statusLabel: "Vivo",
     imagem: "Imagens/Darin.jpeg",
     resumo: "Druida humano cujo vínculo com lobos moldou um raro Sigilo Autoformado. Alterna euforia etílica e fuga da própria mente.",
     campos: {
@@ -98,7 +98,7 @@ const ENTITIES = {
         { slug: "kiana", nome: "Kiana", relacao: "Amiga" },
         { slug: "near-shade", nome: "Near Shade", relacao: "Amigo" },
         { slug: "amnon-akmenos", nome: "Amnon Akmenos", relacao: "Amigo" },
-        { slug: "yuto", nome: "Yuto", relacao: "Aliado de combate" }
+        { slug: "yuto", nome: "Yuto", relacao: "Aliado" }
       ],
       "Aparência": "Cabelos castanhos desgrenhados, presença de \"brilho caótico\".",
       "Feitos": "Identificou o loop espacial que prendia o grupo no [[vale-das-flores-sangrentas|Vale das Flores Sangrentas]]. Atuou como cozinheiro do grupo durante a travessia. Lutou com garras espirituais de lobo contra o Presságio-isca na caverna e, ao lado de [[yuto|Yuto]], contra as sombras gigantes no ataque a [[hikari|Hikari]].",
@@ -112,17 +112,16 @@ const ENTITIES = {
     nome: "Viktor Vanshee",
     epiteto: "O Pilar do Gelo · Mestre do Gelo",
     status: "alive",
-    statusLabel: "Vivo, gravemente debilitado — arrastado para o [[o-limbo|Limbo]]",
+    statusLabel: "Vivo",
     imagem: "Imagens/ViktorVanshee.jpeg",
     resumo: "Meio-elfo nascido com o Sigilo do Gelo já desperto — um caso raríssimo de Herança Celestial. Mentor e salvador de Kiana.",
     campos: {
       "Biografia": "Meio-elfo que nasceu já com seu Sigilo desperto, um caso raríssimo de Herança Celestial. Anos antes do início da trama, chegou tarde demais para impedir o massacre de um orfanato, mas matou o atacante — [[gyotto|Gyotto]], o Sexto Presságio, então ainda conhecido apenas como \"o garoto da tinta\" — e resgatou a única sobrevivente, [[kiana|Kiana]], tornando-se seu mentor. Casado com [[calista-vanshee|Calista Vanshee]]. Perdeu o melhor amigo, [[kael|Kael]], em circunstâncias contestadas — Viktor afirma que goblins o mataram, mas o Falso Presságio reivindica ter matado Kael pessoalmente, uma contradição jamais resolvida neste volume. É reverenciado quase como uma divindade por \"[[o-mascarado|o Mascarado]]\", figura de autoridade entre os Presságios, que o descreve como alguém que já matou ao menos um Presságio numerado (o Sexto, Gyotto) e, possivelmente, outro (Gauss, supostamente ligado ao misterioso [[ankiquilarke|Ankiquilarke]]) — ainda que os registros históricos oficiais atribuam essa segunda morte a um tal \"Gale Akmenos\". Foi sequestrado, torturado e quase destruído por [[lorde-krauser|Lorde Krauser]] antes do início da busca do grupo por ele; libertado da corrupção mágica que o consumia apenas pelo sacrifício final de Calista.",
       "Vínculos": [
         { slug: "kiana", nome: "Kiana", relacao: "Aprendiz" },
-        { slug: "calista-vanshee", nome: "Calista Vanshee", relacao: "Esposa falecida" },
-        { slug: "kael", nome: "Kael", relacao: "Melhor amigo falecido" },
-        { slug: "rurik", nome: "Rurik", relacao: "Pai" },
-        { slug: "o-mascarado", nome: "O Mascarado", relacao: "Reverencia-o; relação não esclarecida" }
+        { slug: "calista-vanshee", nome: "Calista Vanshee", relacao: "Esposa" },
+        { slug: "kael", nome: "Kael", relacao: "Melhor amigo" },
+        { slug: "rurik", nome: "Rurik", relacao: "Pai" }
       ],
       "Aparência": "Traços élficos marcados, cabelos brancos longos presos, veste tons de branco e azul ou um sobretudo pesado; postura de \"viajante antigo\".",
       "Feitos": "Matou [[gyotto|Gyotto]], o Sexto Presságio — o mesmo \"garoto da tinta\" responsável pelo massacre do orfanato de Kiana. Resgatou e criou Kiana. Possivelmente matou também o Presságio Gauss. Foi capturado por Krauser. Libertado pelo sacrifício de Calista. Derrotou [[lorde-krauser|Lorde Krauser]] em combate direto, culminando num golpe surpreendente de fogo branco-dourado chamado \"Punho Flamejante\".",
@@ -146,9 +145,8 @@ const ENTITIES = {
       "Biografia": "Esposa de [[viktor-vanshee|Viktor Vanshee]], natural de [[emberfall|EmberFall]], onde resolvia \"assuntos pendentes da família\" antes do início da trama. Guerreira e arqueira de precisão extraordinária, com conhecimento de runas (embora inferior ao de Viktor). Contou ao grupo a lenda de Kynare e o Corvo Celeste para explicar a natureza dos [[termo-pressagio|Presságios]]. Ao ser atingida pelo cristal vermelho de [[lorde-krauser|Lorde Krauser]], gritou \"MÃE!\" — um grito de agonia que sugere um trauma ou vínculo não resolvido com a própria mãe, jamais esclarecido no volume. No clímax da batalha final, sacrificou a própria vida beijando Viktor para transferir para si a corrupção mágica (as cicatrizes negras) que o consumia, purificando-o ao custo da própria morte.",
       "Vínculos": [
         { slug: "viktor-vanshee", nome: "Viktor Vanshee", relacao: "Marido" },
-        { slug: "kiana", nome: "Kiana", relacao: "Quase-irmã mais velha" },
-        { slug: "kael", nome: "Kael", relacao: "Amigo do casal, falecido" },
-        { slug: null, nome: "Sua mãe", relacao: "Vínculo não resolvido; mencionada só em um grito de agonia" }
+        { slug: "kiana", nome: "Kiana", relacao: "Quase-irmã" },
+        { slug: "kael", nome: "Kael", relacao: "Amigo" }
       ],
       "Aparência": "Cabelos ruivos ondulados, presença segura e \"maior que a própria vida\".",
       "Feitos": "Resgatou o grupo preso no [[vale-das-flores-sangrentas|Vale das Flores Sangrentas]]. Derrotou a essência de vento da criatura elemental. Investigou [[lorde-krauser|Lorde Krauser]] junto a Kiana em [[hikari|Hikari]]. Lutou bravamente contra Krauser até ser mortalmente ferida. Sacrificou-se para purificar e salvar Viktor.",
@@ -165,14 +163,13 @@ const ENTITIES = {
     nome: "Yuto",
     epiteto: "O ronin de passagem",
     status: "unknown",
-    statusLabel: "Destino incerto após o ritual final",
+    statusLabel: "Desconhecido",
     imagem: "Imagens/Yuto.jpeg",
     resumo: "Ronin viajante que cruza o caminho do grupo em Hikari, em busca de alguém. Luta com maestria puramente marcial.",
     campos: {
       "Biografia": "Ronin viajante que cruza o caminho do grupo em [[hikari|Hikari]] \"por um motivo parecido\" ao deles — em busca de alguém, sem maiores detalhes revelados neste volume. Sereno e observador, promete a [[darin-leafheart|Darin]] que \"seus caminhos se cruzarão novamente\" — presságio que se cumpre quando reaparece, providencialmente, durante o ataque de sombras ao festival.",
       "Vínculos": [
-        { slug: "darin-leafheart", nome: "Darin Leafheart", relacao: "Aliado de combate" },
-        { slug: null, nome: "Restante do grupo", relacao: "Aliados temporários" }
+        { slug: "darin-leafheart", nome: "Darin Leafheart", relacao: "Aliado" }
       ],
       "Aparência": "Haori cor de terracota com padrões de ondas negras, quimono azul-escuro, cachecol xadrez cinza, duas katanas embainhadas, cabelo negro com mechas azul e vermelho preso em rabo de cavalo lateral alto, um pequeno galho mascado no canto da boca, curativo no nariz sugerindo brigas recentes.",
       "Feitos": "Salvou Darin de um golpe fatal durante o ataque de sombras em [[hikari|Hikari]]. Derrotou, em conjunto com Darin, uma criatura de sombra gigante. Percebeu que a origem do ataque vinha do castelo — \"o coração desse pesadelo\".",
@@ -185,18 +182,17 @@ const ENTITIES = {
     type: "personagem",
     nome: "Lorde Krauser",
     epiteto: "O verdadeiro Quinto Presságio",
-    status: "destroyed",
-    statusLabel: "Destruído",
+    status: "dead",
+    statusLabel: "Morto",
     imagem: null,
     resumo: "Draconato rejeitado pelo próprio pai, tornou-se Presságio e governou Hikari por dez anos sob identidade forjada.",
     campos: {
       "Biografia": "Nasceu com traços Draconato visíveis desde o berço. Seu pai humano o rejeitou com violência, chamando-o de \"monstro\" e \"dragão\", e assassinou a mãe de Krauser, Layla, estrangulando-a diante do próprio filho. O jovem Krauser reagiu incinerando o pai vivo com uma rajada de fogo — seu primeiro uso conhecido de poder. Tornou-se, com o tempo, um dos [[termo-pressagio|Presságios]]: seres que venderam o próprio livre-arbítrio por poder a serviço de uma entidade conhecida apenas como \"[[a-presenca|a Presença]]\" ou \"o Mestre\". Já adulto, encontrou na floresta uma criança rejeitada com poderes de \"tinta negra\" — [[gyotto|Gyotto]] — e a corrompeu deliberadamente, reproduzindo, sem hesitar, o mesmo ciclo de abuso que o formara. Anos depois, o já corrompido Gyotto destruiria o orfanato onde [[kiana|Kiana]] crescia, tornando Krauser indiretamente responsável pela morte de [[tia-lanis|Tia Lanis]], [[emma|Emma]] e as demais crianças. Por ser considerado \"o Presságio mais fraco\" do grupo, foi humilhado e exilado por \"[[o-mascarado|o Mascarado]]\" para a cidadezinha de [[hikari|Hikari]], com ordens de assassinar o Lorde local, tomar seu lugar e vigiar secretamente a região. Governou como um \"Lorde heroico\" fabricado por dez anos, orquestrando em segredo o sequestro e a tortura de [[viktor-vanshee|Viktor Vanshee]] através de um Presságio-isca (o \"encapuzado\"/metamorfo).",
       "Vínculos": [
-        { slug: null, nome: "Layla", relacao: "Mãe falecida" },
-        { slug: null, nome: "O pai", relacao: "Falecido; morto pelo próprio Krauser" },
-        { slug: "o-mascarado", nome: "O Mascarado", relacao: "Superior direto" },
-        { slug: "gyotto", nome: "Gyotto", relacao: "Vítima que corrompeu" },
-        { slug: "viktor-vanshee", nome: "Viktor Vanshee", relacao: "Inimigo declarado" }
+        { slug: null, nome: "Layla", relacao: "Mãe" },
+        { slug: "o-mascarado", nome: "O Mascarado", relacao: "Superior" },
+        { slug: "gyotto", nome: "Gyotto", relacao: "Corrompido por ele" },
+        { slug: "viktor-vanshee", nome: "Viktor Vanshee", relacao: "Inimigo" }
       ],
       "Aparência": "Híbrido humano-Draconato: metade do rosto humana, de traços nobres e olheiras de exaustão; a outra metade coberta por escamas rígidas, com um olho reptiliano. Veste capa azul profunda, colete de couro utilitário e uma ombreira metálica no lado humano do corpo. Em combate, revela escamas enegrecidas e placas ósseas mais extensas.",
       "Feitos": "Governou [[hikari|Hikari]] por cerca de dez anos sob identidade forjada. Corrompeu [[gyotto|Gyotto]], ainda criança, plantando a semente da tragédia que destruiria o orfanato de Kiana. Orquestrou o sequestro e a tortura de Viktor Vanshee. Matou [[calista-vanshee|Calista Vanshee]]. Feriu gravemente Kiana. Invocou, com o próprio corpo como componente ritual, o feitiço \"[[o-limbo|Oblitus Limbo]]\", abrindo um portal que arrastou todo o grupo protagonista para dentro do Limbo.",
@@ -214,17 +210,14 @@ const ENTITIES = {
     nome: "Gyotto",
     epiteto: "O garoto da tinta · o Sexto Presságio",
     status: "dead",
-    statusLabel: "Morto (antes do início da trama)",
+    statusLabel: "Morto",
     imagem: "Imagens/Gyotto.jpeg",
     resumo: "Criança rejeitada e corrompida por Krauser, transformada em arma. Destruiu o orfanato onde Kiana crescia.",
     campos: {
       "Biografia": "Criança rejeitada pelo mundo, encontrada por [[lorde-krauser|Krauser]] numa floresta aos sete anos de idade, já com os olhos marcados por \"globos de escuridão absoluta\" de pupilas azul-elétricas — sinal de um poder inato sobre uma substância negra e viscosa, semelhante a tinta. Krauser reconheceu nele o mesmo tipo de rejeição que sofrera na própria infância e o corrompeu deliberadamente, moldando-o à imagem do próprio trauma. Anos depois, já como o Sexto Presságio, um Gyotto adolescente — cerca de dezesseis anos — atacou o orfanato onde [[kiana|Kiana]] crescia, matando cuidadoras e crianças com jatos de tinta e um feitiço de sono em massa que adormeceu todas as crianças presentes, exceto Kiana. [[viktor-vanshee|Viktor Vanshee]] chegou durante o massacre e o matou, empalando-o com uma estaca de gelo cristalino — tarde demais para salvar qualquer outra pessoa, mas a tempo de resgatar a única sobrevivente. Sua morte só é mencionada diretamente muito depois, num conselho secreto de Presságios testemunhado por Kiana dentro da mente de Krauser: ali, o Mascarado revela que Gyotto morria \"enquanto procurava pelo [[o-fragmento|Fragmento]]\", e que sua proximidade com Viktor no momento da morte \"não é coincidência\".",
       "Vínculos": [
         { slug: "lorde-krauser", nome: "Lorde Krauser", relacao: "Corruptor" },
-        { slug: "viktor-vanshee", nome: "Viktor Vanshee", relacao: "Matador" },
-        { slug: "tia-lanis", nome: "Tia Lanis", relacao: "Vítima" },
-        { slug: "emma", nome: "Emma", relacao: "Vítima" },
-        { slug: "kiana", nome: "Kiana", relacao: "Única sobrevivente do seu ataque" }
+        { slug: "viktor-vanshee", nome: "Viktor Vanshee", relacao: "Inimigo" }
       ],
       "Aparência": "Quando criança na floresta: magro, maltrapilho, olhos de escuridão absoluta com pupilas azul-elétricas. Anos depois, no orfanato: um adolescente magro, sem camisa, calça marrom gasta, os mesmos olhos inumanos — capaz de se dissolver em tinta negra e branca, viscosa, que atravessa paredes como se a matéria sólida fosse ilusória.",
       "Feitos": "Destruiu o orfanato de Kiana, matando Tia Lanis, Emma e todas as demais crianças presentes, exceto Kiana. Procurava por \"[[o-fragmento|o Fragmento]]\" no momento de sua morte — possivelmente ligado à [[peca-perdida|Peça Perdida]] que a Presença busca no prólogo do livro.",
@@ -239,8 +232,8 @@ const ENTITIES = {
     type: "personagem",
     nome: "Rurik",
     epiteto: "Dono da Taverna de Rurik, pai de Viktor",
-    status: "unknown",
-    statusLabel: "Vivo (Vardun)",
+    status: "alive",
+    statusLabel: "Vivo",
     imagem: null,
     resumo: "Dono da taverna que serve de coração social de Vardun. Revelado como pai de Viktor Vanshee.",
     campos: {
@@ -253,7 +246,7 @@ const ENTITIES = {
     nome: "Tia Lanis",
     epiteto: "Cuidadora do orfanato",
     status: "dead",
-    statusLabel: "Morta (antes do início da trama)",
+    statusLabel: "Morta",
     imagem: null,
     resumo: "Cuidadora que encontrou e criou Kiana no orfanato. Morta no ataque de Gyotto.",
     campos: {
@@ -269,7 +262,7 @@ const ENTITIES = {
     nome: "Emma",
     epiteto: "Melhor amiga de Kiana no orfanato",
     status: "dead",
-    statusLabel: "Morta (antes do início da trama)",
+    statusLabel: "Morta",
     imagem: null,
     resumo: "Melhor amiga de infância de Kiana no orfanato. Morta no ataque de Gyotto.",
     campos: {
@@ -282,7 +275,7 @@ const ENTITIES = {
     nome: "Kael",
     epiteto: "Melhor amigo de Viktor",
     status: "dead",
-    statusLabel: "Morto, circunstâncias contestadas",
+    statusLabel: "Morto",
     imagem: null,
     resumo: "Melhor amigo de Viktor e Calista, morto em circunstâncias nunca totalmente esclarecidas.",
     campos: {
@@ -294,8 +287,8 @@ const ENTITIES = {
     type: "personagem",
     nome: "Matilde",
     epiteto: "Anciã de Hikari",
-    status: "unknown",
-    statusLabel: "Viva (Hikari)",
+    status: "alive",
+    statusLabel: "Viva",
     imagem: null,
     resumo: "Idosa de Hikari que Kiana ajuda com uma lista de compras simbólicas, em troca de uma pulseira dourada.",
     campos: {
@@ -314,8 +307,8 @@ const ENTITIES = {
     campos: {
       "Biografia": "Figura de autoridade entre os [[termo-pressagio|Presságios]], com chifres esculpidos em osso antigo. Comanda reuniões do conselho secreto, decide punições — como o exílio de [[lorde-krauser|Krauser]] para [[hikari|Hikari]] — e reverencia [[viktor-vanshee|Viktor Vanshee]] quase como uma divindade, associando-o ao evento do \"[[ankiquilarke|Ankiquilarke]]\" e à morte do Presságio Gauss. A natureza exata dessa reverência não é esclarecida no Volume 1.",
       "Vínculos": [
-        { slug: "lorde-krauser", nome: "Lorde Krauser", relacao: "Subordinado, exilado por sua ordem" },
-        { slug: "viktor-vanshee", nome: "Viktor Vanshee", relacao: "Reverenciado por ele" }
+        { slug: "lorde-krauser", nome: "Lorde Krauser", relacao: "Subordinado" },
+        { slug: "viktor-vanshee", nome: "Viktor Vanshee", relacao: "Reverencia-o" }
       ]
     }
   },
