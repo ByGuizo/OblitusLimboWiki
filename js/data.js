@@ -14,10 +14,10 @@ const ENTITIES = {
     epiteto: "A bardo de [[vardun]] · narradora e protagonista",
     status: "alive",
     statusLabel: "Viva",
-    imagem: "Imagens/Kiana.jpeg",
+    imagem: "Imagens/Personagens/Kiana.jpeg",
     resumo: "Bardo meia-orc de cabelos brancos e olhos vermelhos, criada em um orfanato e resgatada por Viktor Vanshee. Carrega um poder ainda sem nome.",
     campos: {
-      "Biografia": "Encontrada ainda bebê na orla de uma \"floresta proibida\" por [[tia-lanis|Tia Lanis]], cuidadora de um orfanato onde cresceu sofrendo o preconceito de crianças e adultos que a chamavam de \"aberração\" por sua origem não-humana. Sua melhor amiga no orfanato, [[emma|Emma]], e a própria Tia Lanis foram mortas quando o local foi atacado e incendiado por [[gyotto|Gyotto]], o \"garoto da tinta\" — um agente corrompido por [[lorde-krauser|Lorde Krauser]] anos antes. Kiana foi a única criança presente que não sucumbiu ao feitiço de sono do atacante, o que levanta dúvidas sobre sua real natureza. [[viktor-vanshee|Viktor Vanshee]] chegou tarde demais para salvar qualquer outra pessoa, mas matou Gyotto ali mesmo e resgatou Kiana, tornando-se, dali em diante, seu mentor e figura paterna. Kiana reprimiu essa memória por completo — só a recuperou quando a magia de tortura de Krauser rompeu, sem querer, seu próprio bloqueio traumático.",
+      "Biografia": "Encontrada por [[tia-lanis|Tia Lanis]] na orla de uma \"floresta proibida\" com apenas alguns dias de vida, envolta em panos estranhos. Não havia bilhete algum: Lanis soube seu nome por um sussurro da própria alma. Os diretores do [[o-orfanato|orfanato]] não a queriam — viam sua aparência como \"o prenúncio de uma maldição\" —, mas Lanis bateu o pé e a manteve. Cresceu como a única criança não-humana entre humanas, chamada de \"aberração\", espancada pelo valentão [[tyler|Tyler]] e protegida apenas por [[emma|Emma]] e pela própria Lanis. Aprendeu a ler e a tocar [[ukulele-de-kiana|ukulele]] ali. Numa única noite, perdeu tudo: [[gyotto|Gyotto]], o Sexto Presságio, atacou o orfanato e matou todos — exceto ela, a única imune ao seu feitiço de sono. [[viktor-vanshee|Viktor Vanshee]] chegou tarde demais para salvar qualquer outra pessoa, matou Gyotto e a resgatou, tornando-se seu mentor e figura paterna. Kiana reprimiu essa memória inteira por anos; só a recuperou quando a magia de tortura de [[lorde-krauser|Krauser]] rompeu, sem querer, seu próprio bloqueio traumático.",
       "Vínculos": [
         { slug: "viktor-vanshee", nome: "Viktor Vanshee", relacao: "Mentor" },
         { slug: "near-shade", nome: "Near Shade", relacao: "Interesse romântico" },
@@ -26,10 +26,14 @@ const ENTITIES = {
         { slug: "rurik", nome: "Rurik", relacao: "Figura paterna adotiva" },
         { slug: "calista-vanshee", nome: "Calista Vanshee", relacao: "Aliada" },
         { slug: "tia-lanis", nome: "Tia Lanis", relacao: "Cuidadora" },
-        { slug: "emma", nome: "Emma", relacao: "Melhor amiga" }
+        { slug: "emma", nome: "Emma", relacao: "Melhor amiga" },
+        { slug: "velha-mira", nome: "Velha Mira", relacao: "Avó de coração" },
+        { slug: "helena", nome: "Helena", relacao: "Hospedeira" },
+        { slug: "matilde", nome: "Matilde", relacao: "Neta de coração" }
       ],
-      "Aparência": "Meia-orc, cabelos brancos longos, olhos vermelhos brilhantes mesmo no escuro. Carrega sempre um [[ukulele-de-kiana|ukulele]] e uma [[adaga-de-kael|adaga]].",
-      "Feitos": "Massacrou sozinha mais de vinte homens na Taverna de Darius, em [[vardun|Vardun]], num episódio de fúria amnésica (o \"apagão\"). Ajudou a derrotar a criatura multi-elemental do [[vale-das-flores-sangrentas|Vale das Flores Sangrentas]]. Confrontou o Falso Presságio nas ruas de [[hikari|Hikari]]. Lutou no ritual da caverna contra o Presságio-isca. Enfrentou diretamente o verdadeiro Quinto Presságio ([[lorde-krauser|Lorde Krauser]]), desenvolvendo em pleno combate a técnica [[manifestacao-harmonica|Manifestação Harmônica]], decisiva para a derrota final do inimigo.",
+      "Aparência": "Meia-orc de \"beleza improvável\". Cabelos brancos longos que descem \"como neve recém-assentada\" sobre ombros fortes; olhos vermelhos que brilham mesmo no escuro, \"profundos como brasas guardando segredos demais\". Carrega sempre o [[ukulele-de-kiana|ukulele]] às costas e a [[adaga-de-kael|adaga de Kael]] à cintura.",
+      "Personalidade": "Impulsiva, teimosa, leitora voraz — aprendeu a ler sozinha, catando páginas rasgadas trazidas pelo vento. Odeia não conseguir controlar o próprio rubor. Protege os outros até de si mesma: quando criança, mentiu para [[tia-lanis|Tia Lanis]] dizendo que havia caído sobre o ukulele, só para não denunciar [[tyler|Tyler]], o menino que a espancava.",
+      "Feitos": "Massacrou sozinha mais de vinte homens na taverna de [[darius|Darius]], em [[vardun|Vardun]], num episódio de fúria amnésica (o \"apagão\"). Sustentou o grupo com magia de bardo contra a [[essencia-mutavel|criatura multi-elemental]] do [[vale-das-flores-sangrentas|Vale das Flores Sangrentas]]. Confrontou o [[falso-pressagio|Falso Presságio]] nas ruas de [[hikari|Hikari]] e o perseguiu pelos telhados. Cantou \"O Alvorecer da Ausência\" diante de toda a cidade. Enfrentou o verdadeiro Quinto Presságio ([[lorde-krauser|Lorde Krauser]]), invadiu sua mente, roubou seu [[colar-de-cristal-vermelho|cristal]] — e o derrotou por dentro com a [[manifestacao-harmonica|Manifestação Harmônica]].",
       "Status atual": "Gravemente ferida (perdeu um braço e sofreu um ferimento abdominal grave, estabilizados por [[viktor-vanshee|Viktor]]) e sugada para dentro do [[o-limbo|Limbo]] junto com o restante do grupo, no ritual final de Krauser.",
       "Sigilo manifestado": "Não confirmado. Ela própria declara não ter despertado formalmente seu [[sigilos-da-alma|Sigilo da Alma]]. Demonstra, porém, manifestações latentes de força e velocidade sobre-humanas ligadas a estados de fúria e amnésia, além da técnica [[manifestacao-harmonica|Manifestação Harmônica]] — cuja relação exata com um possível Sigilo permanece em aberto. Ver [[estudo-de-caso-kiana|Estudo de Caso: o Sigilo da Alma em Kiana]]."
     },
@@ -45,7 +49,7 @@ const ENTITIES = {
     epiteto: "O elfo da máscara",
     status: "alive",
     statusLabel: "Vivo",
-    imagem: "Imagens/NearShade.jpeg",
+    imagem: "Imagens/Personagens/NearShade.jpeg",
     resumo: "Elfo ladino de máscara preta, amigo de Kiana há três anos. Raramente mostra o rosto ou fala sobre o próprio passado.",
     campos: {
       "Biografia": "Elfo ladino que nunca frequentou escola formal e só aprendeu a ler aos treze anos — um detalhe que carrega como vergonha silenciosa. Cerca de três anos de amizade com [[kiana|Kiana]] antecedem o início da história. Raramente remove a máscara preta que cobre metade de seu rosto; fazê-lo diante de Kiana, em [[hikari|Hikari]], é um dos primeiros sinais visíveis de intimidade crescente entre os dois.",
@@ -67,7 +71,7 @@ const ENTITIES = {
     epiteto: "O tiefling exilado",
     status: "alive",
     statusLabel: "Vivo",
-    imagem: "Imagens/AmnonAkmenos.jpeg",
+    imagem: "Imagens/Personagens/AmnonAkmenos.jpeg",
     resumo: "Tiefling de origem burguesa, expulso da própria família por uma acusação injusta. Esconde a dor atrás de deboche e bebida.",
     campos: {
       "Biografia": "Tiefling de origem burguesa, expulso da própria família após ser injustamente acusado de roubar a \"[[reliquia-de-nostradamus|Relíquia de Nostradamus]]\". Esconde a própria dor atrás de deboche e bebida constante. Seu sobrenome ecoa de forma intrigante em uma memória revelada tardiamente sobre a história oficial dos Presságios, onde um certo \"Gale Akmenos\" é creditado — talvez falsamente — pela morte do Presságio Gauss.",
@@ -90,7 +94,7 @@ const ENTITIES = {
     epiteto: "O druida dos lobos",
     status: "alive",
     statusLabel: "Vivo",
-    imagem: "Imagens/Darin.jpeg",
+    imagem: "Imagens/Personagens/Darin.jpeg",
     resumo: "Druida humano cujo vínculo com lobos moldou um raro Sigilo Autoformado. Alterna euforia etílica e fuga da própria mente.",
     campos: {
       "Biografia": "Druida humano que alterna entre a euforia etílica e uma \"fuga desesperada da própria mente\". Nunca herdou sigilo algum dos pais — foi sua conexão e paixão por lobos, cultivada desde a infância, que moldou sua própria alma em torno desse instinto, num raro caso de [[sigilos-da-alma|sigilo]] inteiramente autoformado.",
@@ -110,23 +114,25 @@ const ENTITIES = {
   "viktor-vanshee": {
     type: "personagem",
     nome: "Viktor Vanshee",
-    epiteto: "O Pilar do Gelo · Mestre do Gelo",
+    epiteto: "O Pilar do Gelo · Mestre do Gelo · \"o picolé\" (deboche dos Presságios)",
     status: "alive",
     statusLabel: "Vivo",
-    imagem: "Imagens/ViktorVanshee.jpeg",
+    imagem: "Imagens/Personagens/ViktorVanshee.jpeg",
     resumo: "Meio-elfo nascido com o Sigilo do Gelo já desperto — um caso raríssimo de Herança Celestial. Mentor e salvador de Kiana.",
     campos: {
-      "Biografia": "Meio-elfo que nasceu já com seu Sigilo desperto, um caso raríssimo de Herança Celestial. Anos antes do início da trama, chegou tarde demais para impedir o massacre de um orfanato, mas matou o atacante — [[gyotto|Gyotto]], o Sexto Presságio, então ainda conhecido apenas como \"o garoto da tinta\" — e resgatou a única sobrevivente, [[kiana|Kiana]], tornando-se seu mentor. Casado com [[calista-vanshee|Calista Vanshee]]. Perdeu o melhor amigo, [[kael|Kael]], em circunstâncias contestadas — Viktor afirma que goblins o mataram, mas o Falso Presságio reivindica ter matado Kael pessoalmente, uma contradição jamais resolvida neste volume. É reverenciado quase como uma divindade por \"[[o-mascarado|o Mascarado]]\", figura de autoridade entre os Presságios, que o descreve como alguém que já matou ao menos um Presságio numerado (o Sexto, Gyotto) e, possivelmente, outro (Gauss, supostamente ligado ao misterioso [[ankiquilarke|Ankiquilarke]]) — ainda que os registros históricos oficiais atribuam essa segunda morte a um tal \"Gale Akmenos\". Foi sequestrado, torturado e quase destruído por [[lorde-krauser|Lorde Krauser]] antes do início da busca do grupo por ele; libertado da corrupção mágica que o consumia apenas pelo sacrifício final de Calista.",
+      "Biografia": "Meio-elfo que nasceu já com seu Sigilo desperto — um caso raríssimo de **Herança Celestial**. Anos antes da trama, chegou tarde demais para impedir o massacre de um [[o-orfanato|orfanato]], mas matou o atacante ([[gyotto|Gyotto]], o Sexto Presságio) e resgatou a única sobrevivente, [[kiana|Kiana]], tornando-se seu mentor. Casado com [[calista-vanshee|Calista Vanshee]]; filho de [[rurik|Rurik]]. Perdeu o melhor amigo, [[kael|Kael]], em circunstâncias contestadas — Viktor afirma que goblins o mataram, mas o [[falso-pressagio|Falso Presságio]] reivindica tê-lo matado pessoalmente e o acusa de ser \"um mestre em pintar tragédias para esconder a própria podridão\". A contradição jamais é resolvida neste volume. Foi sequestrado, torturado e quase destruído por [[lorde-krauser|Krauser]] antes do início da busca; só foi libertado da corrupção mágica que o consumia pelo sacrifício final de Calista.",
+      "O que os Presságios querem dele": "Entre os [[termo-pressagio|Presságios]], seu nome inspira reverência e medo. O [[o-mascarado|Mascarado]] o chama de \"o peixe grande\", ordena que ninguém o toque — \"precisamos do Vanshee com vida por enquanto\" — e declara ter **\"planos para o que corre nas veias daquele homem\"**. Um detalhe que o Volume 1 nunca explica, mas que aponta para algo em seu sangue ou em sua linhagem. É também ele o mais provável \"[[aquele-que-sabe|Aquele que Sabe]]\" do prólogo.",
       "Vínculos": [
         { slug: "kiana", nome: "Kiana", relacao: "Aprendiz" },
         { slug: "calista-vanshee", nome: "Calista Vanshee", relacao: "Esposa" },
         { slug: "kael", nome: "Kael", relacao: "Melhor amigo" },
-        { slug: "rurik", nome: "Rurik", relacao: "Pai" }
+        { slug: "rurik", nome: "Rurik", relacao: "Pai" },
+        { slug: "gauss", nome: "Gauss", relacao: "Matou-o (segundo o Mascarado)" }
       ],
-      "Aparência": "Traços élficos marcados, cabelos brancos longos presos, veste tons de branco e azul ou um sobretudo pesado; postura de \"viajante antigo\".",
-      "Feitos": "Matou [[gyotto|Gyotto]], o Sexto Presságio — o mesmo \"garoto da tinta\" responsável pelo massacre do orfanato de Kiana. Resgatou e criou Kiana. Possivelmente matou também o Presságio Gauss. Foi capturado por Krauser. Libertado pelo sacrifício de Calista. Derrotou [[lorde-krauser|Lorde Krauser]] em combate direto, culminando num golpe surpreendente de fogo branco-dourado chamado \"Punho Flamejante\".",
+      "Aparência": "Trinta e poucos anos. Traços élficos acentuando o rosto angular, longos cabelos brancos presos de um jeito simples, força rústica e contida. Veste tons de branco e azul — \"trajes de um viajante antigo que carrega histórias que ele raramente se permite contar\". Mãos cobertas de cicatrizes rudes.",
+      "Feitos": "Matou [[gyotto|Gyotto]], o Sexto Presságio, empalando-o com uma estaca de gelo cristalino. Resgatou e criou [[kiana|Kiana]]. Segundo o Mascarado, também tirou a vida do Presságio [[gauss|Gauss]] — feito que os livros de história atribuem falsamente a [[gale-akmenos|Gale Akmenos]]. Sobreviveu ao cativeiro de Krauser e o derrotou em combate direto: envolveu seu braço em gelo negro até o osso estalar, empalou-o numa floresta de lanças de gelo e finalizou com o \"Punho Flamejante\".",
       "Status atual": "Extremamente debilitado após a batalha; sugado para o [[o-limbo|Limbo]] junto com o restante do grupo pelo ritual final de Krauser.",
-      "Sigilo manifestado": "Manipulação do Gelo (Herança Celestial, ligada ao evento conhecido como \"[[ankiquilarke|Ankiquilarke]]\"). Demonstrou também, ao final da luta contra Krauser, um golpe de fogo branco e dourado — \"Punho Flamejante\" — cuja relação com seu Sigilo de gelo permanece sem explicação no volume."
+      "Sigilo manifestado": "**Manipulação do Gelo** ([[sigilos-da-alma|Herança Celestial]]). Sua aura chega a ocupar um salão inteiro e a trincar metal à distância. Ao final da luta, porém, demonstrou algo inexplicável: o **\"Punho Flamejante\"**, uma explosão de chamas brancas e douradas — \"o Mestre do Gelo manipulando o sol\" —, um golpe que seu próprio corpo não deveria ser capaz de conter e que lhe queimou a pele. A natureza dessa segunda chama nunca é explicada."
     },
     quotes: [
       { text: "Você é só uma marionete, Krauser. Não sente as cordas que possui em seu pescoço.", source: "Viktor Vanshee", context: "Confronto final na ponte de gelo, antes do golpe decisivo contra o verdadeiro Quinto Presságio." }
@@ -139,20 +145,24 @@ const ENTITIES = {
     epiteto: "A arqueira de [[emberfall|EmberFall]]",
     status: "dead",
     statusLabel: "Morta",
-    imagem: "Imagens/CalistaVanshee.jpeg",
+    imagem: "Imagens/Personagens/CalistaVanshee.jpeg",
     resumo: "Esposa de Viktor Vanshee, guerreira e arqueira de precisão extraordinária. Sacrificou-se para purificar o marido da corrupção de Krauser.",
     campos: {
-      "Biografia": "Esposa de [[viktor-vanshee|Viktor Vanshee]], natural de [[emberfall|EmberFall]], onde resolvia \"assuntos pendentes da família\" antes do início da trama. Guerreira e arqueira de precisão extraordinária, com conhecimento de runas (embora inferior ao de Viktor). Contou ao grupo a lenda de Kynare e o Corvo Celeste para explicar a natureza dos [[termo-pressagio|Presságios]]. Ao ser atingida pelo cristal vermelho de [[lorde-krauser|Lorde Krauser]], gritou \"MÃE!\" — um grito de agonia que sugere um trauma ou vínculo não resolvido com a própria mãe, jamais esclarecido no volume. No clímax da batalha final, sacrificou a própria vida beijando Viktor para transferir para si a corrupção mágica (as cicatrizes negras) que o consumia, purificando-o ao custo da própria morte.",
+      "Biografia": "Esposa de [[viktor-vanshee|Viktor Vanshee]], natural de [[emberfall|EmberFall]], onde resolvia \"assuntos pendentes da família\" quando a trama começa. Arqueira de precisão extraordinária, conhecedora de [[runas|runas]] — \"não tanto quanto o Viktor, claro\". É ela quem resgata o grupo do [[vale-das-flores-sangrentas|Vale]], quem conta a lenda de Kynare, quem desconfia de [[lorde-krauser|Krauser]] primeiro e quem lidera a investigação em [[hikari|Hikari]]. No clímax, sacrificou a própria vida beijando Viktor para transferir para si a corrupção mágica (as cicatrizes negras) que o consumia — purificando-o ao custo da própria morte.",
+      "Personalidade": "Prática, afiada e maternal a seu modo — administra o dinheiro do grupo, impõe horários e é chamada por [[near-shade|Near]], com humor, de \"a responsável\". É a primeira a sentir que algo está errado em Krauser: \"Há um silêncio em Krauser que me incomoda.\"",
       "Vínculos": [
         { slug: "viktor-vanshee", nome: "Viktor Vanshee", relacao: "Marido" },
         { slug: "kiana", nome: "Kiana", relacao: "Quase-irmã" },
-        { slug: "kael", nome: "Kael", relacao: "Amigo" }
+        { slug: "kael", nome: "Kael", relacao: "Amigo" },
+        { slug: null, nome: "Sua mãe", relacao: "Trauma não esclarecido" }
       ],
-      "Aparência": "Cabelos ruivos ondulados, presença segura e \"maior que a própria vida\".",
-      "Feitos": "Resgatou o grupo preso no [[vale-das-flores-sangrentas|Vale das Flores Sangrentas]]. Derrotou a essência de vento da criatura elemental. Investigou [[lorde-krauser|Lorde Krauser]] junto a Kiana em [[hikari|Hikari]]. Lutou bravamente contra Krauser até ser mortalmente ferida. Sacrificou-se para purificar e salvar Viktor.",
+      "Aparência": "Cabelos ruivos ondulados, frequentemente presos num rabo de cavalo perfeito que \"parecia pegar fogo contra a luz pálida\". Armadura sempre polida. Presença segura e \"maior que a própria vida\". No festival, aparece em vestido azul-marinho com prata — \"a personificação da lua\".",
+      "Feitos": "Resgatou o grupo preso no [[vale-das-flores-sangrentas|Vale das Flores Sangrentas]] e decifrou as [[runas|runas]] da barreira. Derrotou a essência de vento da [[essencia-mutavel|criatura elemental]], voando impulsionada pelo próprio vento dela. Enfrentou [[lorde-krauser|Lorde Krauser]] em audiência sem se intimidar. Lutou contra ele até ser mortalmente ferida. Sacrificou-se para purificar e salvar [[viktor-vanshee|Viktor]].",
       "Status atual": "Morta — sacrifício heroico no clímax do Volume 1.",
-      "Sigilo manifestado": "Manipulação de Fios de Sangue, canalizada e limitada com segurança através do próprio arco."
+      "Sigilo manifestado": "**Manipulação de Fios de Sangue**, canalizada e limitada com segurança através do próprio **arco** — o exemplo modelar de como um [[sigilos-da-alma|Sigilo]] instável é domado por um limitador físico. Em combate, dispara flechas \"imbuídas em fios carmesins\" que restringem os movimentos do inimigo; contra Krauser, usou os fios como agulhas de aço."
     },
+    calloutTitle: "O grito não explicado",
+    callout: "Ao ser atingida pelo [[colar-de-cristal-vermelho|cristal vermelho]] de [[lorde-krauser|Krauser]] — o artefato que desenterra memórias reprimidas à força —, Calista gritou uma única palavra: **\"MÃE!\"**. Um grito de agonia que aponta para um trauma jamais esclarecido no Volume 1. O mesmo cristal que devolveu a [[kiana|Kiana]] a memória do orfanato arrancou de Calista algo que o leitor nunca chega a ver.",
     quotes: [
       { text: "Agora, Viktor, por favor... salve todo mundo. Salve a Kiana.", source: "Calista Vanshee", context: "Últimas palavras antes de beijar Viktor e transferir para si a corrupção mágica que o consumia." }
     ]
@@ -164,7 +174,7 @@ const ENTITIES = {
     epiteto: "O ronin de passagem",
     status: "unknown",
     statusLabel: "Desconhecido",
-    imagem: "Imagens/Yuto.jpeg",
+    imagem: "Imagens/Personagens/Yuto.jpeg",
     resumo: "Ronin viajante que cruza o caminho do grupo em Hikari, em busca de alguém. Luta com maestria puramente marcial.",
     campos: {
       "Biografia": "Ronin viajante que cruza o caminho do grupo em [[hikari|Hikari]] \"por um motivo parecido\" ao deles — em busca de alguém, sem maiores detalhes revelados neste volume. Sereno e observador, promete a [[darin-leafheart|Darin]] que \"seus caminhos se cruzarão novamente\" — presságio que se cumpre quando reaparece, providencialmente, durante o ataque de sombras ao festival.",
@@ -181,24 +191,28 @@ const ENTITIES = {
   "lorde-krauser": {
     type: "personagem",
     nome: "Lorde Krauser",
-    epiteto: "O verdadeiro Quinto Presságio",
+    epiteto: "O verdadeiro Quinto Presságio · \"Largato\" (deboche do conselho)",
     status: "dead",
     statusLabel: "Morto",
-    imagem: null,
+    imagem: "Imagens/Personagens/LordeKrauser.jpg",
     resumo: "Draconato rejeitado pelo próprio pai, tornou-se Presságio e governou Hikari por dez anos sob identidade forjada.",
     campos: {
-      "Biografia": "Nasceu com traços Draconato visíveis desde o berço. Seu pai humano o rejeitou com violência, chamando-o de \"monstro\" e \"dragão\", e assassinou a mãe de Krauser, Layla, estrangulando-a diante do próprio filho. O jovem Krauser reagiu incinerando o pai vivo com uma rajada de fogo — seu primeiro uso conhecido de poder. Tornou-se, com o tempo, um dos [[termo-pressagio|Presságios]]: seres que venderam o próprio livre-arbítrio por poder a serviço de uma entidade conhecida apenas como \"[[a-presenca|a Presença]]\" ou \"o Mestre\". Já adulto, encontrou na floresta uma criança rejeitada com poderes de \"tinta negra\" — [[gyotto|Gyotto]] — e a corrompeu deliberadamente, reproduzindo, sem hesitar, o mesmo ciclo de abuso que o formara. Anos depois, o já corrompido Gyotto destruiria o orfanato onde [[kiana|Kiana]] crescia, tornando Krauser indiretamente responsável pela morte de [[tia-lanis|Tia Lanis]], [[emma|Emma]] e as demais crianças. Por ser considerado \"o Presságio mais fraco\" do grupo, foi humilhado e exilado por \"[[o-mascarado|o Mascarado]]\" para a cidadezinha de [[hikari|Hikari]], com ordens de assassinar o Lorde local, tomar seu lugar e vigiar secretamente a região. Governou como um \"Lorde heroico\" fabricado por dez anos, orquestrando em segredo o sequestro e a tortura de [[viktor-vanshee|Viktor Vanshee]] através de um Presságio-isca (o \"encapuzado\"/metamorfo).",
+      "Biografia": "Nasceu com traços Draconato visíveis desde o berço. Seu pai humano o rejeitou com violência — \"Eu não sou pai de um monstro... de um dragão!\" — e assassinou sua mãe, **Layla**, estrangulando-a diante do próprio filho. O menino reagiu incinerando o pai vivo com uma rajada de fogo: **criado no ódio, batizado no fogo**. Tornou-se, com o tempo, um dos [[termo-pressagio|Presságios]]. Já adulto, encontrou numa floresta uma criança rejeitada com poderes de tinta negra — [[gyotto|Gyotto]], de uns sete anos — e a corrompeu deliberadamente, reproduzindo sem hesitar o mesmo ciclo de abuso que o formara. Anos depois, o já corrompido Gyotto destruiria o [[o-orfanato|orfanato]] onde [[kiana|Kiana]] crescia, tornando Krauser o **autor indireto** da morte de [[tia-lanis|Tia Lanis]], [[emma|Emma]] e todas as crianças.",
+      "A gaiola de castigo": "Por ser considerado **o Presságio mais fraco**, foi humilhado e exilado pelo [[o-mascarado|Mascarado]] para [[hikari|Hikari]], com ordens de assassinar o Lorde local, tomar seu lugar e \"apodrecer lá\" até descobrir algo. Hikari **nunca foi um reino** para ele: era uma *gaiola de castigo*. Ainda assim, governou como um \"Lorde heroico\" fabricado por dez anos, conquistando a devoção genuína do povo — enquanto orquestrava em segredo o sequestro e a tortura de [[viktor-vanshee|Viktor Vanshee]] através do [[falso-pressagio|Falso Presságio]].",
       "Vínculos": [
         { slug: null, nome: "Layla", relacao: "Mãe" },
-        { slug: "o-mascarado", nome: "O Mascarado", relacao: "Superior" },
+        { slug: "o-mascarado", nome: "O Mascarado", relacao: "Superior e algoz" },
         { slug: "gyotto", nome: "Gyotto", relacao: "Corrompido por ele" },
+        { slug: "falso-pressagio", nome: "O Falso Presságio", relacao: "Peão" },
         { slug: "viktor-vanshee", nome: "Viktor Vanshee", relacao: "Inimigo" }
       ],
-      "Aparência": "Híbrido humano-Draconato: metade do rosto humana, de traços nobres e olheiras de exaustão; a outra metade coberta por escamas rígidas, com um olho reptiliano. Veste capa azul profunda, colete de couro utilitário e uma ombreira metálica no lado humano do corpo. Em combate, revela escamas enegrecidas e placas ósseas mais extensas.",
-      "Feitos": "Governou [[hikari|Hikari]] por cerca de dez anos sob identidade forjada. Corrompeu [[gyotto|Gyotto]], ainda criança, plantando a semente da tragédia que destruiria o orfanato de Kiana. Orquestrou o sequestro e a tortura de Viktor Vanshee. Matou [[calista-vanshee|Calista Vanshee]]. Feriu gravemente Kiana. Invocou, com o próprio corpo como componente ritual, o feitiço \"[[o-limbo|Oblitus Limbo]]\", abrindo um portal que arrastou todo o grupo protagonista para dentro do Limbo.",
-      "Status atual": "Destruído por [[viktor-vanshee|Viktor Vanshee]] no clímax do volume — mas seu golpe final, o ritual \"Oblitus Limbo\", foi bem-sucedido.",
-      "Sigilo manifestado": "Tentáculos do Abismo — quatro tentáculos negros e viscerais que rompem sua armadura pelas costas. Demonstrou também uma habilidade adicional chamada \"Armadura Arcana: Frio Absoluto\" (chamas azuis espectrais que neutralizam o gelo), cuja relação exata com seu Sigilo principal não é esclarecida."
+      "Aparência": "Híbrido humano-Draconato. Metade do rosto humana, de traços nobres e olheiras de exaustão; a outra metade coberta por escamas escuras e brilhantes, com um olho reptiliano. Cabelos longos, lisos e negros \"como piche\". [[kiana|Kiana]] o descreve como possuidor de \"uma **beleza terrível**\". Veste capa azul profunda, colete de couro utilitário e uma ombreira metálica no lado humano — roupas de general em campo, não de rei ornamentado.",
+      "Feitos": "Governou [[hikari|Hikari]] por dez anos sob identidade forjada. Corrompeu [[gyotto|Gyotto]] ainda criança. Orquestrou o sequestro e a tortura de Viktor. Matou [[calista-vanshee|Calista Vanshee]]. Feriu gravemente [[kiana|Kiana]]. Invocou, com o próprio corpo como componente, o ritual [[oblitus-limbo|Oblitus Limbo]].",
+      "Status atual": "**Destruído** — o corpo derretendo por dentro, corroído pela [[manifestacao-harmonica|Manifestação Harmônica]] de Kiana e estilhaçado pelo Punho Flamejante de [[viktor-vanshee|Viktor]]. Mas seu golpe final foi bem-sucedido.",
+      "Sigilo manifestado": "**Tentáculos do Abismo** — quatro tentáculos negros e viscerais que rompem sua armadura pelas costas. Demonstrou ainda a **\"Armadura Arcana: Frio Absoluto\"**: chamas azuis espectrais que não aquecem, mas consomem a própria existência do que tocam, anulando o gelo (\"Você não pode congelar o que já é o próprio zero!\"). A relação entre as duas habilidades não é esclarecida."
     },
+    calloutTitle: "Derrotado por uma canção que ele mesmo pediu",
+    callout: "Foi Krauser quem convidou [[kiana|Kiana]] ao palco no Festival de Honra (\"Ouvi dizer que a jovem tem talento\"). E foi a música dela — a [[manifestacao-harmonica|Manifestação Harmônica]] — que penetrou em suas células e agiu como um veneno estrutural, colapsando-o por dentro. O golpe que o matou foi, literalmente, **encomendado pela própria vítima**.",
     quotes: [
       { text: "Você luta com o coração, Kiana, e é por isso que vai perder! Corações pesados são lentos! Corações partidos são fáceis de esmagar!", source: "Lorde Krauser", context: "Durante o duelo no salão do trono, tentando desestabilizar Kiana logo após a morte de Calista." },
       { text: "Sanguis pro limine, anima pro vana... In tenebris aeternis, mundus dissolvitur. Aperi portam limbi, ubi lux moritur... OBLITUS LIMBO!", source: "Lorde Krauser", context: "O ritual final, em latim, que abre o portal e arrasta o grupo para dentro do Limbo — o evento que dá nome ao livro." }
@@ -211,16 +225,16 @@ const ENTITIES = {
     epiteto: "O garoto da tinta · o Sexto Presságio",
     status: "dead",
     statusLabel: "Morto",
-    imagem: "Imagens/Gyotto.jpeg",
+    imagem: "Imagens/Personagens/Gyotto.jpeg",
     resumo: "Criança rejeitada e corrompida por Krauser, transformada em arma. Destruiu o orfanato onde Kiana crescia.",
     campos: {
-      "Biografia": "Criança rejeitada pelo mundo, encontrada por [[lorde-krauser|Krauser]] numa floresta aos sete anos de idade, já com os olhos marcados por \"globos de escuridão absoluta\" de pupilas azul-elétricas — sinal de um poder inato sobre uma substância negra e viscosa, semelhante a tinta. Krauser reconheceu nele o mesmo tipo de rejeição que sofrera na própria infância e o corrompeu deliberadamente, moldando-o à imagem do próprio trauma. Anos depois, já como o Sexto Presságio, um Gyotto adolescente — cerca de dezesseis anos — atacou o orfanato onde [[kiana|Kiana]] crescia, matando cuidadoras e crianças com jatos de tinta e um feitiço de sono em massa que adormeceu todas as crianças presentes, exceto Kiana. [[viktor-vanshee|Viktor Vanshee]] chegou durante o massacre e o matou, empalando-o com uma estaca de gelo cristalino — tarde demais para salvar qualquer outra pessoa, mas a tempo de resgatar a única sobrevivente. Sua morte só é mencionada diretamente muito depois, num conselho secreto de Presságios testemunhado por Kiana dentro da mente de Krauser: ali, o Mascarado revela que Gyotto morria \"enquanto procurava pelo [[o-fragmento|Fragmento]]\", e que sua proximidade com Viktor no momento da morte \"não é coincidência\".",
+      "Biografia": "Criança rejeitada pelo mundo, encontrada por [[lorde-krauser|Krauser]] numa floresta aos sete anos de idade, já com os olhos marcados por \"globos de escuridão absoluta\" de pupilas azul-elétricas — sinal de um poder inato sobre uma substância negra e viscosa, semelhante a tinta. Krauser reconheceu nele o mesmo tipo de rejeição que sofrera na própria infância e o corrompeu deliberadamente, moldando-o à imagem do próprio trauma. Anos depois, já como o Sexto Presságio, um Gyotto adolescente — cerca de dezesseis anos — atacou o orfanato onde [[kiana|Kiana]] crescia, matando cuidadoras e crianças com jatos de tinta e um feitiço de sono em massa que adormeceu todas as crianças presentes, exceto Kiana. [[viktor-vanshee|Viktor Vanshee]] chegou durante o massacre e o matou, empalando-o com uma estaca de gelo cristalino — tarde demais para salvar qualquer outra pessoa, mas a tempo de resgatar a única sobrevivente. Sua morte só é mencionada diretamente muito depois, num conselho secreto de Presságios testemunhado por Kiana dentro da mente de Krauser: ali, o Mascarado revela que Gyotto morria \"enquanto procurava pelo [[peca-perdida|Fragmento]]\", e que sua proximidade com Viktor no momento da morte \"não é coincidência\".",
       "Vínculos": [
         { slug: "lorde-krauser", nome: "Lorde Krauser", relacao: "Corruptor" },
         { slug: "viktor-vanshee", nome: "Viktor Vanshee", relacao: "Inimigo" }
       ],
       "Aparência": "Quando criança na floresta: magro, maltrapilho, olhos de escuridão absoluta com pupilas azul-elétricas. Anos depois, no orfanato: um adolescente magro, sem camisa, calça marrom gasta, os mesmos olhos inumanos — capaz de se dissolver em tinta negra e branca, viscosa, que atravessa paredes como se a matéria sólida fosse ilusória.",
-      "Feitos": "Destruiu o orfanato de Kiana, matando Tia Lanis, Emma e todas as demais crianças presentes, exceto Kiana. Procurava por \"[[o-fragmento|o Fragmento]]\" no momento de sua morte — possivelmente ligado à [[peca-perdida|Peça Perdida]] que a Presença busca no prólogo do livro.",
+      "Feitos": "Destruiu o orfanato de [[kiana|Kiana]], matando [[tia-lanis|Tia Lanis]], [[emma|Emma]] e todas as demais crianças presentes, exceto Kiana. Procurava pela [[peca-perdida|Peça Perdida (o Fragmento)]] no momento de sua morte. É desprezado pelo próprio conselho depois de morto — \"Gyotto sempre foi um imprestável mesmo\", diz a criança do conselho.",
       "Status atual": "Morto — empalado por Viktor Vanshee durante o massacre do orfanato, anos antes do início da trama. Sua morte é relembrada e lamentada pelos demais Presságios num conselho secreto revisitado por Kiana.",
       "Sigilo manifestado": "Poder sobre uma substância negra viscosa (\"tinta\"), capaz de se mover através de superfícies sólidas, formar tentáculos e lâminas, e induzir sono mágico em massa — não é nomeado como um Sigilo da Alma formal no livro, mas sua natureza e escala sugerem fortemente que se trata de um."
     }
@@ -302,7 +316,7 @@ const ENTITIES = {
     epiteto: "Figura de autoridade entre os Presságios",
     status: "unknown",
     statusLabel: "Desconhecido",
-    imagem: "Imagens/Mascarado.jpeg",
+    imagem: "Imagens/Personagens/Mascarado.jpeg",
     resumo: "Figura de autoridade entre os Presságios, com chifres esculpidos em osso antigo. Reverencia Viktor Vanshee quase como uma divindade.",
     campos: {
       "Biografia": "Figura de autoridade entre os [[termo-pressagio|Presságios]], com chifres esculpidos em osso antigo. Comanda reuniões do conselho secreto, decide punições — como o exílio de [[lorde-krauser|Krauser]] para [[hikari|Hikari]] — e reverencia [[viktor-vanshee|Viktor Vanshee]] quase como uma divindade, associando-o ao evento do \"[[ankiquilarke|Ankiquilarke]]\" e à morte do Presságio Gauss. A natureza exata dessa reverência não é esclarecida no Volume 1.",
@@ -327,6 +341,199 @@ const ENTITIES = {
     quotes: [
       { text: "Deixe que o desespero amadureça a carne deles.", source: "a Presença, no Prólogo", context: "Decisão de não caçar ativamente Viktor e seus companheiros após serem arrastados para o Limbo." }
     ]
+  },
+
+  "a-silhueta": {
+    type: "personagem",
+    nome: "A Silhueta",
+    epiteto: "\"A Segunda\" · serva de maior hierarquia da Presença",
+    status: "unknown",
+    statusLabel: "Desconhecida",
+    imagem: null,
+    resumo: "Segunda em poder e soberania entre os servos da Presença. Chora lágrimas de sangue e não ousa limpá-las.",
+    campos: {
+      "Biografia": "Serva de maior hierarquia da [[a-presenca|Presença]], explicitamente chamada de \"a Segunda em poder e soberania entre os seus\". Mulher que flutua rente ao chão, com movimentos \"elegantes como fitas de seda negra ao vento\" — uma graça que desaparece por completo diante da gravidade esmagadora do Mestre, que a força de joelhos. Chora lágrimas de sangue e não ousa limpá-las: \"a dor era o lembrete de sua inferioridade\". É ela quem, no prólogo, traz a notícia de que o Quinto Fio caiu — e é a ela que cabe vigiar o grupo dentro do [[o-limbo|Limbo]].",
+      "Vínculos": [
+        { slug: "a-presenca", nome: "A Presença", relacao: "Mestre" }
+      ]
+    },
+    quotes: [
+      { text: "Vigie, Segunda. A caçada não acabou. Ela apenas se tornou... doméstica.", source: "a Presença, à Silhueta", context: "A ordem final do prólogo — e a frase que só faz sentido completo quando o livro termina exatamente onde começou." }
+    ]
+  },
+
+  "o-conselho": {
+    type: "personagem",
+    nome: "O Conselho",
+    epiteto: "A mulher, o velho e a criança · Presságios não nomeados",
+    status: "unknown",
+    statusLabel: "Desconhecido",
+    imagem: null,
+    resumo: "Três silhuetas envoltas em névoa sob uma lua de sorriso macabro. Nenhum dos três é nomeado no Volume 1.",
+    campos: {
+      "Biografia": "Além do [[o-mascarado|Mascarado]] e de [[lorde-krauser|Krauser]], a memória do conselho revelada dentro da mente de Krauser mostra três figuras, reunidas sob uma **lua antropomórfica de sorriso macabro**. Nenhuma delas é nomeada.",
+      "As três figuras": "**A mulher** — postura altiva e desprezo aristocrático. É ela quem apelida Krauser de \"Largato\" e o humilha por não conseguir manter o próprio sigilo estável. **O velho** — curvado, de risada seca e asmática, descarta a morte de [[gyotto|Gyotto]] com um \"menos um\" e resmunga que \"se ele caiu, é porque não era digno\". **A criança** — voz infantil \"carregada de uma malícia que me deu náuseas\", brinca com algo invisível nas mãos e dá de ombros para a morte de Gyotto: \"sempre foi um imprestável mesmo\".",
+      "Vínculos": [
+        { slug: "o-mascarado", nome: "O Mascarado", relacao: "Preside o conselho" },
+        { slug: "lorde-krauser", nome: "Lorde Krauser", relacao: "Humilhado e exilado por eles" }
+      ]
+    }
+  },
+
+  "falso-pressagio": {
+    type: "personagem",
+    nome: "O Falso Presságio",
+    epiteto: "O encapuzado · o metamorfo · peão de Krauser",
+    status: "dead",
+    statusLabel: "Morto",
+    imagem: null,
+    resumo: "Homem envolto num manto que devora a luz. Torturou Viktor, plantou a dúvida sobre a morte de Kael e serviu de isca para Krauser.",
+    campos: {
+      "Biografia": "Homem magro envolto num manto \"tão negro que parecia devorar a luz\", com um sorriso descrito como \"uma fenda branca e macabra que se estendia além do que a anatomia permitiria\". Não era um Presságio de verdade: era um **peão criado por [[lorde-krauser|Krauser]]**, uma isca encenada para que o próprio Krauser pudesse \"ajudar\" o grupo a derrotá-lo e assim conquistar sua confiança.",
+      "Papel na trama": "Foi ele quem torturou [[viktor-vanshee|Viktor]] a mando de Krauser, e foi ele quem plantou a dúvida mais corrosiva do volume: reivindicou ter matado [[kael|Kael]] com as próprias mãos, contradizendo frontalmente a versão de Viktor sobre goblins, e acusou-o de ser \"um mestre em pintar tragédias para esconder a própria podridão\". Confrontou [[kiana|Kiana]] na névoa de [[hikari|Hikari]] e a levou, com um desenho, até a caverna do ritual.",
+      "Em combate": "Empunha uma **flamberge curta**, de lâmina em ziguezague, \"que parecia pulsar com vontade própria\". Não bloqueia golpes — simplesmente não está lá onde a lâmina chega. Dissolve-se em fumaça negra. Ao ser derrotado na caverna, recusa-se a revelar o paradeiro de Viktor e comete suicídio ritualístico, transformando o próprio braço em lâmina de sombra.",
+      "Vínculos": [
+        { slug: "lorde-krauser", nome: "Lorde Krauser", relacao: "Mestre" },
+        { slug: "viktor-vanshee", nome: "Viktor Vanshee", relacao: "Torturou-o" }
+      ]
+    }
+  },
+
+  "gauss": {
+    type: "personagem",
+    nome: "Gauss",
+    epiteto: "Presságio morto por Viktor · portador do Ankiquilarke",
+    status: "dead",
+    statusLabel: "Morto",
+    imagem: null,
+    resumo: "Presságio que nunca aparece em cena. Existe em uma única linha de diálogo — e no material ilustrado, associado ao Ankiquilarke.",
+    campos: {
+      "Biografia": "Nunca aparece em cena. Existe em **uma única linha de diálogo** — o [[o-mascarado|Mascarado]] revelando que [[viktor-vanshee|Viktor Vanshee]] é \"o mesmo homem que tirou a vida de Gauss\" — e no material ilustrado do livro, onde aparece associado ao [[ankiquilarke|Ankiquilarke]], aparentemente como seu portador.",
+      "A história reescrita": "Os livros de história do mundo creditam sua morte a um tal [[gale-akmenos|Gale Akmenos]]. O Mascarado desmente com desprezo: \"Eles são escritos por covardes que não sabem da verdade.\" É o mesmo padrão de apagamento que se repete com [[gyotto|Gyotto]] — a história oficial parece ter sido reescrita para apagar o rastro de Viktor.",
+      "Vínculos": [
+        { slug: "viktor-vanshee", nome: "Viktor Vanshee", relacao: "Matador" },
+        { slug: "ankiquilarke", nome: "Ankiquilarke", relacao: "Portador (segundo o material ilustrado)" }
+      ]
+    }
+  },
+
+  "gale-akmenos": {
+    type: "personagem",
+    nome: "Gale Akmenos",
+    epiteto: "O herói dos livros de história",
+    status: "unknown",
+    statusLabel: "Desconhecido",
+    imagem: null,
+    resumo: "Nome creditado pela historiografia oficial pela morte do Presságio Gauss — feito que o Mascarado atribui a Viktor Vanshee.",
+    campos: {
+      "Biografia": "Nome creditado pela **historiografia oficial** pela morte do Presságio [[gauss|Gauss]] — um feito que o [[o-mascarado|Mascarado]] atribui, na verdade, a [[viktor-vanshee|Viktor Vanshee]], chamando os livros de história de obra de \"covardes que não sabem da verdade\". Nunca aparece em cena.",
+      "O fio solto": "Compartilha o sobrenome de [[amnon-akmenos|Amnon Akmenos]], cuja família o expulsou por uma acusação de roubo que ele nega. O livro **nunca conecta explicitamente os dois** — mas a coincidência é um dos fios mais promissores deixados em aberto no Volume 1.",
+      "Vínculos": [
+        { slug: "amnon-akmenos", nome: "Amnon Akmenos", relacao: "Mesmo sobrenome (ligação não confirmada)" },
+        { slug: "gauss", nome: "Gauss", relacao: "Creditado por sua morte" }
+      ]
+    }
+  },
+
+  "velha-mira": {
+    type: "personagem",
+    nome: "Velha Mira",
+    epiteto: "\"Vovó Mira\" · anciã de Vardun",
+    status: "alive",
+    statusLabel: "Viva",
+    imagem: null,
+    resumo: "Anciã de Vardun cujo olho bom \"enxerga mais do que qualquer pessoa inteira\". Planta a primeira semente do mistério de Kiana.",
+    campos: {
+      "Biografia": "Baixinha, torta pelo tempo, rosto sulcado de cicatrizes, um tapa-olho desgastado — mas \"o seu olho bom parecia enxergar mais do que qualquer pessoa inteira\". Cheira a ervas antigas e fumaça. No funeral de [[lili|Lili]], oferece a [[kiana|Kiana]] o consolo mais lúcido do livro — e planta, ainda no início do volume, a **primeira semente do mistério central**: a suspeita de que há em Kiana algo que não pertence a este mundo.",
+      "Vínculos": [
+        { slug: "kiana", nome: "Kiana", relacao: "Avó de coração" }
+      ]
+    },
+    quotes: [
+      { text: "A gente segue lembrando, Kiana. Não da morte... mas do que veio antes dela. E você, minha menina, tem algo dentro de si que ainda não compreendeu. Um fogo que não pertence a este mundo.", source: "Velha Mira, no funeral de Lili", context: "O primeiro indício de que o poder de Kiana é o eixo oculto de toda a história." }
+    ]
+  },
+
+  "helena": {
+    type: "personagem",
+    nome: "Helena",
+    epiteto: "Dona da estalagem onde Kiana mora",
+    status: "alive",
+    statusLabel: "Viva",
+    imagem: null,
+    resumo: "Voz rouca e divertida. É ela quem guarda e entrega a adaga de Kael — e sabe mais do que diz.",
+    campos: {
+      "Biografia": "Dona da estalagem de [[vardun|Vardun]] onde [[kiana|Kiana]] mora. Voz rouca e divertida; chama Kiana de \"desleixada como só você consegue ser\". É ela quem guarda e entrega a caixa preta com a [[adaga-de-kael|adaga de Kael]] — e, ao mencionar o nome dele, seu humor desaparece e \"algo pesado, difícil de nomear\" cruza seus olhos. **Sabe mais do que diz.**",
+      "Vínculos": [
+        { slug: "kiana", nome: "Kiana", relacao: "Hospedeira" },
+        { slug: "viktor-vanshee", nome: "Viktor Vanshee", relacao: "Guardou o presente póstumo de Kael" }
+      ]
+    }
+  },
+
+  "lili": {
+    type: "personagem",
+    nome: "Lili",
+    epiteto: "A criança tiefling assassinada",
+    status: "dead",
+    statusLabel: "Morta",
+    imagem: null,
+    resumo: "O estopim de toda a trama. Menina tiefling encontrada mutilada num beco de Vardun, segurando a fotografia do pai.",
+    campos: {
+      "Biografia": "**O estopim de toda a trama.** Menina tiefling de chifres recém-formados e cabelo branco, encontrada mutilada num beco de [[vardun|Vardun]] — o corpo \"reorganizado com uma precisão doentia\", segurando na mão arrancada a fotografia destruída do pai. O pai dela, vendedor de legumes na feira, fora morto dias antes exatamente da mesma forma. [[kiana|Kiana]] a descreve com uma ternura devastadora: \"uma menina simples, de coração manso, que gostava de morder frutas azedas demais só pelo prazer de rir do próprio susto\".",
+      "Consequências": "É o assassinato de Lili que faz [[viktor-vanshee|Viktor]] sair sozinho noite adentro dizendo \"vou acabar com isso\" — e desaparecer. Todo o resto do livro decorre disso. Os assassinatos seguiam o mesmo padrão ritualístico encontrado depois na caverna de [[hikari|Hikari]].",
+      "Vínculos": [
+        { slug: "darius", nome: "Darius", relacao: "Executor dos ataques" }
+      ]
+    }
+  },
+
+  "darius": {
+    type: "personagem",
+    nome: "Darius",
+    epiteto: "O maior criminoso de Vardun",
+    status: "dead",
+    statusLabel: "Morto",
+    imagem: null,
+    resumo: "Orc coberto de tatuagens que narram crimes. Não era o cérebro por trás dos assassinatos — foi obrigado por um mascarado.",
+    campos: {
+      "Biografia": "Orc de estatura mediana, coberto de tatuagens \"que narravam crimes, algumas antigas, outras ainda vermelhas e recentes\". Dentes manchados. O maior criminoso de [[vardun|Vardun]] — mas **não era o cérebro por trás dos assassinatos**: foi *obrigado* por um mascarado (o [[falso-pressagio|Falso Presságio]]) a fazer o trabalho sujo, e o mestre desse mascarado queria [[viktor-vanshee|Viktor]] vivo.",
+      "Morte": "Ao confrontá-lo sozinha, [[kiana|Kiana]] ouve sua confissão e então o vê se virar de costas, mandando seus homens fazerem o que quisessem com ela. Algo dentro dela estala. Ele morre com a [[adaga-de-kael|adaga de Kael]] no peito, sem entender como morreu tão rápido — e os mais de vinte homens de sua taverna morrem em seguida, no primeiro **apagão** de Kiana. Sob seu cadáver, ela encontra a [[carta-ensanguentada|carta ensanguentada]] que aponta para [[hikari|Hikari]].",
+      "Vínculos": [
+        { slug: "falso-pressagio", nome: "O Falso Presságio", relacao: "Coagido por ele" },
+        { slug: "kiana", nome: "Kiana", relacao: "Matadora" }
+      ]
+    }
+  },
+
+  "tyler": {
+    type: "personagem",
+    nome: "Tyler",
+    epiteto: "O valentão do orfanato",
+    status: "dead",
+    statusLabel: "Morto",
+    imagem: null,
+    resumo: "Espancou Kiana e destruiu seu primeiro ukulele contra o rosto dela. Ela mentiu para Tia Lanis para protegê-lo.",
+    campos: {
+      "Biografia": "Mais velho, mais alto, com \"ódio nos olhos claros\". No [[o-orfanato|orfanato]], espancava [[kiana|Kiana]] e chegou a destruir seu primeiro [[ukulele-de-kiana|ukulele]] batendo-o contra o rosto dela — quebrando-lhe o nariz. Sua justificativa era que ali era \"um lugar para gente normal\", não para \"monstros ou aberrações\".",
+      "O detalhe que revela Kiana": "Mesmo assim, **Kiana mentiu para [[tia-lanis|Tia Lanis]] para protegê-lo**, dizendo que havia tropeçado e caído sobre o instrumento. Lanis sabia que era mentira — e escolheu não a confrontar. Presumivelmente morreu no ataque de [[gyotto|Gyotto]] ao orfanato, junto com todas as outras crianças."
+    }
+  },
+
+  "flyn": {
+    type: "personagem",
+    nome: "Flyn",
+    epiteto: "Marido falecido de Matilde",
+    status: "dead",
+    statusLabel: "Morto",
+    imagem: null,
+    resumo: "Nunca aparece — mas o livro passa uma tarde inteira fazendo compras por ele.",
+    campos: {
+      "Biografia": "Marido falecido de [[matilde|Matilde]], morto há exatos cinco anos no dia em que o grupo a conhece. Um retrato de \"olhos gentis e mãos calejadas\" reina sobre um altar improvisado na sala dela. **Nunca aparece em cena** — mas o livro passa uma tarde inteira fazendo compras por ele: a lista absurda de Matilde não era comida, eram **âncoras**, um ritual para iluminar o caminho de volta do marido morto até os sonhos dela.",
+      "Vínculos": [
+        { slug: "matilde", nome: "Matilde", relacao: "Esposa" }
+      ]
+    }
   },
 
   /* ==================== LUGARES ==================== */
@@ -381,12 +588,42 @@ const ENTITIES = {
     epiteto: "A floresta amaldiçoada",
     status: null,
     statusLabel: null,
-    imagem: "Imagens/ValeDasFloresSangrentas.jpeg",
+    imagem: "Imagens/Lugares/ValeDasFloresSangrentas.jpeg",
     resumo: "Floresta amaldiçoada entre Vardun e Hikari que prende viajantes num loop espacial. Domínio de uma criatura multi-elemental.",
     campos: {
       "Descrição": "Entre [[vardun|Vardun]] e [[hikari|Hikari]] estende-se o Vale das Flores Sangrentas — uma floresta amaldiçoada que não aparece em nenhum mapa confiável e que poucos viajantes atravessam sem se perder. O solo é coberto por flores vermelhas e carnudas, de pétalas espessas como carne, exalando um cheiro adocicado e ferroso que Kiana reconhece com horror: é o mesmo odor que sentiu ao despertar do massacre na Taverna de Darius, em Vardun — uma primeira pista, ainda não explicada, de que o vale guarda alguma ligação com a natureza do seu próprio poder.",
       "O loop espacial": "O vale prende quem nele entra num loop espacial: bússolas quebram, param de apontar para qualquer norte real, e os viajantes andam em círculos por dias sem perceber. O grupo de [[kiana|Kiana]] passa oito dias preso ali, registrando a fome e o desespero crescentes num diário improvisado, até que [[darin-leafheart|Darin]] identifica o padrão do loop e, no sétimo dia, runas ocultas são reveladas ao toque na casca de uma árvore.",
       "O domínio interior": "Essas runas funcionam como uma porta — uma \"barreira do infinito\" — para o domínio de uma criatura mutável que habita o vale há cerca de vinte anos: um ser multi-elemental capaz de se transformar sucessivamente em essências de água, vento e fogo. É nesse domínio interior, cercado por um gramado circular e uma rocha vermelha rachada, que o grupo trava a batalha que quase os custa a vida — e de onde só escapam graças à intervenção de [[calista-vanshee|Calista Vanshee]], que os encontra, decifra as runas de proteção e luta ao lado deles."
+    }
+  },
+
+  "o-limbo": {
+    type: "lugar",
+    nome: "O Limbo",
+    epiteto: "A dimensão viva e faminta",
+    status: null,
+    statusLabel: null,
+    imagem: null,
+    resumo: "Dimensão viva onde a esperança ia para morrer. Domínio da Presença — e destino final de todo o grupo ao fim do Volume 1.",
+    campos: {
+      "Descrição": "Cenário do prólogo e destino final do volume. Ali \"a escuridão não era o fim do dia. Era uma entidade viva, pulsante, como as paredes de um estômago faminto\" — o coração do Limbo, onde a esperança ia para morrer. É o domínio da [[a-presenca|Presença]], um lugar onde o chão \"não existe\" e onde a gravidade da Entidade esmaga fisicamente quem se aproxima do centro.",
+      "As regras da dimensão": "Os [[termo-pressagio|Presságios]] chamam-no também de \"a dimensão\", e sua estabilidade depende do **número de Presságios vivos**: com dois a menos, as saídas tornam-se limitadas. Isso faz do Limbo menos uma prisão passiva e mais um organismo cuja porta depende de quantos servos a Presença ainda tem em pé.",
+      "O destino do grupo": "Ao final do Volume 1, o ritual [[oblitus-limbo|Oblitus Limbo]] de [[lorde-krauser|Krauser]] arrasta [[kiana|Kiana]], [[viktor-vanshee|Viktor]], [[near-shade|Near]], [[amnon-akmenos|Amnon]] e [[darin-leafheart|Darin]] para dentro dele — fechando exatamente o ciclo aberto no prólogo. A Presença decide não caçá-los: prefere deixá-los se consumir por dentro, \"domesticando\" a caçada."
+    }
+  },
+
+  "o-orfanato": {
+    type: "lugar",
+    nome: "O Orfanato",
+    epiteto: "O passado de Kiana",
+    status: null,
+    statusLabel: null,
+    imagem: null,
+    resumo: "Erguido na orla de uma floresta proibida, é onde Kiana foi deixada com poucos dias de vida — e onde tudo terminou numa noite de tinta negra e fogo.",
+    campos: {
+      "Descrição": "Erguido na orla de uma **floresta proibida**, é o lugar onde [[kiana|Kiana]] foi deixada — ou abandonada — com poucos dias de vida, e onde cresceu como a única criança não-humana entre humanos. Paredes cinzas, janelas altas, um sino de jantar metálico e impessoal.",
+      "O que aconteceu ali": "Foi lá que [[tia-lanis|Tia Lanis]] lhe ensinou a ler e a tocar [[ukulele-de-kiana|ukulele]]; foi lá que [[tyler|Tyler]] a espancava; foi lá que [[emma|Emma]] foi sua única amiga. E foi lá que tudo terminou, numa noite de tinta negra e fogo, quando [[gyotto|Gyotto]] atacou e matou todos — menos ela. [[viktor-vanshee|Viktor Vanshee]] chegou tarde demais para salvar qualquer outra pessoa, mas a tempo de matar o atacante e resgatar a única sobrevivente.",
+      "A memória apagada": "Nas memórias fragmentadas de Kiana adulta, restam apenas \"paredes cinzas e janelas altas\" — sem rostos, sem nomes. Um grande borrão. Só o [[colar-de-cristal-vermelho|cristal de tortura]] de [[lorde-krauser|Krauser]], no clímax do volume, devolve a ela tudo o que o trauma havia enterrado."
     }
   },
 
@@ -432,7 +669,7 @@ const ENTITIES = {
     epiteto: "Um mistério propositalmente aberto",
     status: null,
     statusLabel: null,
-    imagem: "Imagens/Kiana.jpeg",
+    imagem: "Imagens/Personagens/Kiana.jpeg",
     resumo: "Ao contrário de seus companheiros, Kiana nunca declara o nome de um sigilo — mas algo nela desperta repetidas vezes em resposta a dor e desespero.",
     campos: {
       "Introdução": "De todos os mistérios que este volume deixa em aberto, poucos são tão persistentes quanto a verdadeira natureza do poder de [[kiana|Kiana]]. Ao contrário de seus companheiros, ela nunca declara — nem para si mesma — o nome de um sigilo. E, no entanto, algo nela desperta repetidas vezes ao longo da história, sempre em resposta a dor, perda ou desespero absoluto.",
@@ -464,7 +701,7 @@ const ENTITIES = {
     epiteto: "O maior mistério em aberto sobre o passado de Viktor",
     status: null,
     statusLabel: null,
-    imagem: "Imagens/Ankiquilarke.jpeg",
+    imagem: "Imagens/Lore/Ankiquilarke.jpeg",
     imagemWide: true,
     resumo: "Um evento (ou marco temporal) associado à Herança Celestial de Viktor, cercado de ecos e apelidos, mas nunca definido diretamente.",
     campos: {
@@ -482,7 +719,7 @@ const ENTITIES = {
     status: null,
     statusLabel: null,
     imagem: null,
-    poster: "Imagens/PosterOficial_KianaXKrauser.jpeg",
+    poster: "Imagens/Lore/PosterOficial_KianaXKrauser.jpeg",
     resumo: "Linha do tempo completa dos eventos do Volume 1, organizada em ordem cronológica — do prólogo no Limbo ao ritual final Oblitus Limbo.",
     timeline: [
       { title: "Prólogo — A Presença", text: "No coração vivo e faminto do [[o-limbo|Limbo]], uma entidade conhecida apenas como \"[[a-presenca|a Presença]]\" recebe o relato de sua serva mais próxima: o Quinto Fio morreu, mas não em vão — ao perecer, arrastou consigo para dentro do Limbo \"Aquele que Sabe\" e seus companheiros. A [[peca-perdida|Peça Perdida]] continua oculta, mas a Presença decide não caçar os recém-chegados: prefere deixá-los vagar pelo desespero das terras esquecidas, \"domesticando\" a caçada." },
@@ -497,6 +734,38 @@ const ENTITIES = {
       { title: "A fúria de Kiana e a mente de Krauser", text: "Enlouquecida de dor, Kiana enfrenta Krauser e, atingida por seu [[colar-de-cristal-vermelho|cristal de tortura]], tem finalmente restaurada toda a memória reprimida de sua infância. De posse dessa memória, Kiana invoca a [[manifestacao-harmonica|Manifestação Harmônica]], ferindo Krauser com magia sonora, e rouba seu cristal, sendo transportada para dentro da própria mente do inimigo. Ali, testemunha a origem trágica de Krauser e um conselho secreto de Presságios, onde se revela que Krauser foi exilado a Hikari por ser considerado o mais fraco do grupo." },
       { title: "O desfecho — Oblitus Limbo", text: "Expulsa da mente de Krauser, Kiana é gravemente ferida por ele — perde um braço e é perfurada no abdômen. Viktor, finalmente livre da corrupção, intervém e trava um combate devastador contra Krauser, culminando no \"Punho Flamejante\". Krauser, recusando-se a morrer, invoca com o próprio corpo como componente um ritual final — \"OBLITUS LIMBO!\" — abrindo um portal que arrasta Kiana, Viktor, Near, Amnon e Darin para dentro do Limbo. Uma voz enigmática promete a Viktor que a verdadeira história está apenas começando." }
     ]
+  },
+
+  /* ==================== BESTIÁRIO / CRIATURAS ==================== */
+
+  "essencia-mutavel": {
+    type: "criatura",
+    nome: "A Essência Mutável",
+    epiteto: "A criatura do Vale das Flores Sangrentas",
+    status: "dead",
+    statusLabel: "Morta",
+    imagem: "Imagens/Bestiario/EssenciaMutavel.jpg",
+    resumo: "Ser multi-elemental que habita o Vale há vinte anos. Distorce a realidade e sustenta o loop espacial que aprisiona viajantes.",
+    campos: {
+      "Descrição": "Habita o [[vale-das-flores-sangrentas|Vale das Flores Sangrentas]] há cerca de vinte anos. É capaz de criar e distorcer a realidade, e é ela quem sustenta o **loop espacial** que aprisiona os viajantes que entram no vale. Seu domínio interior é acessado por runas ocultas na casca de uma árvore, que abrem uma \"barreira do infinito\" — dentro dela há um bosque com gramado circular e uma rocha vermelha rachada, cercada de runas azuis.",
+      "As três essências": "Em combate, manifesta-se em **três essências sucessivas**, cada uma com um núcleo (ou \"coração\") a ser destruído. A **Essência da Água** é um humanoide líquido, sem olhos nem boca — derruba [[near-shade|Near]] em combate. A **Essência do Vento** é um furacão em forma humana, abatida por [[calista-vanshee|Calista]], que voa impulsionada pelo próprio vento da criatura. A **Essência do Fogo** são chamas em forma humana, e só é vencida porque [[amnon-akmenos|Amnon]] agarra seu núcleo flamejante com as mãos nuas, imobilizando-a ao custo de queimaduras graves.",
+      "Status": "Derrotada pelo grupo de [[kiana|Kiana]] no interior de seu próprio domínio."
+    }
+  },
+
+  "silhuetas-de-sombra": {
+    type: "criatura",
+    nome: "As Silhuetas de Sombra",
+    epiteto: "O ataque a Hikari",
+    status: "unknown",
+    statusLabel: "Desconhecido",
+    imagem: "Imagens/Bestiario/SilhuetasDeSombra.jpg",
+    resumo: "Humanoides sem rosto que absorvem a luz. Emergem do chão durante o Festival de Honra e despedaçam cidadãos.",
+    campos: {
+      "Descrição": "Humanoides sem rosto que absorvem a luz ao seu redor. Emergem do chão, das sombras e das frestas de pedra durante o Festival de Honra em [[hikari|Hikari]], despedaçando cidadãos. Além das criaturas de tamanho comum, surgem **silhuetas gigantes** de quase quatro metros — pelo menos cinco delas espalhadas pela cidade.",
+      "Origem": "Sua fonte é o próprio castelo: são a manifestação do poder de [[lorde-krauser|Krauser]]. Foi [[yuto|Yuto]] quem percebeu, antes de todos, de onde vinham — apontando o castelo como \"o coração desse pesadelo\".",
+      "Quem as enfrentou": "[[near-shade|Near]], [[amnon-akmenos|Amnon]] e [[darin-leafheart|Darin]] defenderam os civis enquanto [[kiana|Kiana]] corria para o castelo. Darin e Yuto, juntos, derrubaram uma das criaturas gigantes com um combo de garras espirituais e katanas cruzadas em X no peito."
+    }
   },
 
   /* ==================== ARTEFATOS / OBJETOS ==================== */
@@ -585,31 +854,19 @@ const ENTITIES = {
     }
   },
 
-  "o-fragmento": {
-    type: "artefato",
-    subtype: "termo",
-    nome: "O Fragmento",
-    epiteto: "Termo / Conceito",
-    status: null,
-    statusLabel: null,
-    imagem: null,
-    resumo: "Objeto que Gyotto procurava no momento de sua morte. Possível ligação com a Peça Perdida do prólogo.",
-    campos: {
-      "Descrição": "Objeto que [[gyotto|Gyotto]] procurava no momento de sua morte, segundo o relato do Mascarado. Sua relação com a [[peca-perdida|Peça Perdida]] do prólogo não é confirmada no livro, mas o paralelo de nomes (e de importância para os Presságios) sugere que podem estar ligados — talvez até serem a mesma coisa vista por ângulos diferentes."
-    }
-  },
-
   "peca-perdida": {
     type: "artefato",
-    subtype: "termo",
-    nome: "A Peça Perdida",
-    epiteto: "Termo / Conceito",
+    subtype: "objeto",
+    nome: "A Peça Perdida / O Fragmento",
+    epiteto: "O macguffin central da obra",
     status: null,
     statusLabel: null,
     imagem: null,
-    resumo: "O macguffin central do prólogo: o objeto (ou pessoa?) que a Presença busca através de seus Fios/Presságios.",
+    resumo: "O objeto (ou pessoa?) que a Presença busca através de seus Fios. É o que Gyotto procurava ao morrer. Permanece oculto ao final do Volume 1.",
     campos: {
-      "Descrição": "O macguffin central do prólogo: o objeto (ou pessoa?) que \"[[a-presenca|a Presença]]\" busca através de seus [[termo-fio|Fios]]/[[termo-pressagio|Presságios]]. Permanece oculta ao final do Volume 1."
+      "Descrição": "O objeto — ou pessoa — que \"[[a-presenca|a Presença]]\" busca através de seus [[termo-fio|Fios]]/[[termo-pressagio|Presságios]]. É o motor oculto de toda a trama: o Quinto Fio morreu sem capturá-la, e ela permanece oculta ao final do Volume 1. Mas a Presença agora tem em mãos algo que considera melhor: \"[[aquele-que-sabe|Aquele que Sabe]]\", o portador da verdade oculta, vagando dentro de seu próprio domínio.",
+      "Os dois nomes": "O livro usa dois termos que apontam para a mesma busca. **A Peça Perdida** é como a Presença se refere ao que procura, no prólogo. **O Fragmento** é o nome que o Mascarado usa ao dizer que [[gyotto|Gyotto]] morria \"enquanto procurava pelo Fragmento\" — e que, por isso, sua proximidade com [[viktor-vanshee|Viktor]] no momento da morte \"não é coincidência\". O texto nunca confirma explicitamente que são a mesma coisa, mas o paralelo é difícil de ignorar: ambos são objetos únicos, ambos são procurados pelos Presságios a mando do Mestre, e ambos permanecem fora de alcance.",
+      "Por que importa": "É a busca pela Peça Perdida que põe os Presságios em movimento pelo mundo — e, portanto, a causa remota de quase toda a tragédia do volume. Foi procurando o Fragmento que Gyotto cruzou o caminho de Viktor e morreu; foi a morte de Gyotto que levou o conselho a exilar [[lorde-krauser|Krauser]] para [[hikari|Hikari]]; e foi o exílio de Krauser que preparou o palco para o massacre final."
     }
   },
 
@@ -627,83 +884,146 @@ const ENTITIES = {
     }
   },
 
-  "manifestacao-harmonica": {
+  "carta-ensanguentada": {
     type: "artefato",
-    subtype: "termo",
-    nome: "Manifestação Harmônica",
-    epiteto: "Termo / Conceito · técnica de combate",
+    subtype: "objeto",
+    nome: "A Carta Ensanguentada",
+    epiteto: "Objeto",
     status: null,
     statusLabel: null,
     imagem: null,
-    resumo: "Técnica de última instância de Kiana: transforma acordes tocados no ukulele em lâminas de som e ondas de choque.",
+    resumo: "Encontrada sob o cadáver de Darius. É o documento que põe toda a jornada em movimento.",
     campos: {
-      "Descrição": "Técnica de última instância de [[kiana|Kiana]]: transforma acordes tocados no [[ukulele-de-kiana|ukulele]] em lâminas de som, ondas de choque e projéteis de energia. Consome toda a estamina e magia de quem a invoca. Sua relação com um possível [[sigilos-da-alma|Sigilo da Alma]] de Kiana permanece em aberto. Ver [[estudo-de-caso-kiana|Estudo de Caso: o Sigilo da Alma em Kiana]]."
+      "Descrição": "Encontrada por [[kiana|Kiana]] sob o cadáver de [[darius|Darius]], ainda no meio da carnificina que ela não lembra de ter causado. Menciona [[calista-vanshee|Calista]], a cidade de [[hikari|Hikari]] e algo sobre \"algum dos presságios estar escondido\" — a primeira aparição do termo na narrativa, muito antes de o grupo entender o que ele significa. É o documento que põe toda a jornada em movimento."
     }
   },
 
-  "termo-pressagio": {
+  "selo-alianca-dos-lordes": {
     type: "artefato",
-    subtype: "termo",
-    nome: "Presságio",
-    epiteto: "Termo / Conceito",
+    subtype: "objeto",
+    nome: "O Selo de Cera Azul",
+    epiteto: "Objeto",
     status: null,
     statusLabel: null,
     imagem: null,
-    resumo: "Designação para os seres que venderam o próprio livre-arbítrio por poder a serviço da Presença. São numerados.",
+    resumo: "Marca de autenticidade diplomática de EmberFall. É a ausência dele que entrega a farsa de Calista.",
     campos: {
-      "Descrição": "Designação para os seres que venderam o próprio livre-arbítrio por poder a serviço de \"[[a-presenca|a Presença]]\"/\"o Mestre\". Tornam-se, segundo [[calista-vanshee|Calista]], \"cascas vazias preenchidas por vontades que não lhes pertencem\". São numerados (o Quinto — [[lorde-krauser|Krauser]], o Sexto — [[gyotto|Gyotto]]...), sugerindo uma hierarquia ou ordem fixa de membros."
+      "Descrição": "Marca de autenticidade diplomática da [[alianca-dos-lordes|Aliança dos Lordes]], de [[emberfall|EmberFall]], usada em pergaminhos oficiais de convocação. É justamente a *ausência* dele — somada ao tipo errado de poeira nas botas de [[calista-vanshee|Calista]] — que entrega a farsa do grupo a [[lorde-krauser|Krauser]] em segundos, quando eles se apresentam como enviados oficiais. Ele não os pune: respeita a ousadia."
+    }
+  },
+
+  "manifestacao-harmonica": {
+    type: "lore",
+    nome: "Manifestação Harmônica",
+    epiteto: "A técnica de última instância de Kiana",
+    status: null,
+    statusLabel: null,
+    imagem: null,
+    resumo: "Técnica de Kiana: converte acordes do ukulele em lâminas de som, ondas de choque e projéteis de energia. Age como veneno estrutural.",
+    campos: {
+      "Descrição": "Técnica de última instância de [[kiana|Kiana]]: as cordas do [[ukulele-de-kiana|ukulele]] explodem em luz ciano e dourada, e cada acorde se transforma em arma — lâminas de som, ondas de choque, projéteis de energia concentrada. Consome cada gota da estamina e da magia de quem a invoca, a ponto de deixar os reflexos de Kiana \"lentos como se eu estivesse submersa em breu\" logo depois.",
+      "O veneno estrutural": "É a Manifestação Harmônica — e não o golpe de [[viktor-vanshee|Viktor]] — que de fato derrota [[lorde-krauser|Krauser]]. As vibrações da música penetraram nas células do Presságio e agiram como um **veneno estrutural**, esperando apenas o impacto certo para colapsá-lo por dentro. Quando Krauser começa a derreter e pergunta, horrorizado, o que lhe fizeram, Viktor responde com uma frieza definitiva: \"Eu não fiz nada. Foi a Kiana quem te derrotou.\"",
+      "Relação com o Sigilo": "Kiana invoca a técnica logo após declarar que **não** despertou seu sigilo — o que faz da Manifestação Harmônica algo distinto, ou ao menos não nomeado, dentro do sistema dos [[sigilos-da-alma|Sigilos da Alma]]. Sua natureza exata permanece em aberto. Ver [[estudo-de-caso-kiana|Estudo de Caso: o Sigilo da Alma em Kiana]]."
+    },
+    calloutTitle: "A ironia central de Kiana",
+    callout: "[[tia-lanis|Tia Lanis]], ao lhe ensinar ukulele na infância, corrigiu sua postura dizendo: \"Não aperte tanto as cordas, Kiana. Trate o instrumento como um amigo, não como uma arma.\" Anos depois, é exatamente transformando o instrumento em arma que Kiana vence o homem responsável, ainda que indiretamente, pela morte da própria Lanis."
+  },
+
+  "termo-pressagio": {
+    type: "lore",
+    nome: "Os Presságios",
+    epiteto: "Hierarquia e doutrina",
+    status: null,
+    statusLabel: null,
+    imagem: "Imagens/Personagens/Mascarado.jpeg",
+    resumo: "Almas que venderam o próprio livre-arbítrio por poder a serviço da Presença. São numerados, e servem a uma hierarquia rígida.",
+    campos: {
+      "O que é um Presságio": "Nas palavras de [[calista-vanshee|Calista]]: \"Não são apenas vilões de contos. São um grupo de almas devoradas pela própria ambição. Homens e mulheres que, na busca desenfreada por poder, entregaram a única coisa que realmente possuíam: o próprio livre arbítrio. Tornaram-se cascas vazias, preenchidas por vontades que não lhes pertencem.\" São **numerados** — o Quinto ([[lorde-krauser|Krauser]]), o Sexto ([[gyotto|Gyotto]]) —, o que sugere uma ordem ou hierarquia fixa. A [[a-presenca|Presença]], porém, refere-se a eles por outro nome: [[termo-fio|Fios]].",
+      "A doutrina — a lenda de Kynare e o Corvo Celeste": "Calista conta a lenda ao grupo, na carroça a caminho de [[hikari|Hikari]], como forma de explicar o que os Presságios realmente são. Kynare era um homem consumido pela fome de poder. O Corvo Celeste lhe ofereceu força, domínio e glória eterna em troca de uma única coisa: seguir o caminho que o Corvo apontasse. Kynare aceitou — rápido demais. No instante em que o fez, correntes finas como fios de cabelo subiram por suas pernas, seu tronco, seu pescoço, e ele nem percebeu. Com o tempo, esqueceu que um dia teve vontade própria, e passou a acreditar que tudo o que fazia era escolha sua. E o Corvo deixou que ele acreditasse — *\"porque nada é mais fácil de controlar do que alguém que acha que está no comando\"*. A moral que as mães contavam às crianças: algumas promessas, mesmo as feitas por criaturas celestes, são só correntes disfarçadas.",
+      "A instabilidade como insulto": "Ser um Presságio não garante controle. No conselho, a mulher de postura altiva zomba de Krauser dizendo que ele \"mal consegue manter seu próprio sigilo estável\" — e o apelida de \"Largato\". O próprio Viktor é chamado, com deboche, de \"o picolé\"."
+    },
+    table: {
+      title: "A cadeia de comando",
+      headers: ["Figura", "Papel"],
+      rows: [
+        ["[[a-presenca|A Presença / o Mestre]]", "A entidade no centro do [[o-limbo|Limbo]]. Nunca descrita fisicamente. Sua voz \"ecoa não nos ouvidos, mas nos ossos\". Busca a [[peca-perdida|Peça Perdida]]. Sua satisfação é descrita como mais aterrorizante que sua fúria."],
+        ["[[a-silhueta|A Silhueta / \"a Segunda\"]]", "Serva de maior hierarquia, \"a Segunda em poder e soberania entre os seus\". Ao se aproximar da Presença, é esmagada pela gravidade dela e chora lágrimas de sangue. Cabe a ela vigiar o grupo dentro do Limbo."],
+        ["[[o-mascarado|O Mascarado]]", "Autoridade operacional do conselho. Máscara e chifres \"esculpidos em osso antigo\". Convoca as reuniões, decide punições e transmite as ordens do Mestre. Reverencia [[viktor-vanshee|Viktor]] com uma admiração inquietante."],
+        ["[[o-conselho|O conselho]]", "Além do Mascarado e de Krauser, três figuras não nomeadas: uma mulher de desprezo aristocrático, um velho de risada asmática e uma criança de voz maliciosa."]
+      ]
+    },
+    calloutTitle: "A dimensão fica instável",
+    callout: "Ao final do conselho, o Mascarado avisa: \"Estaremos com dois Presságios a menos. A dimensão ficará instável. As saídas agora são limitadas, principalmente para a **Princesa** e o **moleque**...\" — duas figuras jamais identificadas neste volume, cuja capacidade de deixar o [[o-limbo|Limbo]] depende do número de Presságios ativos. A contagem de \"dois a menos\" é ambígua: a leitura mais direta é [[gyotto|Gyotto]] (morto) e o próprio [[lorde-krauser|Krauser]] (removido pelo exílio)."
+  },
+
+  "oblitus-limbo": {
+    type: "lore",
+    nome: "Oblitus Limbo",
+    epiteto: "O ritual que dá nome ao livro",
+    status: null,
+    statusLabel: null,
+    imagem: null,
+    resumo: "Feitiço ritual em latim entoado por Krauser, pago com o próprio corpo como componente. Abre o portal que arrasta o grupo para o Limbo.",
+    campos: {
+      "Descrição": "O feitiço final de [[lorde-krauser|Lorde Krauser]], entoado em **latim** e pago com o **próprio corpo como componente ritual**. Recusando-se a morrer depois de ser derrotado, Krauser gasta o que resta de si para abrir um portal para o [[o-limbo|Limbo]] — arrastando [[kiana|Kiana]], [[viktor-vanshee|Viktor]], [[near-shade|Near]], [[amnon-akmenos|Amnon]] e [[darin-leafheart|Darin]] para dentro dele.",
+      "O ciclo que se fecha": "É o evento que **dá nome ao livro** — e que fecha exatamente o ciclo aberto no prólogo: a [[a-presenca|Presença]], no início do volume, já comentava que o Quinto Fio havia morrido, mas não em vão, pois arrastara consigo \"[[aquele-que-sabe|Aquele que Sabe]]\" e seus companheiros. Só na última página o leitor entende que o prólogo era, na verdade, o epílogo."
+    },
+    quotes: [
+      { text: "Sanguis pro limine, anima pro vana... In tenebris aeternis, mundus dissolvitur. Aperi portam limbi, ubi lux moritur... OBLITUS LIMBO!", source: "Lorde Krauser", context: "O ritual final, pago com o próprio corpo. Abre o portal que dá nome ao livro." }
+    ]
+  },
+
+  "runas": {
+    type: "lore",
+    nome: "Runas",
+    epiteto: "O sistema mágico escrito",
+    status: null,
+    statusLabel: null,
+    imagem: null,
+    resumo: "Sistema escrito, distinto dos Sigilos, capaz de selar, proteger e distorcer o espaço.",
+    campos: {
+      "Descrição": "Um sistema mágico **escrito**, distinto do sistema dos [[sigilos-da-alma|Sigilos da Alma]] — não é algo que desperta na alma, mas algo que se aprende a ler e a traçar. Capaz de selar, proteger e **distorcer o espaço**.",
+      "A barreira do infinito": "As runas do [[vale-das-flores-sangrentas|Vale das Flores Sangrentas]] são o exemplo central do volume: criam o loop espacial que aprisiona viajantes e formam a \"**barreira do infinito**\" — o selo rúnico que separa o mundo real do domínio da [[essencia-mutavel|criatura]] que habita o vale. Foi [[darin-leafheart|Darin]] quem as revelou, passando a mão devagar pela casca de uma árvore, e [[calista-vanshee|Calista]] quem soube decifrá-las.",
+      "Quem sabe lê-las": "Calista sabe ler runas — \"não tanto quanto o Viktor, claro\". Essa observação de passagem sugere que [[viktor-vanshee|Viktor Vanshee]] é um **erudito rúnico de alto nível**, um detalhe sobre seu passado que o volume nunca desenvolve."
     }
   },
 
   "termo-fio": {
-    type: "artefato",
-    subtype: "termo",
+    type: "lore",
     nome: "Fio",
-    epiteto: "Termo / Conceito",
+    epiteto: "Como a Presença chama seus servos",
     status: null,
     statusLabel: null,
     imagem: null,
     resumo: "Termo usado pela própria Presença para se referir a seus servos mais próximos. Aparenta ser sinônimo de \"Presságio\".",
     campos: {
-      "Descrição": "Termo usado pela própria [[a-presenca|Presença]], no prólogo, para se referir a seus servos mais próximos (\"o Quinto Fio\", \"os outros Fios\"). Aparenta ser sinônimo de \"[[termo-pressagio|Presságio]]\", ou talvez a forma como a Presença especificamente os chama — a relação exata entre os dois termos não é explicada."
-    }
-  },
-
-  "o-limbo": {
-    type: "artefato",
-    subtype: "termo",
-    nome: "O Limbo",
-    epiteto: "Termo / Conceito · dimensão",
-    status: null,
-    statusLabel: null,
-    imagem: null,
-    resumo: "Dimensão viva e faminta, onde a esperança ia para morrer. Destino final do grupo ao fim do Volume 1.",
-    campos: {
-      "Descrição": "Dimensão viva e faminta, descrita no prólogo como \"o coração do Limbo, onde a esperança ia para morrer\". Destino final de [[kiana|Kiana]] e do grupo ao fim do Volume 1, e provável cenário do próximo volume. O nome também nomeia o ritual final de [[lorde-krauser|Krauser]] — \"Oblitus Limbo\" — que abre o portal para essa dimensão."
+      "Descrição": "Termo usado pela própria [[a-presenca|Presença]], no prólogo, para se referir a seus servos mais próximos: \"o Quinto Fio foi cortado\", \"devo enviar os outros Fios?\". Aparenta ser sinônimo de \"[[termo-pressagio|Presságio]]\", ou talvez a forma como a Entidade especificamente os chama. A relação exata entre os dois termos nunca é explicada — mas a imagem é coerente com a lenda de Kynare: um fio, como uma corrente, é algo que prende e que pode ser cortado por quem o segura."
     }
   },
 
   "aquele-que-sabe": {
-    type: "artefato",
-    subtype: "termo",
+    type: "lore",
     nome: "Aquele que Sabe",
-    epiteto: "Termo / Conceito · epíteto",
+    epiteto: "O portador da verdade oculta",
     status: null,
     statusLabel: null,
     imagem: null,
     resumo: "Epíteto usado no prólogo para a pessoa arrastada ao Limbo junto de seus companheiros — quase certamente Viktor Vanshee.",
     campos: {
-      "Descrição": "Epíteto usado no prólogo para a pessoa arrastada ao [[o-limbo|Limbo]] junto de seus companheiros — quase certamente [[viktor-vanshee|Viktor Vanshee]], dado que é ele quem acaba lá ao final do volume junto a Kiana, Near, Amnon e Darin."
+      "Descrição": "Epíteto usado no prólogo para \"o portador da verdade oculta\", arrastado ao [[o-limbo|Limbo]] junto de seus companheiros — quase certamente [[viktor-vanshee|Viktor Vanshee]], dado que é ele quem acaba lá ao final do volume, junto a [[kiana|Kiana]], [[near-shade|Near]], [[amnon-akmenos|Amnon]] e [[darin-leafheart|Darin]]. A [[a-presenca|Presença]] considera tê-lo em seu domínio um prêmio melhor do que a própria [[peca-perdida|Peça Perdida]] que ainda procura — e o [[o-mascarado|Mascarado]] declara ter \"planos para o que corre nas veias daquele homem\".",
+      "Fora da ficção": "É também, num piscar de olho do autor, o nome da seção de agradecimentos do livro: \"AQUELES QUE SABEM\" — os amigos que jogaram a campanha de RPG original e que, literalmente, eram os únicos que já conheciam o segredo."
     }
   }
 
 };
 
-/* Mapa auxiliar: type -> label plural / singular usados na UI */
+/* Mapa auxiliar: type -> label plural / singular usados na UI.
+   Adicionar uma entrada aqui cria a categoria inteira (rota, grid, breadcrumb). */
 const TYPE_META = {
   personagem: { label: "Personagens", singular: "Personagem", icon: "fa-solid fa-user-ninja", route: "personagens" },
   lugar:      { label: "Lugares",     singular: "Lugar",      icon: "fa-solid fa-map-location-dot", route: "lugares" },
   lore:       { label: "Lore & Sistemas de Magia", singular: "Lore", icon: "fa-solid fa-book-skull", route: "lore" },
+  criatura:   { label: "Bestiário",   singular: "Criatura",   icon: "fa-solid fa-dragon", route: "bestiario" },
   artefato:   { label: "Artefatos & Termos", singular: "Artefato", icon: "fa-solid fa-gem", route: "artefatos" }
 };
 

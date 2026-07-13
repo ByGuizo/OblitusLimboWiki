@@ -121,9 +121,11 @@
   padding: 2.5rem 0 4rem;
 }
 
+/* auto-fit em vez de um número fixo de colunas: o grid se acomoda sozinho a
+   quantas categorias existirem (hoje 5), sem deixar um card órfão na última linha. */
 .hub-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
   align-items: stretch;
   gap: 1.5rem;
   padding: 3rem 0 5rem;

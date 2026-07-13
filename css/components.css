@@ -1697,7 +1697,8 @@ body.reader-focus-mode.reader-focus-invert .reader-legend {
   width: auto;
   max-width: 62%;
   height: auto;
-  filter: drop-shadow(0 4px 14px var(--purple-glow-soft));
+  /* Mesmo tratamento da logo do hero/header: invert+contrast a deixa branca. */
+  filter: invert(1) contrast(300%) drop-shadow(0 4px 14px var(--purple-glow-soft));
 }
 
 .home-welcome-cta {

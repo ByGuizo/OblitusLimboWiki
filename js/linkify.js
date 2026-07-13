@@ -47,7 +47,9 @@ function plainText(raw) {
   const resolved = String(raw).replace(MANUAL_LINK_RE, (match, slug, label) => {
     return label || (ENTITIES[slug] ? ENTITIES[slug].nome : slug);
   });
-  return escapeHtml(resolved);
+  // remove a marcação de negrito: aqui o resultado é texto puro (cards, títulos),
+  // onde não pode entrar <strong> — os asteriscos não devem vazar para a tela.
+  return escapeHtml(resolved.replace(/\*\*([^*]+)\*\*/g, "$1"));
 }
 
 /**
@@ -93,7 +95,17 @@ function linkify(raw, currentSlug) {
     }
     html += autoLinkPlainText(seg.value, index, currentSlug);
   }
-  return html;
+  return applyBold(html);
+}
+
+/*
+ * Converte **texto** em <strong>texto</strong>. Roda POR ÚLTIMO, sobre o HTML já
+ * escapado e já linkado — por isso é seguro: os asteriscos são literais do autor
+ * (escapeHtml não os toca) e o conteúdo entre eles já passou pelo escape.
+ * O [^*] evita atravessar um par de asteriscos para dentro de outro.
+ */
+function applyBold(html) {
+  return html.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
 }
 
 function autoLinkPlainText(text, index, currentSlug) {

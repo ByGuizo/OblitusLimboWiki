@@ -25,8 +25,8 @@ Não há `npm start`. Abra `index.html` diretamente no navegador, ou sirva a pas
 - `css/layout.css` — header/nav, grids, layout de página de detalhe (infobox + corpo).
 - `css/components.css` — cards, hero, badges, tabelas, citações, placeholders, leitor de livro (`.reader-*`).
 - `css/animations.css` — keyframes e classes de animação.
-- `Imagens/` — assets reais do livro (retratos de personagens, lugares, capa, logo). Nomes mapeados manualmente em `ENTITIES[slug].imagem`.
-- `Ilustracoes/` — ilustrações de cena extraídas dos capítulos do livro (ver seção "Leitor de livro" abaixo). Separada de `Imagens/` de propósito.
+- `Imagens/` — assets reais do livro, organizados em subpastas por finalidade: `Personagens/`, `Lugares/`, `Lore/`, `Bestiario/` e `Site/` (logo, favicon, fundo, foto do autor, capa do livro). Ao adicionar a imagem de uma entidade nova, coloque-a na subpasta do tipo dela e aponte `ENTITIES[slug].imagem` para o caminho completo (ex: `Imagens/Personagens/Nome.jpeg`).
+- `Ilustracoes/` — ilustrações de cena extraídas dos capítulos do livro (ver seção "Leitor de livro" abaixo). Separada de `Imagens/` de propósito: são as artes que aparecem *dentro* do texto do capítulo. Uma ilustração pode ser **copiada** para `Imagens/<Tipo>/` quando serve também de retrato de uma entidade (foi o caso do Krauser e das criaturas do Bestiário).
 - `Livro/` — dados do leitor de livro: `capitulos.json` (manifesto) + uma pasta por capítulo com `texto.html`. Publicada normalmente (não é `.gitignore`d), servida via `fetch()` pelo leitor.
 
 ## Direção estética (não mudar sem pedir)
@@ -42,7 +42,11 @@ Tema **preto + roxo** como base (dark fantasy do livro), **vermelho** como acent
 
 ## Convenções de conteúdo (`js/data.js`)
 
-Cada entidade em `ENTITIES` tem `type` (`personagem` | `lugar` | `lore` | `artefato`), `imagem` (caminho ou `null`), `campos` (objeto label → texto). Dentro de qualquer texto, use `[[slug]]` ou `[[slug|Texto exibido]]` para garantir um link para outra entidade.
+Cada entidade em `ENTITIES` tem `type` (`personagem` | `lugar` | `lore` | `criatura` | `artefato`), `imagem` (caminho ou `null`), `campos` (objeto label → texto). Dentro de qualquer texto, use `[[slug]]` ou `[[slug|Texto exibido]]` para garantir um link para outra entidade.
+
+**Categorias são dirigidas por dados**: `TYPE_META` (fim de `data.js`) mapeia `type` → label/ícone/rota. Adicionar uma entrada ali cria a categoria inteira (rota `#/categoria/:rota`, grid, breadcrumb) — `renderCategory()` deriva tudo dela. Ao criar um tipo novo, só falta acrescentar o link no `<nav>` do `index.html` e um `hubCard()` no `renderHome()`. Foi assim que a categoria `criatura` (Bestiário) foi adicionada. O `.hub-grid` usa `auto-fit`, então não quebra ao ganhar categorias novas.
+
+**Negrito**: `**texto**` dentro de qualquer campo vira `<strong>` — `linkify()` aplica isso **por último**, sobre o HTML já escapado e já linkado (ver `applyBold()` em `linkify.js`). Em `plainText()` (usado nos cards, onde não pode entrar HTML) os `**` são apenas removidos, para não vazarem como asteriscos literais na tela. Use com parcimônia, para destacar o termo-chave de um parágrafo.
 
 **Regra crítica**: nunca use `linkify()` dentro de um elemento que já é ele mesmo um `<a>` clicável (ex: os cards de grid em `entityCard()`). HTML não permite `<a>` aninhado — o navegador conserta sozinho fechando a tag mais cedo, o que quebra a estrutura do card inteiro (texto vaza pra fora da imagem, alturas ficam erradas). Para esses contextos, use `plainText()` (resolve os `[[slug|Texto]]` para texto puro, sem gerar link). Isso já causou um bug real nesta base de código — não reintroduzir.
 

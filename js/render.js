@@ -37,13 +37,13 @@ function mediaBlock(ent, opts) {
 function renderHome() {
   return `
     <section class="hero">
-      <div class="hero-bg-image" style="background-image:url('Imagens/fundo.jpeg')"></div>
+      <div class="hero-bg-image" style="background-image:url('Imagens/Site/fundo.jpeg')"></div>
       <div class="hero-noise"></div>
       <div class="ink-splash purple"></div>
       <div class="ink-splash red"></div>
       <div class="hero-content">
         <span class="hero-kicker">${icon("fa-solid fa-scroll")} Site Oficial · Volume 1</span>
-        <img src="Imagens/LogoOLsemfundo.png" alt="Oblitus Limbo" class="hero-logo">
+        <img src="Imagens/Site/LogoOLsemfundo.png" alt="Oblitus Limbo" class="hero-logo">
         <p class="hero-subtitle">Um mundo onde sigilos despertam através da dor, onde impostores governam cidades inteiras, e onde o próprio abismo sente fome da parte que lhe falta.</p>
         <blockquote class="hero-quote">
           "Nós não somos definidos pelo que temos, mas pelo que nos falta.<br>
@@ -74,7 +74,8 @@ function renderHome() {
       <div class="hub-grid reveal-stagger">
         ${hubCard("personagens", "fa-solid fa-user-ninja", "Personagens", "Oito almas arrastadas por uma mesma busca — e uma nona sombra, presente apenas em memória.")}
         ${hubCard("lugares", "fa-solid fa-map-location-dot", "Lugares", "De Vardun, a ferida aberta, a Hikari, a máscara de ordem que a esconde.")}
-        ${hubCard("lore", "fa-solid fa-book-skull", "Lore & Magia", "Sigilos da Alma, o Ankiquilarke, e os mistérios que o Volume 1 deixa em aberto.")}
+        ${hubCard("lore", "fa-solid fa-book-skull", "Lore & Magia", "Sigilos da Alma, os Presságios, o Ankiquilarke e os mistérios que o Volume 1 deixa em aberto.")}
+        ${hubCard("bestiario", "fa-solid fa-dragon", "Bestiário", "As criaturas que o grupo enfrentou — do ser multi-elemental do Vale às sombras que devoraram Hikari.")}
         ${hubCard("artefatos", "fa-solid fa-gem", "Artefatos", "Objetos, vozes e termos que tecem o mundo por baixo da trama principal.")}
       </div>
     </div>
@@ -82,7 +83,7 @@ function renderHome() {
     <section class="about-book">
       <div class="container about-book-grid">
         <div class="about-book-cover reveal">
-          <img src="Imagens/livro.png" alt="Capa do livro Oblitus Limbo">
+          <img src="Imagens/Site/livro.png" alt="Capa do livro Oblitus Limbo">
         </div>
         <div class="about-book-text reveal">
           <span class="eyebrow">${icon("fa-solid fa-dice-d20")} Sobre o livro</span>
@@ -109,7 +110,7 @@ function renderHome() {
           </a>
         </div>
         <a href="https://instagram.com/byguizo" target="_blank" rel="noopener noreferrer" class="about-author-photo reveal" aria-label="Instagram de ByGuizo">
-          <img src="Imagens/ByGuizoAutor.jpeg" alt="Foto de ByGuizo, autor de Oblitus Limbo">
+          <img src="Imagens/Site/ByGuizoAutor.jpeg" alt="Foto de ByGuizo, autor de Oblitus Limbo">
           <span class="about-author-photo-badge">${icon("fa-brands fa-instagram")}</span>
         </a>
       </div>
@@ -126,7 +127,7 @@ function homeWelcomeModal() {
         <span class="reader-modal-accent" aria-hidden="true"></span>
         <button type="button" class="reader-modal-close" aria-label="Fechar">${icon("fa-solid fa-xmark")}</button>
         <div class="home-welcome-logo">
-          <img src="Imagens/LogoOLsemfundo.png" alt="Oblitus Limbo">
+          <img src="Imagens/Site/LogoOLsemfundo.png" alt="Oblitus Limbo">
         </div>
         <span class="reader-modal-kicker">${icon("fa-solid fa-door-open")} Bem-vindo</span>
         <h2 id="home-welcome-title">Bem-vindo ao mundo de Oblitus Limbo</h2>

@@ -83,13 +83,15 @@
     "pasta": "Livro/Epilogo",
     "numero": "Epílogo",
     "titulo": "Epílogo",
-    "resumo": "Uma última palavra sombria ecoa, prometendo que esta história está longe de terminar."
+    "resumo": "Uma última palavra sombria ecoa, prometendo que esta história está longe de terminar.",
+    "capa": "mascarado231.jpg"
   },
   {
     "slug": "creditos",
     "pasta": "Livro/Creditos",
     "numero": "Créditos",
     "titulo": "Créditos e Agradecimentos",
-    "resumo": "Nota do autor, ficha catalográfica e agradecimentos a todos que tornaram Oblitus Limbo possível."
+    "resumo": "Nota do autor, ficha catalográfica e agradecimentos a todos que tornaram Oblitus Limbo possível.",
+    "capa": "final233.jpg"
   }
 ]
