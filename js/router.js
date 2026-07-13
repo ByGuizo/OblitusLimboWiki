@@ -54,6 +54,9 @@ async function router() {
     initReaderCheckpoint(appEl, route.param);
     if (typeof initReaderTools === "function") initReaderTools(appEl, route.param);
   }
+  if (route.name === "home" && typeof initHomeWelcome === "function") {
+    initHomeWelcome(appEl);
+  }
 }
 
 window.addEventListener("hashchange", router);

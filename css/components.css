@@ -1686,6 +1686,26 @@ body.reader-focus-mode.reader-focus-invert .reader-legend {
   transform: rotate(90deg);
 }
 
+/* Logo no topo do modal de boas-vindas da home */
+.home-welcome-logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0.6rem;
+}
+
+.home-welcome-logo img {
+  width: auto;
+  max-width: 62%;
+  height: auto;
+  filter: drop-shadow(0 4px 14px var(--purple-glow-soft));
+}
+
+.home-welcome-cta {
+  margin-top: 0;
+  width: 100%;
+  justify-content: center;
+}
+
 /* Selo circular do coração (modal de apoio) */
 .support-modal-seal {
   position: relative;

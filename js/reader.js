@@ -8,6 +8,7 @@
 
 const READER_WELCOME_KEY = "ol_reader_welcome_seen";
 const READER_PREFS_KEY = "ol_reader_prefs";
+const HOME_WELCOME_KEY = "ol_home_welcome_seen";
 
 /*
  * Níveis discretos de tamanho de fonte (estilo Kindle). Escala aplicada como um
@@ -379,4 +380,20 @@ function teardownReaderTools() {
     document.removeEventListener("click", readerOutsideClickHandler);
     readerOutsideClickHandler = null;
   }
+}
+
+/* Modal de boas-vindas da home — chamado pelo router na rota inicial. Só aparece
+   na primeira visita do usuário (flag em localStorage). Reutiliza a mecânica de
+   modal do leitor (wireModal/openReaderModal). */
+function initHomeWelcome(appEl) {
+  const overlay = appEl.querySelector('.reader-modal-overlay[data-modal="home-welcome"]');
+  if (!overlay) return;
+
+  let seen = false;
+  try { seen = localStorage.getItem(HOME_WELCOME_KEY) === "1"; } catch (e) { /* no-op */ }
+  if (seen) return;
+
+  wireModal(appEl, "home-welcome");
+  setTimeout(() => openReaderModal(appEl, "home-welcome"), 500);
+  try { localStorage.setItem(HOME_WELCOME_KEY, "1"); } catch (e) { /* no-op */ }
 }

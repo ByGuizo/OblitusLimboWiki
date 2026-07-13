@@ -31,8 +31,8 @@
   /* Status badges */
   --status-alive: #34d399;
   --status-alive-bg: rgba(52, 211, 153, 0.12);
-  --status-dead: #94a3b8;
-  --status-dead-bg: rgba(148, 163, 184, 0.14);
+  --status-dead: #ff2d47;
+  --status-dead-bg: rgba(255, 45, 71, 0.12);
   --status-unknown: #c084fc;
   --status-unknown-bg: rgba(192, 132, 252, 0.12);
   --status-destroyed: #ff2d47;

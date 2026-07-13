@@ -114,6 +114,32 @@ function renderHome() {
         </a>
       </div>
     </section>
+    ${homeWelcomeModal()}
+  `;
+}
+
+/* Modal de boas-vindas ao site — aparece só na primeira visita (localStorage). */
+function homeWelcomeModal() {
+  return `
+    <div class="reader-modal-overlay" data-modal="home-welcome" hidden>
+      <div class="reader-modal home-welcome-modal" role="dialog" aria-modal="true" aria-labelledby="home-welcome-title">
+        <span class="reader-modal-accent" aria-hidden="true"></span>
+        <button type="button" class="reader-modal-close" aria-label="Fechar">${icon("fa-solid fa-xmark")}</button>
+        <div class="home-welcome-logo">
+          <img src="Imagens/LogoOLsemfundo.png" alt="Oblitus Limbo">
+        </div>
+        <span class="reader-modal-kicker">${icon("fa-solid fa-door-open")} Bem-vindo</span>
+        <h2 id="home-welcome-title">Bem-vindo ao mundo de Oblitus Limbo</h2>
+        <p class="reader-modal-hint">Este é o site oficial da obra: leia o livro completo online e explore a enciclopédia de personagens, lugares, magia e artefatos deste universo de fantasia sombria.</p>
+        <ul class="reader-modal-features">
+          <li>${icon("fa-solid fa-book-open")} <span><strong>Leia online</strong> — todo o Volume 1, capítulo por capítulo, direto no navegador.</span></li>
+          <li>${icon("fa-solid fa-compass")} <span><strong>Explore o universo</strong> — fichas de cada personagem, lugar e mistério da história.</span></li>
+        </ul>
+        <button type="button" class="hero-cta home-welcome-cta" data-modal-dismiss="home-welcome">
+          ${icon("fa-solid fa-arrow-right-long")} Entrar
+        </button>
+      </div>
+    </div>
   `;
 }
 
